@@ -39,12 +39,23 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     // The color matching your header/footer theme
     const Color headerTeal = Color(0xFF009999);
+        // Get the screen height and width
+    double screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       body: Column(
         children: [
           // ────────── TOP HEADER WITH BACKGROUND IMAGE ──────────
-          SizedBox(
+                  // Header Container
+        SizedBox(
+          height: 110, // 30% of the screen height
+          width: screenWidth, // Set width to screen width
+          child: Image.asset(
+            'assets/images/header.png', // Replace with your image
+            fit: BoxFit.fill, // Ensures the image covers the entire container
+          ),
+        ),
+/*          SizedBox(
             height: 110, // Adjust height as needed
             width: double.infinity,
             child: Stack(
@@ -57,7 +68,7 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-          ),
+          ),*/
 
           // ────────── MIDDLE CONTENT ──────────
           Expanded(
