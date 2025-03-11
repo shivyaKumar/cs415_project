@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+
+import 'SAdminHome.dart';
+import 'homeSAS.dart';
 import 'homepage.dart';
+import 'login.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const Login(),
         '/homepage': (context) => const Homepage(),
+        '/homeSAS': (context) => const SasManagerDashboard(), // Make sure HomeSAS is imported
+        '/homeSA': (context) => const SuperAdminDashboard(), // Make sure HomeSA is imported
       },
     );
   }

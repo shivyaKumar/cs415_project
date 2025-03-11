@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-const Color headerTeal = Color(0xFF008080); // Define the headerTeal color
+const Color headerTeal = Color(0xFF008080);
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class SasManagerDashboard extends StatelessWidget {
+  const SasManagerDashboard({super.key});
 
   void _handleLogout(BuildContext context) {
-    // Navigate back to the Login screen.
     Navigator.pushReplacementNamed(context, '/');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[50], // Light background
+      backgroundColor: Colors.indigo[50],
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(160), // Adjusted height to match login page header size
+        preferredSize: const Size.fromHeight(160),
         child: AppBar(
           leading: Builder(
             builder: (context) => IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openDrawer(),
-              color: Colors.white, // Make burger menu icon white
+              color: Colors.white,
             ),
           ),
           flexibleSpace: Stack(
             fit: StackFit.expand,
             children: [
-              // USP Logo Image, shifted to the right
               Positioned(
-                left: 0, // Shifted right by 20 pixels (adjust this value as needed)
-                right: 0, // Ensures the image doesn't stretch
+                left: 0,
+                right: 0,
                 child: Image.asset(
-                  'assets/images/header.png', // Ensure this path points to your USP logo image
+                  'assets/images/header.png',
                   fit: BoxFit.cover,
                 ),
               ),
-              // Title Text in the center of the header
               Positioned(
-                top: 60, // Adjusted to center the text vertically
+                top: 60,
                 left: 0,
                 right: 0,
-                child: Center(
-                  child: const Text(
-                    'USP Student Management',
+                child: const Center(
+                  child: Text(
+                    'SAS Manager Dashboard',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
@@ -54,9 +51,8 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
               ),
-              // Logout icon button, positioned on the right (kept for now, can remove if not needed)
               Positioned(
-                top: 30, // Adjusted based on your preference
+                top: 30,
                 right: 16,
                 child: IconButton(
                   icon: const Icon(Icons.logout),
@@ -67,7 +63,7 @@ class Homepage extends StatelessWidget {
               ),
             ],
           ),
-          backgroundColor: Colors.transparent, // Make background transparent for the image to show
+          backgroundColor: Colors.transparent,
         ),
       ),
       drawer: Drawer(
@@ -78,20 +74,19 @@ class Homepage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
-                  Icon(Icons.school, color: Colors.white, size: 40),
+                  Icon(Icons.admin_panel_settings, color: Colors.white, size: 40),
                   SizedBox(height: 10),
                   Text(
-                    'Student Menu',
+                    'SAS Manager Menu',
                     style: TextStyle(color: Colors.white, fontSize: 22),
                   ),
                 ],
               ),
             ),
-            _buildDrawerItem(Icons.person, 'Profile', context),
-            _buildDrawerItem(Icons.book, 'Courses', context),
-            _buildDrawerItem(Icons.event, 'Exams', context),
-            _buildDrawerItem(Icons.bar_chart, 'Results', context),
-            _buildDrawerItem(Icons.settings, 'Settings', context),
+            _buildDrawerItem(Icons.lock_open, 'Open Registration', context),
+            _buildDrawerItem(Icons.lock, 'Close Registration', context),
+            _buildDrawerItem(Icons.list, 'View Enrollment Requests', context),
+            _buildDrawerItem(Icons.school, 'Manage Course Prerequisites', context),
           ],
         ),
       ),
@@ -99,7 +94,7 @@ class Homepage extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           const Text(
-            'Welcome to USP Student Management',
+            'Welcome, SAS Manager!',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
             textAlign: TextAlign.center,
           ),
@@ -111,11 +106,11 @@ class Homepage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 1.2, // Adjusted for better spacing
+                childAspectRatio: 1.2,
               ),
-              itemCount: dashboardItems.length,
+              itemCount: managerItems.length,
               itemBuilder: (context, index) {
-                return _buildDashboardCard(dashboardItems[index]['icon'], dashboardItems[index]['title']);
+                return _buildDashboardCard(managerItems[index]['icon'], managerItems[index]['title']);
               },
             ),
           ),
@@ -124,53 +119,18 @@ class Homepage extends StatelessWidget {
             color: headerTeal,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Left column (Expanded)
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Copyright / Contact row
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => _openLink(
-                                'https://www.example.com/copyright'),
-                            child: const Text(
-                              'Copyright',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text('|', style: TextStyle(color: Colors.white)),
-                          const SizedBox(width: 8),
-                          InkWell(
-                            onTap: () =>
-                                _openLink('https://www.example.com/contact'),
-                            child: const Text(
-                              'Contact Us',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        '© Copyright 1968 - 2025. All Rights Reserved.',
+                    children: const [
+                      Text(
+                        '© 2025 The University of the South Pacific',
                         style: TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
                 ),
-
-                // Center column (SVG logo)
                 Expanded(
                   child: Center(
                     child: SvgPicture.asset(
@@ -181,22 +141,12 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // Right column (Expanded)
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: const [
                       Text(
-                        'The University of the South Pacific',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
                         'Laucala Campus, Suva, Fiji',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Tel: +679 323 1000',
                         style: TextStyle(color: Colors.white),
                       ),
                     ],
@@ -208,11 +158,6 @@ class Homepage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _openLink(String url) {
-    // Implement the logic to open the link
-    print('Opening link: $url');
   }
 
   Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
@@ -244,10 +189,9 @@ class Homepage extends StatelessWidget {
   }
 }
 
-final List<Map<String, dynamic>> dashboardItems = [
-  {'icon': Icons.person, 'title': 'Profile'},
-  {'icon': Icons.book, 'title': 'Courses'},
-  {'icon': Icons.event, 'title': 'Exams'},
-  {'icon': Icons.bar_chart, 'title': 'Results'},
-  {'icon': Icons.settings, 'title': 'Settings'},
+final List<Map<String, dynamic>> managerItems = [
+  {'icon': Icons.lock_open, 'title': 'Open Registration'},
+  {'icon': Icons.lock, 'title': 'Close Registration'},
+  {'icon': Icons.list, 'title': 'View Enrollment Requests'},
+  {'icon': Icons.school, 'title': 'Manage Course Prerequisites'},
 ];

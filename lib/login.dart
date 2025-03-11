@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -9,57 +8,72 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _studentIdController = TextEditingController();
+  final _idController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _obscurePassword = true;
 
   void _handleLogin() {
-    final email = _studentIdController.text.trim();
-    // Regex: one "S" or "s", exactly 8 digits, then "@student.usp.ac.fj"
-    final emailRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
-    if (!emailRegex.hasMatch(email)) {
+    final id = _idController.text.trim();
+    final password = _passwordController.text.trim();
+
+    if (id.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text(
-            'Invalid Student Email. Format must be sXXXXXXXX@student.usp.ac.fj',
-          ),
+          content: Text('Email textbox cannot be empty.'),
         ),
       );
       return;
     }
-    
-    debugPrint('Login pressed with valid email: $email');
-    Navigator.pushReplacementNamed(context, '/homepage');
-  }
 
-  Future<void> _openLink(String urlString) async {
-    debugPrint('Attempt to open: $urlString');
+    final studentRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
+    final sasManagerRegex = RegExp(r'^[SsAa][Aa][0-9]{7}$');
+
+    // Super Admin Login
+    if (id.toLowerCase() == "superadmin" && password == "superadmin123") { // Hardcoded Super Admin Credentials
+      Navigator.of(context).pushReplacementNamed('/homeSA');
+      return;
+    }
+
+    // Admin Login
+    if (sasManagerRegex.hasMatch(id) && id == "SA1234567" && password == "SASManager") { // Hardcoded Admin Credentials
+      Navigator.of(context).pushReplacementNamed('/homeSAS');
+      return;
+    }
+
+    // Student Login
+    if (studentRegex.hasMatch(id) && id == "s11208719@student.usp.ac.fj" && password == "s11208719") { // Hardcoded Student Credentials
+      Navigator.of(context).pushReplacementNamed('/homepage');
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Invalid credentials. Please try again.'),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // The color matching your header/footer theme
     const Color headerTeal = Color(0xFF009999);
 
     return Scaffold(
       body: Column(
         children: [
-          // ────────── TOP HEADER WITH BACKGROUND IMAGE ──────────
           SizedBox(
-            height: 110, // Adjust height as needed
+            height: 110,
             width: double.infinity,
             child: Stack(
               children: [
                 Positioned.fill(
                   child: Image.asset(
-                    'assets/images/header.png', // Your header image
+                    'assets/images/header.png',
                     fit: BoxFit.cover,
                   ),
                 ),
               ],
             ),
           ),
-
-          // ────────── MIDDLE CONTENT ──────────
           Expanded(
             child: SingleChildScrollView(
               child: Center(
@@ -67,44 +81,28 @@ class _LoginState extends State<Login> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 24),
-
-                    // Welcome Text
                     const Text(
-                      'Welcome to the USP Student Enrolment Services',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      'Welcome to the USP Student Enrollment Services',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
-
-                    // White Card for Login
                     Card(
                       elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                       child: Container(
                         width: 350,
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
-                            // Student Email Row
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const SizedBox(
-                                  width: 110,
-                                  child: Text(
-                                    'Student Email:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                ),
+                                const SizedBox(width: 110, child: Text('Email or ID:', style: TextStyle(fontSize: 16))),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
-                                    controller: _studentIdController,
+                                    controller: _idController,
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       isDense: true,
@@ -115,35 +113,33 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                             const SizedBox(height: 16),
-
-                            // Password Row
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const SizedBox(
-                                  width: 110,
-                                  child: Text(
-                                    'Password:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                ),
+                                const SizedBox(width: 110, child: Text('Password:', style: TextStyle(fontSize: 16))),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
                                     controller: _passwordController,
-                                    obscureText: true,
-                                    decoration: const InputDecoration(
-                                      border: OutlineInputBorder(),
+                                    obscureText: _obscurePassword,
+                                    decoration: InputDecoration(
+                                      border: const OutlineInputBorder(),
                                       isDense: true,
-                                      contentPadding: EdgeInsets.all(10),
+                                      contentPadding: const EdgeInsets.all(10),
+                                      suffixIcon: IconButton(
+                                        icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscurePassword = !_obscurePassword;
+                                          });
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                             const SizedBox(height: 24),
-
-                            // LOGIN BUTTON
                             SizedBox(
                               width: 150,
                               child: ElevatedButton(
@@ -162,110 +158,22 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-
-                    // Forgot Password? (centered)
-                    Container(
-                      width: 320,
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: TextButton(
-                        onPressed: () {
-                          debugPrint('Forgot Password? pressed');
-                        },
-                        child: const Text('Forgot Password?'),
-                      ),
-                    ),
-
                     const SizedBox(height: 24),
                   ],
                 ),
               ),
             ),
           ),
-
-          // ────────── BOTTOM FOOTER ──────────
+          // Footer Section
           Container(
             width: double.infinity,
-            color: headerTeal,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Left column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Copyright / Contact row
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => _openLink('https://www.example.com/copyright'),
-                            child: const Text(
-                              'Copyright',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text('|', style: TextStyle(color: Colors.white)),
-                          const SizedBox(width: 8),
-                          InkWell(
-                            onTap: () => _openLink('https://www.example.com/contact'),
-                            child: const Text(
-                              'Contact Us',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        '© Copyright 1968 - 2025. All Rights Reserved.',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Center column (SVG logo)
-                Expanded(
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/usp_logo.svg',
-                      width: 133,
-                      height: 60,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-
-                // Right column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'The University of the South Pacific',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Laucala Campus, Suva, Fiji',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Tel: +679 323 1000',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            color: const Color.fromARGB(255, 142, 142, 143),
+            child: const Center(
+              child: Text(
+                '© 2025 University of the South Pacific | All rights reserved',
+                style: TextStyle(fontSize: 14, color: Colors.black54),
+              ),
             ),
           ),
         ],
