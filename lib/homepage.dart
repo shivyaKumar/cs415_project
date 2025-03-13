@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'theme_provider.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -18,6 +20,18 @@ class Homepage extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () => _handleLogout(context),
             tooltip: 'Logout',
+          ),
+          // Toggle button for dark/light mode
+          IconButton(
+            icon: Icon(
+              context.watch<ThemeProvider>().isDarkMode
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              context.read<ThemeProvider>().toggleTheme();
+            },
+            tooltip: 'Toggle Theme',
           ),
         ],
       ),
