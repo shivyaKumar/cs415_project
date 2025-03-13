@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'login.dart';
 import 'homepage.dart';
+import 'theme_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +13,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'USP Student Management',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
+    return ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, _) {
+          return MaterialApp(
+            title: 'USP Student Management',
+            themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            theme: ThemeData(
+              primarySwatch: Colors.indigo,
+              brightness: Brightness.light, // Light mode
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark, // Dark mode
+            ),
+            initialRoute: '/',
+            routes: {
+              '/': (context) => Login(
+                    isDarkMode: themeProvider.isDarkMode,
+                    onThemeToggle: themeProvider.toggleTheme,
+                  ),
+              '/homepage': (context) => const Homepage(),
+            },
+          );
+        },
       ),
-      // Define initial route and app routes.
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const Login(),
-        '/homepage': (context) => const Homepage(),
-      },
     );
   }
 }

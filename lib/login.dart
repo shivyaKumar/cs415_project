@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  final bool isDarkMode;
+  final VoidCallback onThemeToggle;
+
+  const Login({super.key, required this.isDarkMode, required this.onThemeToggle});
 
   @override
   State<Login> createState() => _LoginState();
@@ -14,92 +17,82 @@ class _LoginState extends State<Login> {
 
   void _handleLogin() {
     final email = _studentIdController.text.trim();
-    // Regex: one "S" or "s", exactly 8 digits, then "@student.usp.ac.fj"
     final emailRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
+
     if (!emailRegex.hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text(
-            'Invalid Student Email. Format must be sXXXXXXXX@student.usp.ac.fj',
-          ),
+          content: Text('Invalid Student Email. Format: sXXXXXXXX@student.usp.ac.fj'),
         ),
       );
       return;
     }
-    
+
     debugPrint('Login pressed with valid email: $email');
     Navigator.pushReplacementNamed(context, '/homepage');
   }
 
-  Future<void> _openLink(String urlString) async {
-    debugPrint('Attempt to open: $urlString');
-  }
-
   @override
   Widget build(BuildContext context) {
-    // The color matching your header/footer theme
-    const Color headerTeal = Color(0xFF009999);
-
     return Scaffold(
       body: Column(
         children: [
-          // ────────── TOP HEADER WITH BACKGROUND IMAGE ──────────
+          // ─── Header Image ───
           SizedBox(
-            height: 110, // Adjust height as needed
+            height: 110,
             width: double.infinity,
-            child: Stack(
+            child: Image.asset('assets/images/header.png', fit: BoxFit.cover),
+          ),
+
+          // ─── Welcome Message & Dark Mode Toggle ───
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+            child: Row(
               children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    'assets/images/header.png', // Your header image
-                    fit: BoxFit.cover,
-                  ),
+                // Spacer to push the text to center
+                const Spacer(),
+
+                // Welcome Message
+                const Text(
+                  'Welcome to the Student Enrolment Services',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
+                ),
+
+                // Spacer pushes the switch to the right end
+                const Spacer(),
+
+                // Dark Mode Toggle Switch
+                Switch(
+                  value: widget.isDarkMode,
+                  onChanged: (value) => widget.onThemeToggle(),
                 ),
               ],
             ),
           ),
 
-          // ────────── MIDDLE CONTENT ──────────
+          // ─── Login Form ───
           Expanded(
             child: SingleChildScrollView(
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 24),
-
-                    // Welcome Text
-                    const Text(
-                      'Welcome to the USP Student Enrolment Services',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 24),
-
-                    // White Card for Login
+                    // Login Card
                     Card(
                       elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                       child: Container(
                         width: 350,
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
-                            // Student Email Row
+                            // Student Email
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(
                                   width: 110,
-                                  child: Text(
-                                    'Student Email:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
+                                  child: Text('Student Email:', style: TextStyle(fontSize: 16)),
                                 ),
                                 const SizedBox(width: 8),
                                 Expanded(
@@ -116,16 +109,12 @@ class _LoginState extends State<Login> {
                             ),
                             const SizedBox(height: 16),
 
-                            // Password Row
+                            // Password
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(
                                   width: 110,
-                                  child: Text(
-                                    'Password:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
+                                  child: Text('Password:', style: TextStyle(fontSize: 16)),
                                 ),
                                 const SizedBox(width: 8),
                                 Expanded(
@@ -149,30 +138,14 @@ class _LoginState extends State<Login> {
                               child: ElevatedButton(
                                 onPressed: _handleLogin,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: headerTeal,
+                                  backgroundColor: const Color(0xFF009999),
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                 ),
-                                child: const Text(
-                                  'LOGIN',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                child: const Text('LOGIN', style: TextStyle(color: Colors.white)),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-
-                    // Forgot Password? (centered)
-                    Container(
-                      width: 320,
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: TextButton(
-                        onPressed: () {
-                          debugPrint('Forgot Password? pressed');
-                        },
-                        child: const Text('Forgot Password?'),
                       ),
                     ),
 
@@ -183,30 +156,26 @@ class _LoginState extends State<Login> {
             ),
           ),
 
-          // ────────── BOTTOM FOOTER ──────────
+          // ─── Footer ───
           Container(
             width: double.infinity,
-            color: headerTeal,
+            color: const Color(0xFF009999),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Left column (Expanded)
+                // Left Section
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Copyright / Contact row
                       Row(
                         children: [
                           InkWell(
                             onTap: () => _openLink('https://www.example.com/copyright'),
                             child: const Text(
                               'Copyright',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
+                              style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -216,52 +185,32 @@ class _LoginState extends State<Login> {
                             onTap: () => _openLink('https://www.example.com/contact'),
                             child: const Text(
                               'Contact Us',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
+                              style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        '© Copyright 1968 - 2025. All Rights Reserved.',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      const Text('© 1968 - 2025. All Rights Reserved.', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
 
-                // Center column (SVG logo)
+                // Center (Logo)
                 Expanded(
                   child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/usp_logo.svg',
-                      width: 133,
-                      height: 60,
-                      fit: BoxFit.contain,
-                    ),
+                    child: SvgPicture.asset('assets/images/usp_logo.svg', width: 133, height: 60, fit: BoxFit.contain),
                   ),
                 ),
 
-                // Right column (Expanded)
+                // Right Section
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: const [
-                      Text(
-                        'The University of the South Pacific',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Laucala Campus, Suva, Fiji',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Tel: +679 323 1000',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text('The University of the South Pacific', style: TextStyle(color: Colors.white)),
+                      Text('Laucala Campus, Suva, Fiji', style: TextStyle(color: Colors.white)),
+                      Text('Tel: +679 323 1000', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
@@ -271,5 +220,9 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+
+  Future<void> _openLink(String urlString) async {
+    debugPrint('Attempt to open: $urlString');
   }
 }
