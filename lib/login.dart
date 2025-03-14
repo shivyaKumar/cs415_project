@@ -33,43 +33,154 @@ class _LoginState extends State<Login> {
 
   Future<void> _openLink(String urlString) async {
     debugPrint('Attempt to open: $urlString');
+    // Implement link opening logic (e.g., using url_launcher)
+  }
+
+  /// Builds a responsive footer that scales font size, padding, and logo dimensions.
+  Widget buildFooter(double screenWidth) {
+    const Color headerTeal = Color(0xFF009999);
+    // Use a reference width of 600; scale down if screen is smaller.
+    final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
+
+    final double footerFontSize = 14 * scaleFactor;
+    final double verticalPadding = 8 * scaleFactor;
+    final double horizontalPadding = 16 * scaleFactor;
+    final double logoWidth = 133 * scaleFactor;
+    final double logoHeight = 60 * scaleFactor;
+
+    return Container(
+      width: double.infinity,
+      color: headerTeal,
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Left column
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () =>
+                          _openLink('https://www.example.com/copyright'),
+                      child: Text(
+                        'Copyright',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                          fontSize: footerFontSize,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8 * scaleFactor),
+                    Text(
+                      '|',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: footerFontSize,
+                      ),
+                    ),
+                    SizedBox(width: 8 * scaleFactor),
+                    InkWell(
+                      onTap: () =>
+                          _openLink('https://www.example.com/contact'),
+                      child: Text(
+                        'Contact Us',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                          fontSize: footerFontSize,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 4 * scaleFactor),
+                Text(
+                  '© Copyright 1968 - 2025. All Rights Reserved.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Center column (Logo)
+          Expanded(
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/images/usp_logo.svg',
+                width: logoWidth,
+                height: logoHeight,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          // Right column
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'The University of the South Pacific',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                Text(
+                  'Laucala Campus, Suva, Fiji',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                Text(
+                  'Tel: +679 323 1000',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     // The color matching your header/footer theme
     const Color headerTeal = Color(0xFF009999);
-        // Get the screen height and width
+    // Get the screen width for responsiveness
     double screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 110,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Image.asset(
+          'assets/images/header.png', // Your USP header image
+          fit: BoxFit.fill,
+        ),
+      ),
       body: Column(
         children: [
-          // ────────── TOP HEADER WITH BACKGROUND IMAGE ──────────
-                  // Header Container
-        SizedBox(
-          height: 110, // 30% of the screen height
-          width: screenWidth, // Set width to screen width
-          child: Image.asset(
-            'assets/images/header.png', // Replace with your image
-            fit: BoxFit.fill, // Ensures the image covers the entire container
-          ),
-        ),
-/*          SizedBox(
-            height: 110, // Adjust height as needed
-            width: double.infinity,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    'assets/images/header.png', // Your header image
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ),
-          ),*/
-
           // ────────── MIDDLE CONTENT ──────────
           Expanded(
             child: SingleChildScrollView(
@@ -78,7 +189,6 @@ class _LoginState extends State<Login> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 24),
-
                     // Welcome Text
                     const Text(
                       'Welcome to the USP Student Enrolment Services',
@@ -89,7 +199,6 @@ class _LoginState extends State<Login> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
-
                     // White Card for Login
                     Card(
                       elevation: 4,
@@ -126,7 +235,6 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                             const SizedBox(height: 16),
-
                             // Password Row
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,7 +261,6 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                             const SizedBox(height: 24),
-
                             // LOGIN BUTTON
                             SizedBox(
                               width: 150,
@@ -173,7 +280,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-
                     // Forgot Password? (centered)
                     Container(
                       width: 320,
@@ -186,99 +292,14 @@ class _LoginState extends State<Login> {
                         child: const Text('Forgot Password?'),
                       ),
                     ),
-
                     const SizedBox(height: 24),
                   ],
                 ),
               ),
             ),
           ),
-
-          // ────────── BOTTOM FOOTER ──────────
-          Container(
-            width: double.infinity,
-            color: headerTeal,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Left column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Copyright / Contact row
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => _openLink('https://www.example.com/copyright'),
-                            child: const Text(
-                              'Copyright',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text('|', style: TextStyle(color: Colors.white)),
-                          const SizedBox(width: 8),
-                          InkWell(
-                            onTap: () => _openLink('https://www.example.com/contact'),
-                            child: const Text(
-                              'Contact Us',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        '© Copyright 1968 - 2025. All Rights Reserved.',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Center column (SVG logo)
-                Expanded(
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/usp_logo.svg',
-                      width: 133,
-                      height: 60,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-
-                // Right column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'The University of the South Pacific',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Laucala Campus, Suva, Fiji',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Tel: +679 323 1000',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // ────────── RESPONSIVE FOOTER ──────────
+          buildFooter(screenWidth),
         ],
       ),
     );

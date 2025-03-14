@@ -38,15 +38,13 @@ class Homepage extends StatelessWidget {
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
               onTap: () {
-                // Add navigation to Profile page if needed.
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/profile');
               },
             ),
             ListTile(
               leading: const Icon(Icons.book),
               title: const Text('Courses'),
               onTap: () {
-                // Add navigation to Courses page if needed.
                 Navigator.pop(context);
               },
             ),
@@ -54,7 +52,6 @@ class Homepage extends StatelessWidget {
               leading: const Icon(Icons.event),
               title: const Text('Exams'),
               onTap: () {
-                // Add navigation to Exams page if needed.
                 Navigator.pop(context);
               },
             ),
@@ -62,7 +59,6 @@ class Homepage extends StatelessWidget {
               leading: const Icon(Icons.bar_chart),
               title: const Text('Results'),
               onTap: () {
-                // Add navigation to Results page if needed.
                 Navigator.pop(context);
               },
             ),
@@ -70,7 +66,6 @@ class Homepage extends StatelessWidget {
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
-                // Add navigation to Settings page if needed.
                 Navigator.pop(context);
               },
             ),
@@ -94,11 +89,21 @@ class Homepage extends StatelessWidget {
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
                 children: [
-                  _buildDashboardCard(Icons.person, 'Profile'),
-                  _buildDashboardCard(Icons.book, 'Courses'),
-                  _buildDashboardCard(Icons.event, 'Exams'),
-                  _buildDashboardCard(Icons.bar_chart, 'Results'),
-                  _buildDashboardCard(Icons.settings, 'Settings'),
+                  _buildDashboardCard(Icons.person, 'Student Profile', () {
+                    Navigator.pushNamed(context, '/profile');
+                  }),
+                  _buildDashboardCard(Icons.book, 'Courses', () {
+                    // Add navigation to Courses page if needed.
+                  }),
+                  _buildDashboardCard(Icons.event, 'Exams', () {
+                    // Add navigation to Exams page if needed.
+                  }),
+                  _buildDashboardCard(Icons.bar_chart, 'Results', () {
+                    // Add navigation to Results page if needed.
+                  }),
+                  _buildDashboardCard(Icons.settings, 'Settings', () {
+                    // Add navigation to Settings page if needed.
+                  }),
                 ],
               ),
             ),
@@ -114,14 +119,11 @@ class Homepage extends StatelessWidget {
     );
   }
 
-  Widget _buildDashboardCard(IconData icon, String title) {
+  Widget _buildDashboardCard(IconData icon, String title, VoidCallback onTap) {
     return Card(
       elevation: 4,
       child: InkWell(
-        onTap: () {
-          // Action when a dashboard card is tapped.
-          // You can add navigation or other functionality here.
-        },
+        onTap: onTap,
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
