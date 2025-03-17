@@ -17,13 +17,13 @@ class SasManagerDashboard extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(160),
         child: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-              color: Colors.white,
-            ),
-          ),
+          // leading: Builder(
+          //   builder: (context) => IconButton(
+          //     icon: const Icon(Icons.menu),
+          //     onPressed: () => Scaffold.of(context).openDrawer(),
+          //     color: Colors.white,
+          //   ),
+          // ),
           flexibleSpace: Stack(
             fit: StackFit.expand,
             children: [
@@ -66,30 +66,30 @@ class SasManagerDashboard extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(color: Colors.indigo),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Icon(Icons.admin_panel_settings, color: Colors.white, size: 40),
-                  SizedBox(height: 10),
-                  Text(
-                    'SAS Manager Menu',
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ],
-              ),
-            ),
-            _buildDrawerItem(Icons.lock_open, 'Open Registration', context),
-            _buildDrawerItem(Icons.lock, 'Close Registration', context),
-            _buildDrawerItem(Icons.list, 'View Enrollment Requests', context),
-            _buildDrawerItem(Icons.school, 'Manage Course Prerequisites', context),
-          ],
-        ),
-      ),
+      // drawer: Drawer(
+      //   child: Column(
+      //     children: [
+      //       DrawerHeader(
+      //         decoration: const BoxDecoration(color: Colors.indigo),
+      //         child: Column(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: const [
+      //             Icon(Icons.admin_panel_settings, color: Colors.white, size: 40),
+      //             SizedBox(height: 10),
+      //             Text(
+      //               'SAS Manager Menu',
+      //               style: TextStyle(color: Colors.white, fontSize: 22),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       _buildDrawerItem(Icons.lock_open, 'Open Registration', context),
+      //       _buildDrawerItem(Icons.lock, 'Close Registration', context),
+      //       _buildDrawerItem(Icons.list, 'View Enrollment Requests', context),
+      //       _buildDrawerItem(Icons.school, 'Manage Course Prerequisites', context),
+      //     ],
+      //   ),
+      // ),
       body: Column(
         children: [
           const SizedBox(height: 20),
@@ -160,15 +160,15 @@ class SasManagerDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, color: Colors.indigo),
-      title: Text(title, style: const TextStyle(fontSize: 16)),
-      onTap: () {
-        Navigator.pop(context);
-      },
-    );
-  }
+  // Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
+  //   return ListTile(
+  //     leading: Icon(icon, color: Colors.indigo),
+  //     title: Text(title, style: const TextStyle(fontSize: 16)),
+  //     onTap: () {
+  //       Navigator.pop(context);
+  //     },
+  //   );
+  // }
 
   Widget _buildDashboardCard(IconData icon, String title) {
     return Card(
@@ -192,6 +192,4 @@ class SasManagerDashboard extends StatelessWidget {
 final List<Map<String, dynamic>> managerItems = [
   {'icon': Icons.lock_open, 'title': 'Open Registration'},
   {'icon': Icons.lock, 'title': 'Close Registration'},
-  {'icon': Icons.list, 'title': 'View Enrollment Requests'},
-  {'icon': Icons.school, 'title': 'Manage Course Prerequisites'},
 ];

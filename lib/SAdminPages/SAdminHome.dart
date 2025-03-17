@@ -70,7 +70,7 @@ class SuperAdminDashboard extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(color: Colors.indigo),
+              decoration: const BoxDecoration(color: headerTeal), // Updated color
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -83,10 +83,10 @@ class SuperAdminDashboard extends StatelessWidget {
                 ],
               ),
             ),
-            _buildDrawerItem(Icons.admin_panel_settings, 'Manage SAS Managers', context),
-            _buildDrawerItem(Icons.settings, 'University Settings', context),
-            _buildDrawerItem(Icons.security, 'System Security', context),
-            _buildDrawerItem(Icons.build, 'System Configuration', context),
+            _buildDrawerItem(Icons.admin_panel_settings, 'Manage SAS Managers', context, '/sas_manage'),
+            _buildDrawerItem(Icons.settings, 'University Settings', context, '/university_settings'),
+            _buildDrawerItem(Icons.security, 'System Security', context, '/system_security'),
+            _buildDrawerItem(Icons.build, 'System Configuration', context, '/system_configuration'),
           ],
         ),
       ),
@@ -110,7 +110,12 @@ class SuperAdminDashboard extends StatelessWidget {
               ),
               itemCount: superAdminItems.length,
               itemBuilder: (context, index) {
-                return _buildDashboardCard(superAdminItems[index]['icon'], superAdminItems[index]['title']);
+                return _buildDashboardCard(
+                  superAdminItems[index]['icon'],
+                  superAdminItems[index]['title'],
+                  superAdminItems[index]['route'],
+                  context,
+                );
               },
             ),
           ),
@@ -160,26 +165,28 @@ class SuperAdminDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
+  Widget _buildDrawerItem(IconData icon, String title, BuildContext context, String route) {
     return ListTile(
-      leading: Icon(icon, color: Colors.indigo),
+      leading: Icon(icon, color: headerTeal), // Updated color
       title: Text(title, style: const TextStyle(fontSize: 16)),
       onTap: () {
-        Navigator.pop(context);
+        Navigator.pushNamed(context, route); // Ensures redirection
       },
     );
   }
 
-  Widget _buildDashboardCard(IconData icon, String title) {
+  Widget _buildDashboardCard(IconData icon, String title, String routeName, BuildContext context) {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, routeName);
+        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: Colors.indigo),
+            Icon(icon, size: 40, color: headerTeal), // Updated color
             const SizedBox(height: 8),
             Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
           ],
@@ -190,8 +197,8 @@ class SuperAdminDashboard extends StatelessWidget {
 }
 
 final List<Map<String, dynamic>> superAdminItems = [
-  {'icon': Icons.admin_panel_settings, 'title': 'Manage SAS Managers'},
-  {'icon': Icons.settings, 'title': 'University Settings'},
-  {'icon': Icons.security, 'title': 'System Security'},
-  {'icon': Icons.build, 'title': 'System Configuration'},
+  {'icon': Icons.admin_panel_settings, 'title': 'Manage SAS Managers', 'route': '/sas_manage'},
+  {'icon': Icons.settings, 'title': 'University Settings', 'route': '/university_settings'},
+  {'icon': Icons.security, 'title': 'System Security', 'route': '/system_security'},
+  {'icon': Icons.build, 'title': 'System Configuration', 'route': '/system_configuration'},
 ];

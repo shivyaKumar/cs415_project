@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Import SASManage.dart
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -11,6 +13,10 @@ class _LoginState extends State<Login> {
   final _idController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
+  
+
+  // Convert map to list
+  //final List<MapEntry<String, String>> sasManagerList = _sasManagers.entries.toList();
 
   void _handleLogin() {
     final id = _idController.text.trim();
@@ -26,22 +32,26 @@ class _LoginState extends State<Login> {
     }
 
     final studentRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
-    final sasManagerRegex = RegExp(r'^[SsAa][Aa][0-9]{7}$');
 
     // Super Admin Login
-    if (id.toLowerCase() == "superadmin" && password == "superadmin123") { // Hardcoded Super Admin Credentials
+    if (id.toLowerCase() == "superadmin" && password == "superadmin123") {
       Navigator.of(context).pushReplacementNamed('/homeSA');
       return;
     }
 
-    // Admin Login
-    if (sasManagerRegex.hasMatch(id) && id == "SA1234567" && password == "SASManager") { // Hardcoded Admin Credentials
+    //SAS Manager Login (Using List)
+    if (id.toLowerCase() == "sasmanage" && password == "sasmanage") {
       Navigator.of(context).pushReplacementNamed('/homeSAS');
       return;
     }
 
+    if (id.toLowerCase() == "sasstaff" && password == "sasstaff") {
+      Navigator.of(context).pushReplacementNamed('/homeStaff');
+      return;
+    }
+
     // Student Login
-    if (studentRegex.hasMatch(id) && id == "s11208719@student.usp.ac.fj" && password == "s11208719") { // Hardcoded Student Credentials
+    if (studentRegex.hasMatch(id) && id == "s11208719@student.usp.ac.fj" && password == "s11208719") {
       Navigator.of(context).pushReplacementNamed('/homepage');
       return;
     }
@@ -168,7 +178,7 @@ class _LoginState extends State<Login> {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 16),
-            color: const Color.fromARGB(255, 142, 142, 143),
+            color: headerTeal,
             child: const Center(
               child: Text(
                 '© 2025 University of the South Pacific | All rights reserved',
