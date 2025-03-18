@@ -1,50 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-const Color headerTeal = Color(0xFF008080); // Define the headerTeal color
-
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
   void _handleLogout(BuildContext context) {
-    // Navigate back to the Login screen.
     Navigator.pushReplacementNamed(context, '/');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[50], // Light background
+      backgroundColor: Colors.indigo[50],
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(160), // Adjusted height to match login page header size
+        preferredSize: const Size.fromHeight(160),
         child: AppBar(
           leading: Builder(
             builder: (context) => IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openDrawer(),
-              color: Colors.white, // Make burger menu icon white
+              color: Colors.white,
             ),
           ),
           flexibleSpace: Stack(
             fit: StackFit.expand,
             children: [
-              // USP Logo Image, shifted to the right
               Positioned(
-                left: 0, // Shifted right by 20 pixels (adjust this value as needed)
-                right: 0, // Ensures the image doesn't stretch
+                left: 0,
+                right: 0,
                 child: Image.asset(
-                  'assets/images/header.png', // Ensure this path points to your USP logo image
+                  'assets/images/header.png',
                   fit: BoxFit.cover,
                 ),
               ),
-              // Title Text in the center of the header
               Positioned(
-                top: 60, // Adjusted to center the text vertically
+                top: 60,
                 left: 0,
                 right: 0,
-                child: Center(
-                  child: const Text(
-                    'USP Student Management',
+                child: const Center(
+                  child: Text(
+                    'Student Dashboard',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
@@ -54,200 +49,201 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
               ),
-              // Logout icon button, positioned on the right (kept for now, can remove if not needed)
-              Positioned(
-                top: 30, // Adjusted based on your preference
-                right: 16,
-                child: IconButton(
-                  icon: const Icon(Icons.logout),
-                  onPressed: () => _handleLogout(context),
-                  tooltip: 'Logout',
-                  color: Colors.white,
-                ),
-              ),
             ],
           ),
-          backgroundColor: Colors.transparent, // Make background transparent for the image to show
+          backgroundColor: Colors.transparent,
         ),
       ),
       drawer: Drawer(
-        child: Column(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(color: Colors.indigo),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Icon(Icons.school, color: Colors.white, size: 40),
-                  SizedBox(height: 10),
-                  Text(
-                    'Student Menu',
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ],
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.indigo,
+              ),
+              child: Text(
+                'Student Menu',
+                style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
-            _buildDrawerItem(Icons.person, 'Profile', context),
-            _buildDrawerItem(Icons.book, 'Courses', context),
-            _buildDrawerItem(Icons.event, 'Exams', context),
-            _buildDrawerItem(Icons.bar_chart, 'Results', context),
-            _buildDrawerItem(Icons.settings, 'Settings', context),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.book),
+              title: const Text('Courses'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.event),
+              title: const Text('Exams'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.bar_chart),
+              title: const Text('Results'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
+              onTap: () => _handleLogout(context),
+            ),
           ],
         ),
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
-          const Text(
-            'Welcome to USP Student Management',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
           Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 1.2, // Adjusted for better spacing
-              ),
-              itemCount: dashboardItems.length,
-              itemBuilder: (context, index) {
-                return _buildDashboardCard(dashboardItems[index]['icon'], dashboardItems[index]['title']);
-              },
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            color: headerTeal,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Left column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Copyright / Contact row
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => _openLink(
-                                'https://www.example.com/copyright'),
-                            child: const Text(
-                              'Copyright',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text('|', style: TextStyle(color: Colors.white)),
-                          const SizedBox(width: 8),
-                          InkWell(
-                            onTap: () =>
-                                _openLink('https://www.example.com/contact'),
-                            child: const Text(
-                              'Contact Us',
-                              style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        '© Copyright 1968 - 2025. All Rights Reserved.',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  const Text(
+                    'Greetings Student!',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                ),
-
-                // Center column (SVG logo)
-                Expanded(
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/usp_logo.svg',
-                      width: 133,
-                      height: 60,
-                      fit: BoxFit.contain,
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      children: [
+                        _buildDashboardCard(Icons.person, 'Student Profile', () {
+                          Navigator.pushNamed(context, '/profile');
+                        }),
+                        _buildDashboardCard(Icons.book, 'Courses', () {}),
+                        _buildDashboardCard(Icons.event, 'Exams', () {}),
+                        _buildDashboardCard(Icons.bar_chart, 'Results', () {}),
+                        _buildDashboardCard(Icons.settings, 'Settings', () {}),
+                      ],
                     ),
                   ),
-                ),
-
-                // Right column (Expanded)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'The University of the South Pacific',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Laucala Campus, Suva, Fiji',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'Tel: +679 323 1000',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
+          _buildFooter(),
         ],
+      ),
+    );
+    
+  }
+
+  Widget _buildDashboardCard(IconData icon, String title, VoidCallback onTap) {
+    return Card(
+      elevation: 4,
+      child: InkWell(
+        onTap: onTap,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 48, color: Colors.indigo),
+              const SizedBox(height: 8),
+              Text(title, style: const TextStyle(fontSize: 16)),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  void _openLink(String url) {
-    // Implement the logic to open the link
-    print('Opening link: $url');
-  }
-
-  Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, color: Colors.indigo),
-      title: Text(title, style: const TextStyle(fontSize: 16)),
-      onTap: () {
-        Navigator.pop(context);
-      },
-    );
-  }
-
-  Widget _buildDashboardCard(IconData icon, String title) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: InkWell(
-        onTap: () {},
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+  Widget _buildFooter({double height = 80}) {
+    return SizedBox(
+      height: height,
+      child: Container(
+        width: double.infinity,
+        color: Colors.teal,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: Colors.indigo),
-            const SizedBox(height: 8),
-            Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () => _openLink('https://www.example.com/copyright'),
+                        child: const Text(
+                          'Copyright',
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      const Text('|', style: TextStyle(color: Colors.white)),
+                      const SizedBox(width: 8),
+                      InkWell(
+                        onTap: () => _openLink('https://www.example.com/contact'),
+                        child: const Text(
+                          'Contact Us',
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    '© Copyright 1968 - 2025. All Rights Reserved.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/usp_logo.svg',
+                  width: 133,
+                  height: 60,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
+                  Text('The University of the South Pacific', style: TextStyle(color: Colors.white)),
+                  Text('Laucala Campus, Suva, Fiji', style: TextStyle(color: Colors.white)),
+                  Text('Tel: +679 323 1000', style: TextStyle(color: Colors.white)),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-final List<Map<String, dynamic>> dashboardItems = [
-  {'icon': Icons.person, 'title': 'Profile'},
-  {'icon': Icons.book, 'title': 'Courses'},
-  {'icon': Icons.event, 'title': 'Exams'},
-  {'icon': Icons.bar_chart, 'title': 'Results'},
-  {'icon': Icons.settings, 'title': 'Settings'},
-];
+  void _openLink(String url) {
+    print('Opening link: $url');
+  }
+}

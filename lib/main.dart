@@ -6,6 +6,7 @@ import 'SAdminPages/SAdminHome.dart';
 import 'SAS/homeSAS.dart';
 import 'homepage.dart';
 import 'login.dart';
+import 'studentprofile.dart'; // Make sure Profile is imported
 
 
 void main() {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/homeSA': (context) => const SuperAdminDashboard(), // Make sure HomeSA is imported
         '/sas_manage': (context) => const SASManage(), // Make sure SASManage is imported
         '/homeStaff': (context) => HomeStaff(),  // Make sure HomeStaff is imported
+        '/profile': (context) => Profile(),
       },
     );
   }

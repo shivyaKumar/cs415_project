@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-// Import SASManage.dart
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -13,10 +12,6 @@ class _LoginState extends State<Login> {
   final _idController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
-  
-
-  // Convert map to list
-  //final List<MapEntry<String, String>> sasManagerList = _sasManagers.entries.toList();
 
   void _handleLogin() {
     final id = _idController.text.trim();
@@ -39,23 +34,26 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    //SAS Manager Login (Using List)
+    // SAS Manager Login
     if (id.toLowerCase() == "sasmanage" && password == "sasmanage") {
       Navigator.of(context).pushReplacementNamed('/homeSAS');
       return;
     }
 
+    // SAS Staff Login
     if (id.toLowerCase() == "sasstaff" && password == "sasstaff") {
       Navigator.of(context).pushReplacementNamed('/homeStaff');
       return;
     }
 
-    // Student Login
-    if (studentRegex.hasMatch(id) && id == "s11208719@student.usp.ac.fj" && password == "s11208719") {
-      Navigator.of(context).pushReplacementNamed('/homepage');
+    // Student Login (must match regex & have password 12345)
+    if (studentRegex.hasMatch(id) && password == "12345") {
+      debugPrint('Login successful for student: $id');
+      Navigator.pushReplacementNamed(context, '/homepage');
       return;
     }
 
+    // Invalid credentials
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Invalid credentials. Please try again.'),
@@ -108,7 +106,8 @@ class _LoginState extends State<Login> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 110, child: Text('Email or ID:', style: TextStyle(fontSize: 16))),
+                                const SizedBox(
+                                    width: 110, child: Text('Email or ID:', style: TextStyle(fontSize: 16))),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
@@ -126,7 +125,8 @@ class _LoginState extends State<Login> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 110, child: Text('Password:', style: TextStyle(fontSize: 16))),
+                                const SizedBox(
+                                    width: 110, child: Text('Password:', style: TextStyle(fontSize: 16))),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
@@ -137,7 +137,8 @@ class _LoginState extends State<Login> {
                                       isDense: true,
                                       contentPadding: const EdgeInsets.all(10),
                                       suffixIcon: IconButton(
-                                        icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
+                                        icon: Icon(
+                                            _obscurePassword ? Icons.visibility_off : Icons.visibility),
                                         onPressed: () {
                                           setState(() {
                                             _obscurePassword = !_obscurePassword;
@@ -173,21 +174,89 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-          ),
-          // Footer Section
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            color: headerTeal,
-            child: const Center(
-              child: Text(
-                '© 2025 University of the South Pacific | All rights reserved',
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+            ),
+            _buildFooter(),
+          ],
+        ),
+      );
+    }
+  
+    Widget _buildFooter({double height = 80}) {
+    return SizedBox(
+      height: height,
+      child: Container(
+        width: double.infinity,
+        color: Colors.teal,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () => _openLink('https://www.example.com/copyright'),
+                        child: const Text(
+                          'Copyright',
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      const Text('|', style: TextStyle(color: Colors.white)),
+                      const SizedBox(width: 8),
+                      InkWell(
+                        onTap: () => _openLink('https://www.example.com/contact'),
+                        child: const Text(
+                          'Contact Us',
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    '© Copyright 1968 - 2025. All Rights Reserved.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/usp_logo.svg',
+                  width: 133,
+                  height: 60,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
+                  Text('The University of the South Pacific', style: TextStyle(color: Colors.white)),
+                  Text('Laucala Campus, Suva, Fiji', style: TextStyle(color: Colors.white)),
+                  Text('Tel: +679 323 1000', style: TextStyle(color: Colors.white)),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void _openLink(String url) {
+    print('Opening link: $url');
   }
 }
