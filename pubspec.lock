@@ -81,14 +81,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  file:
+    dependency: transitive
+    description:
+      name: file
+      sha256: a3b4f84adafef897088c160faf7dfffb7696046cb13ae90b508c2cbc95d3b8d4
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.1"
   file_picker:
     dependency: "direct main"
     description:
       name: file_picker
-      sha256: "7423298f08f6fc8cce05792bae329f9a93653fc9c08712831b1a55540127995d"
+      sha256: "8d938fd5c11dc81bf1acd4f7f0486c683fe9e79a0b13419e27730f9ce4d8a25b"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.2"
+    version: "9.2.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -517,6 +525,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.12.0"
+  xdg_directories:
+    dependency: transitive
+    description:
+      name: xdg_directories
+      sha256: "7a3f37b05d989967cdddcbb571f1ea834867ae2faa29725fd085180e0883aa15"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   xml:
     dependency: transitive
     description:

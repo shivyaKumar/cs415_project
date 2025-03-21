@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'theme_provider.dart';
 
 class Login extends StatefulWidget {
-  final bool isDarkMode;
-  final VoidCallback onThemeToggle;
-
-  const Login({super.key, required this.isDarkMode, required this.onThemeToggle});
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -34,15 +33,12 @@ class _LoginState extends State<Login> {
 
   Future<void> _openLink(String urlString) async {
     debugPrint('Attempt to open: $urlString');
-    // Implement link opening logic (e.g., using url_launcher)
+    // Implement link opening logic if required.
   }
 
   /// Builds a responsive footer that scales font size, padding, and logo dimensions.
   Widget buildFooter(double screenWidth) {
-    const Color headerTeal = Color(0xFF009999);
-    // Use a reference width of 600; scale down if screen is smaller.
     final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
-
     final double footerFontSize = 14 * scaleFactor;
     final double verticalPadding = 8 * scaleFactor;
     final double horizontalPadding = 16 * scaleFactor;
@@ -51,7 +47,7 @@ class _LoginState extends State<Login> {
 
     return Container(
       width: double.infinity,
-      color: headerTeal,
+      color: const Color(0xFF009999),
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
         vertical: verticalPadding,
@@ -68,8 +64,7 @@ class _LoginState extends State<Login> {
                 Row(
                   children: [
                     InkWell(
-                      onTap: () =>
-                          _openLink('https://www.example.com/copyright'),
+                      onTap: () => _openLink('https://www.example.com/copyright'),
                       child: Text(
                         'Copyright',
                         style: TextStyle(
@@ -89,8 +84,7 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(width: 8 * scaleFactor),
                     InkWell(
-                      onTap: () =>
-                          _openLink('https://www.example.com/contact'),
+                      onTap: () => _openLink('https://www.example.com/contact'),
                       child: Text(
                         'Contact Us',
                         style: TextStyle(
@@ -164,9 +158,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    // The color matching your header/footer theme
-    const Color headerTeal = Color(0xFF009999);
-    // Get the screen width for responsiveness
+    final themeProvider = Provider.of<ThemeProvider>(context);
     double screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
@@ -176,13 +168,18 @@ class _LoginState extends State<Login> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         flexibleSpace: Image.asset(
-          'assets/images/header.png', // Your USP header image
+          'assets/images/header.png',
           fit: BoxFit.fill,
         ),
+        actions: [
+          IconButton(
+            icon: Icon(themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+            onPressed: () => themeProvider.toggleTheme(),
+          ),
+        ],
       ),
       body: Column(
         children: [
-          // ────────── MIDDLE CONTENT ──────────
           Expanded(
             child: SingleChildScrollView(
               child: Center(
@@ -190,17 +187,12 @@ class _LoginState extends State<Login> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 24),
-                    // Welcome Text
                     const Text(
                       'Welcome to the USP Student Enrolment Services',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
-                    // White Card for Login
                     Card(
                       elevation: 4,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -268,7 +260,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    // Forgot Password? (centered)
                     Container(
                       width: 320,
                       alignment: Alignment.center,
@@ -286,14 +277,9 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          // ────────── RESPONSIVE FOOTER ──────────
           buildFooter(screenWidth),
         ],
       ),
     );
-  }
-
-  Future<void> _openLink(String urlString) async {
-    debugPrint('Attempt to open: $urlString');
   }
 }
