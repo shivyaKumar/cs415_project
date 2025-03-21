@@ -12,8 +12,17 @@ class _LoginState extends State<Login> {
   final _studentIdController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _handleLogin() {
+  // Dummy function to simulate fetching a user profile
+  Future<String> fetchUserFirstName(String email) async {
+    // Simulate a delay (like an API call)
+    await Future.delayed(const Duration(seconds: 1));
+    // Return a default name (replace with real logic later)
+    return "Student";
+  }
+
+  void _handleLogin() async {
     final email = _studentIdController.text.trim();
+
     // Regex: one "S" or "s", exactly 8 digits, then "@student.usp.ac.fj"
     final emailRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
     if (!emailRegex.hasMatch(email)) {
@@ -26,9 +35,18 @@ class _LoginState extends State<Login> {
       );
       return;
     }
-    
+
     debugPrint('Login pressed with valid email: $email');
-    Navigator.pushReplacementNamed(context, '/homepage');
+
+    // Simulate fetching the user's first name (no database yet)
+    final firstName = await fetchUserFirstName(email);
+
+    // Navigate to Homepage passing the first name
+    Navigator.pushReplacementNamed(
+      context,
+      '/homepage',
+      arguments: firstName,
+    );
   }
 
   Future<void> _openLink(String urlString) async {
@@ -39,7 +57,6 @@ class _LoginState extends State<Login> {
   /// Builds a responsive footer that scales font size, padding, and logo dimensions.
   Widget buildFooter(double screenWidth) {
     const Color headerTeal = Color(0xFF009999);
-    // Use a reference width of 600; scale down if screen is smaller.
     final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
 
     final double footerFontSize = 14 * scaleFactor;
@@ -163,9 +180,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    // The color matching your header/footer theme
     const Color headerTeal = Color(0xFF009999);
-    // Get the screen width for responsiveness
     double screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(

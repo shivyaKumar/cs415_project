@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:file_picker/file_picker.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -11,6 +11,9 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   static const Color headerTeal = Color(0xFF009999);
+  // The same navy color used in your navbar
+  static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
+
   int _selectedIndex = 0;
 
   final List<String> _labels = [
@@ -64,6 +67,28 @@ class _ProfileState extends State<Profile> {
 
   Future<void> _openLink(String urlString) async {
     debugPrint('Attempt to open: $urlString');
+  }
+
+  // Logout method to clear session or perform additional cleanup if needed.
+  void _logout() {
+    debugPrint('User logged out');
+    Navigator.pushReplacementNamed(context, '/login'); // Ensure '/login' is defined in your routes.
+  }
+
+  // Widget for the Logout button (white background, blue text, same shape as "Save" button).
+  Widget _buildLogoutButton() {
+    return ElevatedButton(
+      onPressed: _logout,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,        // White background
+        foregroundColor: navbarBlue,          // Blue text
+        padding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 24,
+        ),
+      ),
+      child: const Text('Logout'),
+    );
   }
 
   Widget buildFooter(double screenWidth) {
@@ -189,7 +214,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    // Instead of a top-level SingleChildScrollView, use LayoutBuilder + IntrinsicHeight:
+    // Using LayoutBuilder and IntrinsicHeight to ensure the content fills the screen
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -213,17 +238,23 @@ class _ProfileState extends State<Profile> {
                     // NAV BAR
                     Container(
                       width: double.infinity,
-                      color: const Color.fromARGB(255, 8, 45, 87),
+                      color: navbarBlue,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(minWidth: screenWidth),
                           child: Center(
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(_labels.length, (index) {
-                                return _buildNavButton(index);
-                              }),
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                // Original navigation buttons
+                                ...List.generate(_labels.length, (index) {
+                                  return _buildNavButton(index);
+                                }),
+
+                                // Logout Button (on far right)
+                                _buildLogoutButton(),
+                              ],
                             ),
                           ),
                         ),
@@ -236,7 +267,7 @@ class _ProfileState extends State<Profile> {
                         padding: const EdgeInsets.all(18.0),
                         child: Center(
                           child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 1100),
+                            constraints: const BoxConstraints(maxWidth: 1040),
                             child: Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -275,7 +306,7 @@ class _ProfileState extends State<Profile> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        color: isSelected ? headerTeal : const Color.fromARGB(255, 8, 45, 87),
+        color: isSelected ? headerTeal : navbarBlue,
         child: Text(
           _labels[index],
           style: const TextStyle(color: Colors.white),
@@ -305,12 +336,12 @@ class _ProfileState extends State<Profile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildPhotoUploadSection(),
-        const SizedBox(height: 16),
         const Text(
           'Personal Profile',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 16),
+        _buildPhotoUploadSection(),
         const SizedBox(height: 16),
         _buildLabelAndValue('First Name', personalData['firstName'] ?? ''),
         _buildLabelAndValue('Middle Name', personalData['middleName'] ?? ''),
