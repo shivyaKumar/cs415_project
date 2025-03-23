@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'addcourse.dart'; // <-- Import your AddCourse file
 
 class CourseEnrolmentPage extends StatefulWidget {
@@ -24,6 +25,8 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
   final List<String> droppedRegistrations = [];
 
   // Colors
+  static const Color headerTeal = Color(0xFF009999);
+  static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
   final Color purpleBar = const Color.fromARGB(255, 8, 45, 87);
   final Color tealBar = const Color(0xFF009999);
 
@@ -53,11 +56,9 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
 
   /// Build one hoverable ElevatedButton for a given semester
   Widget _buildHoverButton(String label, bool isSelected, VoidCallback onTap) {
-    // 1) Calculate a scaleFactor if screenWidth < 600
     final screenWidth = MediaQuery.of(context).size.width;
     final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
 
-    // 2) Adjust padding and font size accordingly
     final double verticalPadding = 12 * scaleFactor;
     final double horizontalPadding = 20 * scaleFactor;
     final double fontSize = 16 * scaleFactor;
@@ -74,7 +75,6 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
           shape: const StadiumBorder(),
           elevation: 8,
           shadowColor: Colors.black54,
-          // 3) Apply scaled font size
           textStyle: TextStyle(fontSize: fontSize),
         ),
         icon: isSelected ? const Icon(Icons.check) : const SizedBox.shrink(),
@@ -108,7 +108,6 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
 
   /// Footer 
   Widget buildFooter(double screenWidth) {
-    const Color headerTeal = Color(0xFF009999);
     final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
     final double footerFontSize = 14 * scaleFactor;
     final double verticalPadding = 8 * scaleFactor;
@@ -169,7 +168,8 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
                 ),
                 SizedBox(height: 4 * scaleFactor),
                 Text(
-                  '© Copyright 1968 - 2025. All Rights Reserved.',
+                  '© Copyright 1968 - 2025. '
+                  'All Rights Reserved.',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: footerFontSize,
@@ -277,29 +277,28 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
   }
 
   /// Add Course button with hover effect
-Widget _buildAddCourseButton() {
-  return Container(
-    color: Colors.white,
-    padding: const EdgeInsets.all(16.0),
-    child: Center(
-      child: _HoverableButton(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: tealBar,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-            shape: const StadiumBorder(),
-            elevation: 8,
-            shadowColor: Colors.black54,
+  Widget _buildAddCourseButton() {
+    return Container(
+      color: Colors.white,
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: _HoverableButton(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: tealBar,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+              shape: const StadiumBorder(),
+              elevation: 8,
+              shadowColor: Colors.black54,
+            ),
+            onPressed: _onAddCourse,
+            child: const Text('Add Course'),
           ),
-          onPressed: _onAddCourse,
-          child: const Text('Add Course'),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   /// Dropped/ Not Approved Registrations section
   Widget _buildDroppedNotApprovedRegistrationsSection() {
@@ -337,9 +336,183 @@ Widget _buildAddCourseButton() {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    final String? currentRoute = ModalRoute.of(context)?.settings.name;
 
-    // ────────── THE FIX: LayoutBuilder + SingleChildScrollView + pinned footer ──────────
     return Scaffold(
+      // NEW: Replacing the old header image with the same AppBar as in Profile
+      appBar: AppBar(
+        backgroundColor: headerTeal,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 100,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: SvgPicture.asset(
+            'assets/images/usp_logo.svg',
+            height: 70,
+            width: 90,
+            fit: BoxFit.contain,
+          ),
+        ),
+        actions: [
+          PopupMenuButton<String>(
+            offset: const Offset(0, kToolbarHeight),
+            onSelected: (value) {
+              switch (value) {
+                case 'profile':
+                  Navigator.pushNamed(context, '/profile');
+                  break;
+                case 'myEnrollment':
+                  // We are on the enrollment page, do nothing or reload
+                  break;
+                case 'courses':
+                  Navigator.pushNamed(context, '/courses');
+                  break;
+                case 'finance':
+                  Navigator.pushNamed(context, '/finance');
+                  break;
+                case 'logout':
+                  // Example logout
+                  Navigator.pushReplacementNamed(context, '/login');
+                  break;
+              }
+            },
+            child: const Padding(
+              padding: EdgeInsets.only(right: 16.0),
+              child: Icon(Icons.person, size: 32, color: Colors.white),
+            ),
+            itemBuilder: (context) => [
+              // The "Hi, Student" line
+              PopupMenuItem<String>(
+                enabled: false,
+                child: Text('Hi, Student'),
+              ),
+              const PopupMenuDivider(),
+
+              // Profile
+              PopupMenuItem<String>(
+                value: 'profile',
+                child: Container(
+                  color: (currentRoute == '/profile') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.person,
+                      color: (currentRoute == '/profile')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: (currentRoute == '/profile')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/profile')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // My Enrollment
+              PopupMenuItem<String>(
+                value: 'myEnrollment',
+                child: Container(
+                  color: (currentRoute == '/myEnrollment') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.how_to_reg,
+                      color: (currentRoute == '/myEnrollment')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'My Enrollment',
+                      style: TextStyle(
+                        color: (currentRoute == '/myEnrollment')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/myEnrollment')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Courses
+              PopupMenuItem<String>(
+                value: 'courses',
+                child: Container(
+                  color: (currentRoute == '/courses') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.menu_book,
+                      color: (currentRoute == '/courses')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Courses',
+                      style: TextStyle(
+                        color: (currentRoute == '/courses')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/courses')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Finance
+              PopupMenuItem<String>(
+                value: 'finance',
+                child: Container(
+                  color: (currentRoute == '/finance') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.attach_money,
+                      color: (currentRoute == '/finance')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Finance',
+                      style: TextStyle(
+                        color: (currentRoute == '/finance')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/finance')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              const PopupMenuDivider(),
+
+              // Logout
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Logout'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+
+      // MAIN CONTENT with pinned footer
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
@@ -350,28 +523,19 @@ Widget _buildAddCourseButton() {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // ────────── Your Header (unchanged) ──────────
-                    AspectRatio(
-                      aspectRatio: 11.0, // Keep or tweak as you like
-                      child: Image.asset(
-                        'assets/images/header.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-
-                    // ────────── MAIN CONTENT (Expanded so footer pins to bottom) ──────────
+                    // MAIN CONTENT
                     Expanded(
                       child: Center(
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 1040),
                           child: Card(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(0),
                             ),
                             elevation: 4,
-                            margin: const EdgeInsets.all(16.0),
+                            margin: const EdgeInsets.all(5.0),
                             child: Padding(
-                              padding: const EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -424,7 +588,7 @@ Widget _buildAddCourseButton() {
                       ),
                     ),
 
-                    // ────────── FOOTER (now pinned at bottom if content is short) ──────────
+                    // FOOTER
                     buildFooter(screenWidth),
                   ],
                 ),

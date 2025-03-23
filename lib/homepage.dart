@@ -9,11 +9,26 @@ class Homepage extends StatelessWidget {
     Navigator.pushReplacementNamed(context, '/');
   }
 
-  // Button style for "Enroll Now" (colored button)
+  // Button style for "Enroll Now" (colored button) with interactive effects
   ButtonStyle _enrollButtonStyle() {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(
-        const Color.fromARGB(255, 8, 45, 87),
+      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return const Color.fromARGB(255, 10, 60, 100);
+          }
+          if (states.contains(MaterialState.pressed)) {
+            return const Color.fromARGB(255, 8, 45, 87).withOpacity(0.8);
+          }
+          return const Color.fromARGB(255, 8, 45, 87);
+        },
+      ),
+      elevation: MaterialStateProperty.resolveWith<double>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) return 8;
+          if (states.contains(MaterialState.pressed)) return 0;
+          return 2;
+        },
       ),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       padding: MaterialStateProperty.all<EdgeInsets>(
@@ -22,14 +37,30 @@ class Homepage extends StatelessWidget {
       shape: MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),
-      elevation: MaterialStateProperty.all<double>(2),
     );
   }
 
-  // Button style for "View Courses" (white button)
+  // Button style for "View Courses" (white button) with interactive effects
   ButtonStyle _viewProgramsButtonStyle() {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.grey.shade300;
+          }
+          if (states.contains(MaterialState.pressed)) {
+            return Colors.grey.shade400;
+          }
+          return Colors.white;
+        },
+      ),
+      elevation: MaterialStateProperty.resolveWith<double>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) return 8;
+          if (states.contains(MaterialState.pressed)) return 0;
+          return 2;
+        },
+      ),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
       padding: MaterialStateProperty.all<EdgeInsets>(
         const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -37,10 +68,10 @@ class Homepage extends StatelessWidget {
       shape: MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),
-      elevation: MaterialStateProperty.all<double>(2),
     );
   }
 
+  /// Footer as it was originally
   Widget buildFooter(double screenWidth) {
     const Color headerTeal = Color(0xFF009999);
     final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
@@ -171,20 +202,20 @@ class Homepage extends StatelessWidget {
     return Card(
       color: const Color(0xFF083057), // Dark background
       elevation: 4,
-      // Sharp corners (no borderRadius)
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-      margin: EdgeInsets.zero, // We'll rely on GridView spacing
+      margin: EdgeInsets.zero,
       child: InkWell(
         onTap: onTap,
+        hoverColor: Colors.blueGrey.withOpacity(0.2),
+        splashColor: Colors.blue.withOpacity(0.2),
         child: LayoutBuilder(
           builder: (context, constraints) {
-            // We can calculate sizes based on the tile constraints if needed
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   icon,
-                  size: 48,        // Larger icon
+                  size: 48,
                   color: Colors.white,
                 ),
                 const SizedBox(height: 12),
@@ -192,7 +223,7 @@ class Homepage extends StatelessWidget {
                   label,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,  // Bigger font
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -207,6 +238,10 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    // Decide how many columns for the feature tiles (2 on narrow screens, 4 otherwise)
+    final int crossAxisCount = screenWidth < 600 ? 2 : 4;
+
     const Color headerTeal = Color(0xFF009999);
 
     return Scaffold(
@@ -238,8 +273,8 @@ class Homepage extends StatelessWidget {
                 case 'courses':
                   debugPrint('Courses tapped');
                   break;
-                case 'results':
-                  debugPrint('Results tapped');
+                case 'finance':
+                  debugPrint('Finance tapped');
                   break;
                 case 'logout':
                   _handleLogout(context);
@@ -263,25 +298,27 @@ class Homepage extends StatelessWidget {
                   title: Text('Profile'),
                 ),
               ),
+              // My Enrollment updated icon
               const PopupMenuItem<String>(
                 value: 'myEnrollment',
                 child: ListTile(
-                  leading: Icon(Icons.book),
+                  leading: Icon(Icons.how_to_reg),
                   title: Text('My Enrollment'),
                 ),
               ),
+              // Courses updated icon
               const PopupMenuItem<String>(
                 value: 'courses',
                 child: ListTile(
-                  leading: Icon(Icons.event),
+                  leading: Icon(Icons.menu_book),
                   title: Text('Courses'),
                 ),
               ),
               const PopupMenuItem<String>(
-                value: 'results',
+                value: 'finance',
                 child: ListTile(
-                  leading: Icon(Icons.bar_chart),
-                  title: Text('Results'),
+                  leading: Icon(Icons.attach_money),
+                  title: Text('Finance'),
                 ),
               ),
               const PopupMenuDivider(),
@@ -296,11 +333,12 @@ class Homepage extends StatelessWidget {
           ),
         ],
       ),
+      // SingleChildScrollView to ensure everything fits on smaller screens
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Hero Section
+            // Hero Section (unchanged)
             Stack(
               children: [
                 Image.asset(
@@ -378,12 +416,11 @@ class Homepage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-
-            // Grid of Feature Tiles (4 items)
+            // Grid of Feature Tiles
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: GridView.count(
-                crossAxisCount: 4,
+                crossAxisCount: crossAxisCount,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 shrinkWrap: true,
@@ -394,42 +431,28 @@ class Homepage extends StatelessWidget {
                     icon: Icons.person,
                     onTap: () => Navigator.pushNamed(context, '/profile'),
                   ),
+                  // My Enrollment tile updated
                   _buildFeatureTile(
                     label: 'My Enrollment',
-                    icon: Icons.book,
+                    icon: Icons.how_to_reg,
                     onTap: () => Navigator.pushNamed(context, '/myEnrollment'),
                   ),
+                  // Courses tile updated
                   _buildFeatureTile(
                     label: 'Courses',
-                    icon: Icons.event,
+                    icon: Icons.menu_book,
                     onTap: () => debugPrint('Courses tapped'),
                   ),
                   _buildFeatureTile(
-                    label: 'Results',
-                    icon: Icons.bar_chart,
-                    onTap: () => debugPrint('Results tapped'),
+                    label: 'Finance',
+                    icon: Icons.attach_money,
+                    onTap: () => debugPrint('Finance tapped'),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-
-            // Logout Button
-            Center(
-              child: ElevatedButton(
-                onPressed: () => _handleLogout(context),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
-                child: const Text('Logout'),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Footer
+            // Footer (unchanged)
             buildFooter(MediaQuery.of(context).size.width),
           ],
         ),

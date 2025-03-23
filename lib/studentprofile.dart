@@ -10,12 +10,16 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  // Example username for the dropdown
+  final String username = 'Student';
+
   static const Color headerTeal = Color(0xFF009999);
-  // The same navy color used in your navbar
   static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
 
-  int _selectedIndex = 0;
+  /// A contrasting color for the selected navbar item
+  static const Color selectedColor = Color(0xFF005F8F);
 
+  // The horizontal nav items
   final List<String> _labels = [
     'Personal Details',
     'Address',
@@ -24,8 +28,12 @@ class _ProfileState extends State<Profile> {
     'Passport & Visa',
   ];
 
+  // For highlighting which nav item is selected
+  int _selectedIndex = 0;
+
   String? _chosenFileName;
 
+  // Example data maps
   final Map<String, String> personalData = {
     'firstName': '',
     'middleName': '',
@@ -69,25 +77,30 @@ class _ProfileState extends State<Profile> {
     debugPrint('Attempt to open: $urlString');
   }
 
-  // Logout method to clear session or perform additional cleanup if needed.
+  // Logout method
   void _logout() {
     debugPrint('User logged out');
     Navigator.pushReplacementNamed(context, '/login'); // Ensure '/login' is defined in your routes.
   }
 
-  // Widget for the Logout button (white background, blue text, same shape as "Save" button).
-  Widget _buildLogoutButton() {
-    return ElevatedButton(
-      onPressed: _logout,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,        // White background
-        foregroundColor: navbarBlue,          // Blue text
-        padding: const EdgeInsets.symmetric(
-          vertical: 12,
-          horizontal: 24,
+  // Navbar item builder with a new contrasting selected color
+  Widget _buildNavButton(int index) {
+    final bool isSelected = (index == _selectedIndex);
+
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        color: isSelected ? selectedColor : navbarBlue,
+        child: Text(
+          _labels[index],
+          style: const TextStyle(color: Colors.white),
         ),
       ),
-      child: const Text('Logout'),
     );
   }
 
@@ -152,7 +165,8 @@ class _ProfileState extends State<Profile> {
                 ),
                 SizedBox(height: 4 * scaleFactor),
                 Text(
-                  '© Copyright 1968 - 2025. All Rights Reserved.',
+                  '© Copyright 1968 - 2025. '
+                  'All Rights Reserved.',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: footerFontSize,
@@ -206,111 +220,6 @@ class _ProfileState extends State<Profile> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
-    // Using LayoutBuilder and IntrinsicHeight to ensure the content fills the screen
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              // Force at least the full height of the screen
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
-                child: Column(
-                  children: [
-                    // HEADER
-                    SizedBox(
-                      height: 110,
-                      width: double.infinity,
-                      child: Image.asset(
-                        'assets/images/header.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-
-                    // NAV BAR
-                    Container(
-                      width: double.infinity,
-                      color: navbarBlue,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(minWidth: screenWidth),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // Original navigation buttons
-                                ...List.generate(_labels.length, (index) {
-                                  return _buildNavButton(index);
-                                }),
-
-                                // Logout Button (on far right)
-                                _buildLogoutButton(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // MAIN CONTENT
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Center(
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 1040),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              elevation: 4,
-                              margin: const EdgeInsets.all(8.0),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: _buildSectionContent(_selectedIndex),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // FOOTER (pinned at bottom if content is short)
-                    buildFooter(screenWidth),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildNavButton(int index) {
-    final bool isSelected = (index == _selectedIndex);
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        color: isSelected ? headerTeal : navbarBlue,
-        child: Text(
-          _labels[index],
-          style: const TextStyle(color: Colors.white),
-        ),
       ),
     );
   }
@@ -528,6 +437,253 @@ class _ProfileState extends State<Profile> {
         _buildLabelAndValue('Visa Status', passportVisaData['visaStatus'] ?? ''),
         _buildLabelAndValue('Expiration Date', passportVisaData['expirationDate'] ?? ''),
       ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    // Grab the current route name for highlighting in the dropdown
+    final String? currentRoute = ModalRoute.of(context)?.settings.name;
+
+    return Scaffold(
+      // AppBar with USP logo + user dropdown
+      appBar: AppBar(
+        backgroundColor: headerTeal,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 100,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: SvgPicture.asset(
+            'assets/images/usp_logo.svg',
+            height: 70,
+            width: 90,
+            fit: BoxFit.contain,
+          ),
+        ),
+        actions: [
+          PopupMenuButton<String>(
+            offset: const Offset(0, kToolbarHeight),
+            onSelected: (value) {
+              switch (value) {
+                case 'profile':
+                  // Already on Profile, do nothing
+                  break;
+                case 'myEnrollment':
+                  Navigator.pushNamed(context, '/myEnrollment');
+                  break;
+                case 'courses':
+                  Navigator.pushNamed(context, '/courses');
+                  break;
+                case 'finance':
+                  Navigator.pushNamed(context, '/finance');
+                  break;
+                case 'logout':
+                  _logout();
+                  break;
+              }
+            },
+            child: const Padding(
+              padding: EdgeInsets.only(right: 16.0),
+              child: Icon(Icons.person, size: 32, color: Colors.white),
+            ),
+            itemBuilder: (context) => [
+              // The "Hi, Student" line
+              PopupMenuItem<String>(
+                enabled: false,
+                child: Text('Hi, $username'),
+              ),
+              const PopupMenuDivider(),
+
+              // Profile
+              PopupMenuItem<String>(
+                value: 'profile',
+                // Wrap in Container to color entire row in dark blue if active
+                child: Container(
+                  color: (currentRoute == '/profile') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.person,
+                      color: (currentRoute == '/profile')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: (currentRoute == '/profile')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/profile')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // My Enrollment
+              PopupMenuItem<String>(
+                value: 'myEnrollment',
+                child: Container(
+                  color: (currentRoute == '/myEnrollment') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.how_to_reg,
+                      color: (currentRoute == '/myEnrollment')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'My Enrollment',
+                      style: TextStyle(
+                        color: (currentRoute == '/myEnrollment')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/myEnrollment')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Courses
+              PopupMenuItem<String>(
+                value: 'courses',
+                child: Container(
+                  color: (currentRoute == '/courses') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.menu_book,
+                      color: (currentRoute == '/courses')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Courses',
+                      style: TextStyle(
+                        color: (currentRoute == '/courses')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/courses')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Finance
+              PopupMenuItem<String>(
+                value: 'finance',
+                child: Container(
+                  color: (currentRoute == '/finance') ? navbarBlue : null,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.attach_money,
+                      color: (currentRoute == '/finance')
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    title: Text(
+                      'Finance',
+                      style: TextStyle(
+                        color: (currentRoute == '/finance')
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: (currentRoute == '/finance')
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              const PopupMenuDivider(),
+
+              // Logout
+              PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: const Text('Logout'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+
+      // Body with horizontal navbar + main content + pinned footer
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    // Centered NAVBAR below the AppBar
+                    Container(
+                      width: double.infinity,
+                      color: navbarBlue,
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Center(
+                        child: ConstrainedBox(
+                          // Optional: limit the navbar's max width for a cleaner, centered look
+                          constraints: const BoxConstraints(maxWidth: 1200),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(_labels.length, (index) {
+                                return _buildNavButton(index);
+                              }),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // MAIN CONTENT
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 1040),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                              elevation: 4,
+                              margin: const EdgeInsets.all(8.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(18.0),
+                                child: _buildSectionContent(_selectedIndex),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // FOOTER
+                    buildFooter(screenWidth),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
