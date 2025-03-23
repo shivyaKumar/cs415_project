@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class CourseSelectionPage extends StatelessWidget {
+  const CourseSelectionPage({super.key});
 
-  void _handleLogout(BuildContext context) {
-    Navigator.pushReplacementNamed(context, '/');
+  void navigateTo(BuildContext context, String programName) {
+    switch (programName) {
+      case 'SAGEONS':
+        Navigator.pushNamed(context, '/sageons');
+        break;
+      case 'STEMP':
+        Navigator.pushNamed(context, '/stemp');
+        break;
+      // Add other pages when available
+      default:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$programName page is under development!')),
+        );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<String> programs = ['SPACE', 'STEMP', 'SOLASS', 'SAGEONS', 'SAFE', 'SBM'];
     return Scaffold(
-      backgroundColor: Colors.indigo[50],
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(160),
         child: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-              color: Colors.white,
-            ),
-          ),
           flexibleSpace: Stack(
             fit: StackFit.expand,
             children: [
@@ -39,7 +44,7 @@ class Homepage extends StatelessWidget {
                 right: 0,
                 child: const Center(
                   child: Text(
-                    'Student Dashboard',
+                    'School Selection',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
@@ -51,119 +56,42 @@ class Homepage extends StatelessWidget {
               ),
             ],
           ),
-          backgroundColor: Colors.transparent,
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-              ),
-              child: Text(
-                'Student Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.pushNamed(context, '/profile');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.book),
-              title: const Text('Courses'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.event),
-              title: const Text('Exams'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.bar_chart),
-              title: const Text('Results'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () => _handleLogout(context),
-            ),
-          ],
-        ),
-      ),
+      backgroundColor: Colors.transparent,
       body: Column(
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'Greetings Student!',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 20),
-                  Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      children: [
-                        _buildDashboardCard(Icons.person, 'Student Profile', () {
-                          Navigator.pushNamed(context, '/profile');
-                        }),
-                        _buildDashboardCard(Icons.book, 'Courses', () {}),
-                        _buildDashboardCard(Icons.event, 'Exams', () {}),
-                        _buildDashboardCard(Icons.bar_chart, 'Results', () {}),
-                        _buildDashboardCard(Icons.settings, 'Settings', () {}),
-                      ],
+            child: GridView.builder(
+              padding: EdgeInsets.all(16),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 2,
+              ),
+              itemCount: programs.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () => navigateTo(context, programs[index]),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        programs[index],
+                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
-          _buildFooter(),
+          _buildFooter(), 
         ],
-      ),
-    );
-    
-  }
-
-  Widget _buildDashboardCard(IconData icon, String title, VoidCallback onTap) {
-    return Card(
-      elevation: 4,
-      child: InkWell(
-        onTap: onTap,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 48, color: Colors.indigo),
-              const SizedBox(height: 8),
-              Text(title, style: const TextStyle(fontSize: 16)),
-            ],
-          ),
-        ),
       ),
     );
   }

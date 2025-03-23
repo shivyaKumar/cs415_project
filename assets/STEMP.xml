@@ -1,0 +1,151 @@
+<school name="STEMP">
+  <programLevel name="Certificate">
+    <program name="Certificate in Computing">
+      <admissionRequirements>
+        <requirement>Passed Mathematics with at least 50% in a Senate-recognised Year 13/Form 7 examination.</requirement>
+      </admissionRequirements>
+      <courses>
+        <year number="1">
+          <course code="CS111" courseName="Introduction to Computing"/>
+          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
+          <course code="IS121" courseName="Introduction to Information Systems"/>
+          <course code="MA111" courseName="Linear Algebra and Calculus"/>
+          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
+          <course code="UU114" courseName="English for Academic Purposes"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Certificate in Information Systems">
+      <admissionRequirements>
+        <requirement>Passed Mathematics with at least 50% in a Senate-recognised Year 13/Form 7 examination.</requirement>
+      </admissionRequirements>
+      <courses>
+        <year number="1">
+          <course code="IS121" courseName="Introduction to Information Systems"/>
+          <course code="IS122" courseName="Application Programming" prerequisite="IS121"/>
+          <course code="MA111" courseName="Linear Algebra and Calculus"/>
+          <course code="ST130" courseName="Basic Statistics"/>
+          <course code="UU114" courseName="English for Academic Purposes"/>
+          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Certificate in Mathematics">
+      <admissionRequirements>
+        <requirement>Passed Mathematics with at least 50% in a Senate-recognised Year 13/Form 7 examination.</requirement>
+      </admissionRequirements>
+      <courses>
+        <year number="1">
+          <course code="CS111" courseName="Introduction to Computing"/>
+          <course code="IS104" courseName="Computing for Science and Technology"/>
+          <course code="MA111" courseName="Linear Algebra and Calculus"/>
+          <course code="MA112" courseName="Calculus I" prerequisite="MA111"/>
+          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
+          <course code="ST131" courseName="Introduction to Statistics"/>
+          <course code="UU114" courseName="English for Academic Purposes"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Diploma">
+    <program name="Diploma in Computing">
+      <admissionRequirements>
+        <requirement>Passed Mathematics with at least 50% in a Senate-recognised Year 13/Form 7 examination.</requirement>
+      </admissionRequirements>
+      <courses>
+        <year number="1">
+          <course code="CS111" courseName="Introduction to Computing"/>
+          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
+          <course code="IS121" courseName="Introduction to Information Systems"/>
+          <course code="MA111" courseName="Linear Algebra and Calculus"/>
+          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
+          <course code="UU114" courseName="English for Academic Purposes"/>
+          <course code="UU100" courseName="Communication and Information Literacy"/>
+          <course code="CS211" courseName="Computer Organization" prerequisite="CS112"/>
+          <course code="CS215" courseName="Computer Communications and Management" prerequisite="CS211"/>
+          <course code="CS230" courseName="Requirements Engineering" prerequisite="CS112"/>
+          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Undergraduate">
+    <program name="Bachelor of Science (Computing Science)">
+      <admissionRequirements>
+        <requirement>50% or equivalent in Mathematics in a Senate-recognised Year 13/Form 7 examination.</requirement>
+      </admissionRequirements>
+      <courses>
+        <year number="1">
+          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
+          <course code="CS111" courseName="Introduction to Computing"/>
+          <course code="MA111" courseName="Linear Algebra and Calculus"/>
+          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
+          <course code="UU114" courseName="English for Academic Purposes"/>
+        </year>
+        <year number="2" prerequisite="75% completion of Year 1">
+           <course code="CS211" courseName="Computer Organization" prerequisite="CS112"/>
+          <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisite="CS211"/>
+          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
+          <course code="CS215" courseName="Computer Communications and Management" prerequisite="CS211"/>
+          <course code="UU200" courseName="Ethics and Governance"/>
+          <course code="UU204" courseName="Pacific Folks"/>
+        </year>
+        <year number="3" prerequisite="75% completion of Year 2">
+          <course code="CS311" courseName="Operating Systems" prerequisite="CS211"/>
+          <course code="CS350" courseName=" Wireless Networks " prerequisite="CS311"/>
+          <course code="IS314" courseName="Computing Projects" prerequisite="IS222, CS241, IS226"/>
+          <course code="CS317" courseName=" Computer and Network Security" prerequisite="CS311"/>
+          <course code="CS310" courseName="Computer Systems" prerequisite="CS211"/>
+          <course code="CS324" courseName="Distributed Computing" prerequisite="CS211"/>
+          <course code="IS328" courseName="Data Mining" prerequisite="IS222"/>
+          <course code="IS333" courseName="Project Management" prerequisite="75% Completion of 200 Level"/>
+          <course code="CS351" courseName="Network Design and Administration" prerequisite=" CS310"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Postgraduate">
+    <program name="Postgraduate Diploma in Information Technology">
+      <courses>
+        <year number="1">
+          <course code="SC400"/>
+          <course code="CS412" courseName="Artificial Intelligence" prerequisite="SC400"/>
+          <course code="CS415" courseName="Advanced Software Engineering" prerequisite="SC400"/>
+          <course code="CS424" courseName="Big Data Technologies" prerequisite="SC400"/>
+          <course code="CS427" courseName="Mobile Comunications" prerequisite="SC400"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Master of Science in Computing Science">
+      <courses>
+        <year number="1">
+          <course code="SC400"/>
+          <course code="Elective" description="Three CS400-level courses" prerequisite="SC400"/>
+          <course code="Thesis" prerequisite="SC400 and three CS400-level courses"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Master of Science in Information Systems">
+      <courses>
+        <year number="1">
+          <course code="SC400"/>
+          <course code="Elective" description="Three IS400-level courses" prerequisite="SC400"/>
+          <course code="Thesis" prerequisite="SC400 and three IS400-level courses"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Doctorate">
+    <program name="Doctor of Philosophy">
+      <description>USP offers a PhD in most disciplines taught at postgraduate level in the School. Students interested in progressing from a Master’s program to Doctoral studies are advised to contact the relevant Head of Academic Unit.</description>
+    </program>
+  </programLevel>
+</school>

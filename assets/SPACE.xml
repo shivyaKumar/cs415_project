@@ -1,0 +1,122 @@
+<school name="SPACE">
+  <programLevel name="Certificate">
+    <program name="Certificate in Non-Formal Education">
+      <courses>
+        <year number="1">
+          <course code="ED152"/>
+          <course code="ED153"/>
+          <course code="ED158"/>
+          <course code="ED258"/>
+          <course code="ED358"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Certificate in Teaching (Primary)">
+      <courses>
+        <year number="1">
+          <course code="ED100"/>
+          <course code="ED115"/>
+          <course code="ED116"/>
+          <course code="ED150"/>
+          <course code="ED152"/>
+          <course code="ED170"/>
+          <course code="ED180"/>
+          <course code="Elective" description="1 x 100-level Vernacular or ED elective course"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Certificate in Teaching (Secondary)">
+      <courses>
+        <year number="1">
+          <course code="ED150"/>
+          <course code="ED152"/>
+          <course code="ED153"/>
+          <course code="ED154"/>
+          <course code="ED170"/>
+          <course code="ED180"/>
+          <course code="ED184"/>
+          <course code="Elective" description="Two 100-level courses from Bachelor of Education (Secondary)"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Diploma">
+    <program name="Diploma in Early Childhood Education and Care">
+      <courses>
+        <year number="1">
+          <course code="UU100"/>
+          <course code="UU114"/>
+          <course code="ED152"/>
+          <course code="ED153"/>
+          <course code="ED103"/>
+          <course code="ED204"/>
+          <course code="ED205"/>
+          <course code="ED206"/>
+          <course code="ED250"/>
+          <course code="ED252"/>
+          <course code="ED262"/>
+          <course code="ED302"/>
+        </year>
+      </courses>
+    </program>
+
+    <program name="Diploma in Educational Evaluation and Assessment">
+      <courses>
+        <year number="1">
+          <course code="UU100"/>
+          <course code="UU114"/>
+          <course code="ED152"/>
+          <course code="ED153"/>
+          <course code="ED154"/>
+          <course code="ED252"/>
+          <course code="ED254"/>
+          <course code="ED255"/>
+          <course code="ED354"/>
+          <course code="ED359"/>
+          <course code="Elective" description="Two 200 or 300 level courses"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Undergraduate">
+    <program name="Bachelor of Arts">
+      <courses>
+        <year number="2" prerequisite="75% completion of Year 1">
+          <course code="UU200"/>
+          <course code="UU204"/>
+          <course code="JN201"/>
+          <course code="LN216"/>
+          <course code="MG206"/>
+          <course code="Elective" description="1 or 2 of JN202, JN203, LN211"/>
+          <course code="Elective" description="1 or 2 courses at 200-level from the approved specialist subject"/>
+        </year>
+        <year number="3" prerequisite="75% completion of Year 2">
+          <course code="JN303"/>
+          <course code="LN317"/>
+          <course code="MG303"/>
+          <course code="Elective" description="3 or 4 of JN301, JN302, LN311, LN315, MG301"/>
+          <course code="Elective" description="1 or 2 courses at 300-level from the approved specialist subject"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Postgraduate">
+    <program name="Master of Education">
+      <courses>
+        <year number="1" prerequisite="GPA 3.0 and 100% completion of undergraduate program">
+          <course code="Elective" description="Two 400-level Education courses"/>
+          <course code="Supervised Research Project"/>
+        </year>
+      </courses>
+    </program>
+  </programLevel>
+
+  <programLevel name="Doctorate">
+    <program name="Doctor of Philosophy" prerequisite="Completion of Master’s level"/>
+  </programLevel>
+</school>
