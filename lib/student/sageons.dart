@@ -1,29 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../models/course_model.dart';
 import '../models/program_level_model.dart';
+import '../models/program_level_model.dart';
+import '../models/course_model.dart';
 import '../services/local_storage.dart';
 
 class SageonsPage extends StatefulWidget {
   final List<ProgramLevel> programLevels;
+
   const SageonsPage({super.key, required this.programLevels});
 
   @override
   SageonsPageState createState() => SageonsPageState();
 }
 
-  class SageonsPageState extends State<SageonsPage> {
+class SageonsPageState extends State<SageonsPage> {
   List<String> selectedCourses = [];
+
+  /// Helper to flatten all available courses
+  List<Course> get allCourses => widget.programLevels
+      .expand((level) => level.programs)
+      .expand((program) => program.years)
+      .expand((year) => year.courses)
+      .toList();
 
   /// Checks if a course can be selected based on prerequisites and selection limit
   bool canSelectCourse(Course course) {
-    if (selectedCourses.length >= 4) return false;
-    if (course.prerequisites.isEmpty) return true;
-    return course.prerequisites.every((prereq) => selectedCourses.contains(prereq));
+    print("Checking if course can be selected: ${course.code}");
+
+    if (selectedCourses.length >= 4) {
+      print("Max course limit reached");
+      return false;  // Cannot select more than 4 courses
+    }
+
+    if (course.prerequisites.isEmpty) {
+      print("No prerequisites for ${course.code}");
+      return true;  // If no prerequisites, the course is always selectable
+    }
+
+    // Check prerequisites
+    bool canSelect = course.prerequisites.every((prereq) => selectedCourses.contains(prereq));
+    if (!canSelect) {
+      print("Prerequisites not met for ${course.code}");
+    }
+
+    return canSelect;
   }
 
-  /// Toggles course selection on or off
+
+  /// Toggles course selection on or off, and auto-deselects dependent courses if needed
   void toggleCourseSelection(String courseCode) {
     setState(() {
       if (selectedCourses.contains(courseCode)) {
@@ -75,13 +104,14 @@ class SageonsPage extends StatefulWidget {
             const SizedBox(height: 10),
             Expanded(
               child: ListView(
-                children: widget.programLevels
-                    .expand((level) => level.programs)
-                    .expand((program) => program.years)
-                    .expand((year) => year.courses)
-                    .map((course) {
+                children: allCourses.map((course) {
+                  final isSelected = selectedCourses.contains(course.code);
+                  final canSelect = canSelectCourse(course);
+                  final isEnabled = selectedCourses.length < 4 || isSelected;
+
                   return Card(
                     margin: const EdgeInsets.symmetric(vertical: 5),
+                    color: !isEnabled ? Colors.grey[200] : null, // Grey out when disabled
                     child: CheckboxListTile(
                       title: Text(
                         "${course.code} - ${course.name}",
