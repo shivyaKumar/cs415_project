@@ -1,28 +1,44 @@
 import 'package:cs415_project/SAS/homeStaff.dart';
 import 'package:cs415_project/SAdminPages/SASManage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cs415_project/theme_provider.dart';
 
 import 'SAdminPages/SAdminHome.dart';
 import 'SAS/homeSAS.dart';
-import 'homepage.dart';
+import 'student/homepage.dart';
 import 'login.dart';
-import 'studentprofile.dart'; // Make sure Profile is imported
+import 'student/studentprofile.dart';
+import 'student/course_selection_page.dart';
+import 'student/enrollment_page.dart';
+import 'services/xml_parser.dart';
+import 'models/program_level_model.dart';
+import 'student/sageons.dart';
 
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  List<ProgramLevel> programLevels = await loadProgramsFromXML('assets/SAGEONS_2.xml');
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: MyApp(programLevels: programLevels),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final List<ProgramLevel> programLevels;
+  const MyApp({super.key, required this.programLevels});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       title: 'USP Student Management',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
+      theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
       // Define initial route and app routes.
       initialRoute: '/',
       routes: {
@@ -33,6 +49,9 @@ class MyApp extends StatelessWidget {
         '/sas_manage': (context) => const SASManage(), // Make sure SASManage is imported
         '/homeStaff': (context) => HomeStaff(),  // Make sure HomeStaff is imported
         '/profile': (context) => Profile(),
+        '/course_selection': (context) => CourseSelectionPage(),
+        '/enrollment': (context) => EnrollmentPage(),
+        '/sageons': (context) => SageonsPage(programLevels: programLevels),
       },
     );
   }

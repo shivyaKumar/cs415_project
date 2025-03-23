@@ -131,7 +131,9 @@ class Homepage extends StatelessWidget {
                         _buildDashboardCard(Icons.person, 'Student Profile', () {
                           Navigator.pushNamed(context, '/profile');
                         }),
-                        _buildDashboardCard(Icons.book, 'Courses', () {}),
+                        _buildDashboardCard(Icons.book, 'Courses', () {
+                          Navigator.pushNamed(context, '/course_selection');
+                        }),
                         _buildDashboardCard(Icons.event, 'Exams', () {}),
                         _buildDashboardCard(Icons.bar_chart, 'Results', () {}),
                         _buildDashboardCard(Icons.settings, 'Settings', () {}),

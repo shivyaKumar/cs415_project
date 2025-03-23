@@ -1,31 +1,33 @@
 name: cs415_project
 description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.7.2
 
 dependencies:
-  file_picker: ^9.0.2
+  file_picker: ^9.2.1           # Latest stable as of now
   flutter:
     sdk: flutter
-  url_launcher: ^6.1.7
-  cupertino_icons: ^1.0.8 
-  flutter_svg: ^2.0.9 
+  xml: ^6.5.0                   # Latest stable
+  url_launcher: ^6.3.1         # Updated from 6.1.7
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.9
+  provider: ^6.1.2              # Latest stable
+  shared_preferences: ^2.2.2    # Latest stable
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-
+  flutter_lints: ^5.0.0         # Compatible with Dart 3.7+
 
 flutter:
   uses-material-design: true
   
-  # Add your image assets here
   assets:
+    - assets/SAGEONS_2.xml
     - assets/images/header.png
     - assets/images/usp_logo.svg
