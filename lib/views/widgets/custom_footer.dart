@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomFooter extends StatelessWidget {
   final double screenWidth;
-  const CustomFooter({Key? key, required this.screenWidth}) : super(key: key);
+  const CustomFooter({super.key, required this.screenWidth});
   
   @override
   Widget build(BuildContext context) {

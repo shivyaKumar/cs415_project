@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Reusable header and footer widgets (SRP, DIP)
 import 'widgets/custom_header.dart';
 import 'widgets/custom_footer.dart';
+import 'addcourse.dart';
 
 /// Main CourseEnrolmentPage widget.
 /// Uses a view (stateful widget) that delegates building parts of the UI
@@ -28,7 +29,15 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
   /// Handler for Add Course button.
   Future<void> _onAddCourse() async {
     debugPrint("Add Course button pressed");
-  }
+
+     // Navigate to the AddCoursePage
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const AddCoursePage(),
+    ),
+  );
+}
 
   /// Changes the selected semester.
   void _updateSelectedSemester(int index) {

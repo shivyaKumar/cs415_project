@@ -13,9 +13,9 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
 
   const CustomHeader({
-    Key? key,
+    super.key,
     this.height = 80,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
