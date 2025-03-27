@@ -5,6 +5,9 @@ import 'views/login.dart';
 import 'views/homepage.dart';
 import 'views/studentprofile.dart';
 import 'views/course_enrollment.dart';
+import 'views/addcourse.dart';
+import 'views/courses.dart';
+import 'views/finance.dart';
 
 import 'viewmodels/login_viewmodel.dart';
 import 'viewmodels/homepage_viewmodel.dart';
@@ -42,6 +45,9 @@ class MyApp extends StatelessWidget {
           },
           '/profile': (context) => const Profile(),
           '/myEnrollment': (context) => const CourseEnrolmentPage(),
+          '/addCourse':(context) => const AddCoursePage(),
+          '/finance': (context) => const FinancePage(),
+          '/courses': (context) => const CoursesPage(), 
           // Add additional routes if needed.
         },
       ),

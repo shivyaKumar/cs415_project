@@ -21,76 +21,7 @@ class Homepage extends StatelessWidget {
   // It uses WidgetStateProperty to change properties like background color
   // and elevation when hovered or pressed, following the Single Responsibility Principle (SRP).
   // ─────────────────────────────────────────────────────────────────────────────
-  ButtonStyle _enrollButtonStyle() {
-    return ButtonStyle(
-      backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
-        // When the button is hovered, change to a lighter blue.
-        if (states.contains(WidgetState.hovered)) {
-          return const Color.fromARGB(255, 10, 60, 100);
-        }
-        // When the button is pressed, change to a slightly darker blue with transparency.
-        if (states.contains(WidgetState.pressed)) {
-          return const Color.fromARGB(255, 8, 45, 87).withAlpha(204);
-        }
-        // Default background color.
-        return const Color.fromARGB(255, 8, 45, 87);
-      }),
-      elevation: WidgetStateProperty.resolveWith<double>((states) {
-        // Increase elevation when hovered.
-        if (states.contains(WidgetState.hovered)) return 8;
-        // Remove elevation when pressed.
-        if (states.contains(WidgetState.pressed)) return 0;
-        // Default elevation.
-        return 2;
-      }),
-      // Set constant foreground (text) color.
-      foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-      // Set padding for the button.
-      padding: WidgetStateProperty.all<EdgeInsets>(
-        const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      ),
-      // Define the shape of the button.
-      shape: WidgetStateProperty.all<OutlinedBorder>(
-        const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-      ),
-    );
-  }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // Button Style for the "View Courses" button.
-  // This follows the same approach as _enrollButtonStyle, ensuring consistency
-  // and reusability in the styling of buttons.
-  // ─────────────────────────────────────────────────────────────────────────────
-  ButtonStyle _viewProgramsButtonStyle() {
-    return ButtonStyle(
-      backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
-        // Change background color on hover.
-        if (states.contains(WidgetState.hovered)) return Colors.grey.shade300;
-        // Change background color on press.
-        if (states.contains(WidgetState.pressed)) return Colors.grey.shade400;
-        // Default background color.
-        return Colors.white;
-      }),
-      elevation: WidgetStateProperty.resolveWith<double>((states) {
-        // Increase elevation on hover.
-        if (states.contains(WidgetState.hovered)) return 8;
-        // Remove elevation on press.
-        if (states.contains(WidgetState.pressed)) return 0;
-        // Default elevation.
-        return 2;
-      }),
-      // Set constant text color.
-      foregroundColor: WidgetStateProperty.all<Color>(Colors.black87),
-      // Set padding.
-      padding: WidgetStateProperty.all<EdgeInsets>(
-        const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      ),
-      // Define the shape of the button.
-      shape: WidgetStateProperty.all<OutlinedBorder>(
-        const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-      ),
-    );
-  }
 
   // ─────────────────────────────────────────────────────────────────────────────
   // Helper method to build a feature tile for the homepage grid.
@@ -214,35 +145,6 @@ class Homepage extends StatelessWidget {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            // "Enroll Now" button with its style encapsulated in _enrollButtonStyle.
-                            ElevatedButton(
-                              onPressed: () {
-                                // Navigate to the My Enrollment page.
-                                Navigator.pushNamed(context, '/myEnrollment');
-                              },
-                              style: _enrollButtonStyle(),
-                              child: const Text(
-                                'Enroll Now',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            // "View Courses" button with its style encapsulated in _viewProgramsButtonStyle.
-                            ElevatedButton(
-                              onPressed: () =>
-                                  debugPrint('View Courses tapped'),
-                              style: _viewProgramsButtonStyle(),
-                              child: const Text(
-                                'View Courses',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ],
@@ -283,12 +185,12 @@ class Homepage extends StatelessWidget {
                   _buildFeatureTile(
                     label: 'Courses',
                     icon: Icons.menu_book,
-                    onTap: () => debugPrint('Courses tapped'),
+                    onTap: () => Navigator.pushNamed(context, '/courses'),
                   ),
                   _buildFeatureTile(
                     label: 'Finance',
                     icon: Icons.attach_money,
-                    onTap: () => debugPrint('Finance tapped'),
+                    onTap: () => Navigator.pushNamed(context, '/finance'),
                   ),
                 ],
               ),

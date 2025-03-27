@@ -51,10 +51,10 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.pushNamed(context, '/myEnrollment');
                 break;
               case 'courses':
-                debugPrint('Courses tapped');
+                Navigator.pushNamed(context, '/courses');
                 break;
               case 'finance':
-                debugPrint('Finance tapped');
+                Navigator.pushNamed(context, '/finance');
                 break;
               case 'logout':
                 // Delegate logout to the ViewModel

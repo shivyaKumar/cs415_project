@@ -52,83 +52,96 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
     final String currentSemester = semesters[selectedSemesterIndex];
 
     return Scaffold(
-      // Reusable header demonstrating SRP and DIP.
       appBar: const CustomHeader(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1040),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  elevation: 4,
-                  margin: const EdgeInsets.all(5.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    // Main content is split into self-contained widgets (SRP).
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        // Enrollment Dashboard header.
-                        Container(
-                          color: navbarBlue,
-                          padding: const EdgeInsets.all(8.0),
-                          alignment: Alignment.centerLeft,
-                          child: const Text(
-                            'Enrollment Dashboard',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              // Force the Column to be at least as tall as the viewport
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  // We want to push the footer to the bottom if content is short
+                  children: [
+                    // Main content goes here, wrapped in an Expanded
+                    Expanded(
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 1040),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            elevation: 4,
+                            margin: const EdgeInsets.all(5.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  // Enrollment Dashboard header
+                                  Container(
+                                    color: navbarBlue,
+                                    padding: const EdgeInsets.all(8.0),
+                                    alignment: Alignment.centerLeft,
+                                    child: const Text(
+                                      'Enrollment Dashboard',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  // Hero section
+                                  HeroSection(
+                                    imagePath: 'assets/images/student.png',
+                                    height: 250,
+                                    semesters: semesters,
+                                    selectedIndex: selectedSemesterIndex,
+                                    onSemesterSelected: _updateSelectedSemester,
+                                  ),
+                                  const SizedBox(height: 16.0),
+                                  // Online Enrollment bar
+                                  OnlineEnrollmentBar(
+                                    semesterLabel: currentSemester,
+                                    backgroundColor: navbarBlue,
+                                  ),
+                                  // Current Enrollments
+                                  RegistrationSection(
+                                    title: 'Current Enrollments',
+                                    items: activeRegistrations,
+                                    emptyMessage:
+                                        'You are not currently enrolled in any courses',
+                                    headerColor: tealBar,
+                                  ),
+                                  // Add Course button
+                                  AddCourseButton(
+                                    onPressed: _onAddCourse,
+                                    backgroundColor: tealBar,
+                                  ),
+                                  // Dropped/ Not Approved Courses
+                                  RegistrationSection(
+                                    title: 'Dropped/ Not Approved Courses',
+                                    items: droppedRegistrations,
+                                    emptyMessage:
+                                        'No Dropped/ Unapproved Courses',
+                                    headerColor: tealBar,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                        // Hero section: shows image with semester selection.
-                        HeroSection(
-                          imagePath: 'assets/images/student.png',
-                          height: 250,
-                          semesters: semesters,
-                          selectedIndex: selectedSemesterIndex,
-                          onSemesterSelected: _updateSelectedSemester,
-                        ),
-                        const SizedBox(height: 16.0),
-                        // Online Enrollment bar.
-                        OnlineEnrollmentBar(
-                          semesterLabel: currentSemester,
-                          backgroundColor: navbarBlue,
-                        ),
-                        // Active Registrations section.
-                        RegistrationSection(
-                          title: 'Current Enrollments',
-                          items: activeRegistrations,
-                          emptyMessage:
-                              'You are not currently enrolled in any courses',
-                          headerColor: tealBar,
-                        ),
-                        // Add Course button.
-                        AddCourseButton(
-                          onPressed: _onAddCourse,
-                          backgroundColor: tealBar,
-                        ),
-                        // Dropped / Not Approved Courses section.
-                        RegistrationSection(
-                          title: 'Dropped/ Not Approved Courses',
-                          items: droppedRegistrations,
-                          emptyMessage: 'No Dropped/ Unapproved Courses',
-                          headerColor: tealBar,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                    // Footer stays at the bottom of the screen if content is short
+                    CustomFooter(screenWidth: screenWidth),
+                  ],
                 ),
               ),
             ),
-            // Reusable footer (SRP)
-            CustomFooter(screenWidth: screenWidth),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

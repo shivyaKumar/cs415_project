@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AddCoursePage extends StatelessWidget {
-  const AddCoursePage({super.key});
+class FinancePage extends StatelessWidget {
+  const FinancePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Course'),
+        title: const Text('Finance Menu'),
       ),
       body: const Center(
-        child: Text('This is the Add Course page'),
+        child: Text('This is the Finance Menu page'),
       ),
     );
   }
