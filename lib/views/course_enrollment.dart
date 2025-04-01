@@ -1,55 +1,42 @@
+// Required Flutter and Provider packages for UI and state management
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// Reusable header and footer widgets (SRP, DIP)
+// ViewModel handles business logic and data fetching (SOLID: SRP, OOP: Separation of Concerns)
+import '../viewmodels/course_enrollment_viewmodel.dart';
+
+// Data model for enrolled course (OOP: Encapsulation)
+import '../models/enrolled_course.dart';
+
+// Custom reusable widgets
 import 'widgets/custom_header.dart';
 import 'widgets/custom_footer.dart';
 import 'addcourse.dart';
 
-/// Main CourseEnrolmentPage widget.
-/// Uses a view (stateful widget) that delegates building parts of the UI
-/// to smaller, self-contained widgets.
+// CourseEnrolmentPage displays current and dropped courses using responsive layout
 class CourseEnrolmentPage extends StatefulWidget {
-  const CourseEnrolmentPage({Key? key}) : super(key: key);
+  const CourseEnrolmentPage({super.key});
 
   @override
   State<CourseEnrolmentPage> createState() => _CourseEnrolmentPageState();
 }
 
 class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
-  // Data
-  final List<String> semesters = ["Semester I, 2025", "Semester II, 2025"];
-  int selectedSemesterIndex = 0;
-  final List<String> activeRegistrations = [];
-  final List<String> droppedRegistrations = [];
-
-  // Colors used in the page (could be provided via a Theme or Config)
   final Color navbarBlue = const Color.fromARGB(255, 8, 45, 87);
-  final Color tealBar = const Color(0xFF009999);
+  final Color sectionHeaderColor = const Color(0xFF009999);
 
-  /// Handler for Add Course button.
-  Future<void> _onAddCourse() async {
-    debugPrint("Add Course button pressed");
-
-     // Navigate to the AddCoursePage
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => const AddCoursePage(),
-    ),
-  );
-}
-
-  /// Changes the selected semester.
-  void _updateSelectedSemester(int index) {
-    setState(() {
-      selectedSemesterIndex = index;
-    });
+  @override
+  void initState() {
+    super.initState();
+    final viewModel = Provider.of<CourseEnrollmentViewModel>(context, listen: false);
+    viewModel.loadEnrolledCourses();
+    viewModel.loadDroppedCourses();
   }
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final String currentSemester = semesters[selectedSemesterIndex];
+    final viewModel = Provider.of<CourseEnrollmentViewModel>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: const CustomHeader(),
@@ -57,29 +44,24 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
         builder: (context, constraints) {
           return SingleChildScrollView(
             child: ConstrainedBox(
-              // Force the Column to be at least as tall as the viewport
               constraints: BoxConstraints(minHeight: constraints.maxHeight),
               child: IntrinsicHeight(
                 child: Column(
-                  // We want to push the footer to the bottom if content is short
                   children: [
-                    // Main content goes here, wrapped in an Expanded
                     Expanded(
                       child: Center(
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 1040),
                           child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0),
-                            ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                             elevation: 4,
                             margin: const EdgeInsets.all(5.0),
-                            child: Padding(
+                            child: Container(
+                              color: const Color(0xFFF6F0FB),
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  // Enrollment Dashboard header
                                   Container(
                                     color: navbarBlue,
                                     padding: const EdgeInsets.all(8.0),
@@ -92,41 +74,29 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
                                       ),
                                     ),
                                   ),
-                                  // Hero section
-                                  HeroSection(
-                                    imagePath: 'assets/images/student.png',
-                                    height: 250,
-                                    semesters: semesters,
-                                    selectedIndex: selectedSemesterIndex,
-                                    onSemesterSelected: _updateSelectedSemester,
+                                  AspectRatio(
+                                    aspectRatio: 16 / 4,
+                                    child: Image.asset(
+                                      'assets/images/student.png',
+                                      fit: BoxFit.cover,
+                                      alignment: Alignment.center,
+                                    ),
                                   ),
                                   const SizedBox(height: 16.0),
-                                  // Online Enrollment bar
-                                  OnlineEnrollmentBar(
-                                    semesterLabel: currentSemester,
-                                    backgroundColor: navbarBlue,
-                                  ),
-                                  // Current Enrollments
-                                  RegistrationSection(
-                                    title: 'Current Enrollments',
-                                    items: activeRegistrations,
-                                    emptyMessage:
-                                        'You are not currently enrolled in any courses',
-                                    headerColor: tealBar,
-                                  ),
-                                  // Add Course button
-                                  AddCourseButton(
-                                    onPressed: _onAddCourse,
-                                    backgroundColor: tealBar,
-                                  ),
-                                  // Dropped/ Not Approved Courses
-                                  RegistrationSection(
-                                    title: 'Dropped/ Not Approved Courses',
-                                    items: droppedRegistrations,
-                                    emptyMessage:
-                                        'No Dropped/ Unapproved Courses',
-                                    headerColor: tealBar,
-                                  ),
+
+                                  _sectionTitle('Current Enrollments', color: sectionHeaderColor),
+                                  viewModel.activeCourses.isEmpty
+                                      ? const Text('You are not currently enrolled in any courses.')
+                                      : _responsiveLayout(screenWidth, viewModel.activeCourses, false),
+
+                                  const SizedBox(height: 16.0),
+                                  AddCourseButton(onPressed: _onAddCourse, backgroundColor: sectionHeaderColor),
+                                  const SizedBox(height: 16.0),
+
+                                  _sectionTitle('Dropped / Not Approved Courses', color: sectionHeaderColor),
+                                  viewModel.droppedCourses.isEmpty
+                                      ? const Text('No Dropped / Unapproved Courses.')
+                                      : _responsiveLayout(screenWidth, viewModel.droppedCourses, true),
                                 ],
                               ),
                             ),
@@ -134,7 +104,6 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
                         ),
                       ),
                     ),
-                    // Footer stays at the bottom of the screen if content is short
                     CustomFooter(screenWidth: screenWidth),
                   ],
                 ),
@@ -145,266 +114,157 @@ class _CourseEnrolmentPageState extends State<CourseEnrolmentPage> {
       ),
     );
   }
-}
 
-/// A widget that displays the hero image with an overlaid semester selection row.
-/// SRP: This widget is responsible only for building the hero section.
-class HeroSection extends StatelessWidget {
-  final String imagePath;
-  final double height;
-  final List<String> semesters;
-  final int selectedIndex;
-  final ValueChanged<int> onSemesterSelected;
-
-  const HeroSection({
-    Key? key,
-    required this.imagePath,
-    required this.height,
-    required this.semesters,
-    required this.selectedIndex,
-    required this.onSemesterSelected,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // Hero image background.
-        Image.asset(
-          imagePath,
-          width: double.infinity,
-          height: height,
-          fit: BoxFit.cover,
-        ),
-        // Positioned semester selection row.
-        Positioned(
-          top: 16,
-          left: 0,
-          right: 0,
-          child: Center(
-            child: SemesterSelectionRow(
-              semesters: semesters,
-              selectedIndex: selectedIndex,
-              onSemesterSelected: onSemesterSelected,
-            ),
-          ),
-        ),
-      ],
+  void _onAddCourse() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddCoursePage()),
     );
   }
-}
 
-/// Widget that displays a row of hoverable semester selection buttons.
-/// SRP: Only responsible for creating the row of buttons.
-class SemesterSelectionRow extends StatelessWidget {
-  final List<String> semesters;
-  final int selectedIndex;
-  final ValueChanged<int> onSemesterSelected;
+  Widget _responsiveLayout(double width, List<EnrolledCourse> courses, bool isDropped) {
+    return width >= 600 ? _buildDataTable(courses, isDropped) : _buildCards(courses, isDropped);
+  }
 
-  const SemesterSelectionRow({
-    Key? key,
-    required this.semesters,
-    required this.selectedIndex,
-    required this.onSemesterSelected,
-  }) : super(key: key);
+  Widget _buildDataTable(List<EnrolledCourse> data, bool isDropped) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: SizedBox(
+        width: 1000,
+        child: DataTable(
+          headingRowColor: WidgetStateProperty.all(navbarBlue),
+          headingTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          columns: const [
+            DataColumn(label: Text("Course")),
+            DataColumn(label: Text("Title")),
+            DataColumn(label: Text("Campus")),
+            DataColumn(label: Text("Mode")),
+            DataColumn(label: Text("Status")),
+            DataColumn(label: Text("Action")),
+          ],
+          rows: data.map((course) {
+            return DataRow(cells: [
+              DataCell(Text(course.code)),
+              DataCell(Text(course.title)),
+              DataCell(Text(course.campus)),
+              DataCell(Text(course.mode)),
+              DataCell(Text(course.status)),
+              DataCell(
+                isDropped
+                    ? const Text("Dropped")
+                    : ElevatedButton(
+                        onPressed: () {
+                          Provider.of<CourseEnrollmentViewModel>(context, listen: false).dropCourse(course);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: sectionHeaderColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: const Text("Drop"),
+                      ),
+              ),
+            ]);
+          }).toList(),
+        ),
+      ),
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(semesters.length, (index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: HoverableSemesterButton(
-            label: semesters[index],
-            isSelected: selectedIndex == index,
-            onTap: () => onSemesterSelected(index),
+  Widget _buildCards(List<EnrolledCourse> courses, bool isDropped) {
+    return Column(
+      children: courses.map((course) {
+        return Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(vertical: 6.0),
+          padding: const EdgeInsets.all(12.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _infoRow("Course", course.code),
+              _infoRow("Title", course.title),
+              _infoRow("Campus", course.campus),
+              _infoRow("Mode", course.mode),
+              _infoRow("Status", course.status),
+              const SizedBox(height: 8),
+              if (!isDropped)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Provider.of<CourseEnrollmentViewModel>(context, listen: false).dropCourse(course);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: sectionHeaderColor,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text("Drop"),
+                  ),
+                )
+              else
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Text("Dropped"),
+                )
+            ],
           ),
         );
-      }),
+      }).toList(),
     );
   }
-}
 
-/// A hoverable button for semester selection using a reusable hoverable widget.
-/// SRP: Encapsulates button styling and hover behavior.
-class HoverableSemesterButton extends StatelessWidget {
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const HoverableSemesterButton({
-    Key? key,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
-    final double verticalPadding = 12 * scaleFactor;
-    final double horizontalPadding = 20 * scaleFactor;
-    final double fontSize = 16 * scaleFactor;
-
-    return _HoverableButton(
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isSelected ? const Color(0xFF009999) : Colors.white,
-          foregroundColor: isSelected ? Colors.white : const Color(0xFF009999),
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding,
-            horizontal: horizontalPadding,
-          ),
-          shape: const StadiumBorder(),
-          elevation: 8,
-          shadowColor: Colors.black54,
-          textStyle: TextStyle(fontSize: fontSize),
-        ),
-        icon: isSelected ? const Icon(Icons.check) : const SizedBox.shrink(),
-        label: Text(label),
-        onPressed: onTap,
+  Widget _infoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        children: [
+          Text("$label: ", style: const TextStyle(fontWeight: FontWeight.bold)),
+          Expanded(child: Text(value)),
+        ],
       ),
     );
   }
-}
 
-/// A widget for displaying the online enrollment bar.
-/// SRP: Focuses on displaying the enrollment text.
-class OnlineEnrollmentBar extends StatelessWidget {
-  final String semesterLabel;
-  final Color backgroundColor;
-
-  const OnlineEnrollmentBar({
-    Key? key,
-    required this.semesterLabel,
-    required this.backgroundColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _sectionTitle(String title, {required Color color}) {
     return Container(
-      color: backgroundColor,
+      color: color,
       padding: const EdgeInsets.all(8.0),
+      alignment: Alignment.centerLeft,
       child: Text(
-        'Online Enrollment - $semesterLabel',
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+        title,
+        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }
 }
 
-/// A reusable widget for showing registration sections (e.g., active or dropped courses).
-/// SRP: Only responsible for building a registration section.
-class RegistrationSection extends StatelessWidget {
-  final String title;
-  final List<String> items;
-  final String emptyMessage;
-  final Color headerColor;
-
-  const RegistrationSection({
-    Key? key,
-    required this.title,
-    required this.items,
-    required this.emptyMessage,
-    required this.headerColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          color: headerColor,
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            title,
-            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Container(
-          color: Colors.white,
-          padding: const EdgeInsets.all(8.0),
-          child: items.isEmpty
-              ? Text(emptyMessage)
-              : ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: items.length,
-                  itemBuilder: (context, index) => Text(items[index]),
-                ),
-        ),
-      ],
-    );
-  }
-}
-
-/// A widget that encapsulates the "Add Course" button.
-/// SRP: This widget handles its own styling and behavior.
 class AddCourseButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color backgroundColor;
 
-  const AddCourseButton({
-    Key? key,
-    required this.onPressed,
-    required this.backgroundColor,
-  }) : super(key: key);
+  const AddCourseButton({Key? key, required this.onPressed, required this.backgroundColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: const Color(0xFFF6F0FB),
       padding: const EdgeInsets.all(16.0),
       child: Center(
-        child: _HoverableButton(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: backgroundColor,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-              shape: const StadiumBorder(),
-              elevation: 8,
-              shadowColor: Colors.black54,
-            ),
-            onPressed: onPressed,
-            child: const Text('Add Course'),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+            shape: const StadiumBorder(),
+            elevation: 8,
+            shadowColor: Colors.black54,
           ),
+          onPressed: onPressed,
+          child: const Text('Add Course'),
         ),
-      ),
-    );
-  }
-}
-
-/// A reusable hoverable widget that applies a scale animation on hover.
-/// SRP: Focuses solely on the hover animation behavior.
-/// DIP: Can be reused anywhere without knowledge of its internal state.
-class _HoverableButton extends StatefulWidget {
-  final Widget child;
-  const _HoverableButton({Key? key, required this.child}) : super(key: key);
-
-  @override
-  State<_HoverableButton> createState() => _HoverableButtonState();
-}
-
-class _HoverableButtonState extends State<_HoverableButton> {
-  bool isHovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
-      child: AnimatedScale(
-        scale: isHovered ? 1.08 : 1.0,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOut,
-        child: widget.child,
       ),
     );
   }

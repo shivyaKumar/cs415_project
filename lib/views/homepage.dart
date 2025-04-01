@@ -16,14 +16,6 @@ class Homepage extends StatelessWidget {
   const Homepage({super.key, required this.username});
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // Button Style for the "Enroll Now" button.
-  // This method encapsulates styling logic for dynamic button states.
-  // It uses WidgetStateProperty to change properties like background color
-  // and elevation when hovered or pressed, following the Single Responsibility Principle (SRP).
-  // ─────────────────────────────────────────────────────────────────────────────
-
-
-  // ─────────────────────────────────────────────────────────────────────────────
   // Helper method to build a feature tile for the homepage grid.
   // This method encapsulates the logic for creating a tile with an icon,
   // label, and tap behavior. It follows SRP by handling one responsibility.
@@ -170,7 +162,7 @@ class Homepage extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 shrinkWrap: true, // Let the grid occupy only the needed space.
-                physics: const NeverScrollableScrollPhysics(), // Prevent scrolling within the grid.
+                physics: const AlwaysScrollableScrollPhysics(), // Prevent scrolling within the grid.
                 children: [
                   _buildFeatureTile(
                     label: 'My Profile',

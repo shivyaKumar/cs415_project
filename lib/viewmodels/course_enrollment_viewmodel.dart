@@ -1,67 +1,45 @@
+// ViewModel for Course Enrollment Page
+// Applies SRP (handles only business logic, not UI) and OOP (encapsulation)
 import 'package:flutter/material.dart';
+import '../models/enrolled_course.dart';
 
-class CourseEnrollmentController with ChangeNotifier {
-  // Example program (used when adding courses).
-  final String program = "Bachelor of Software Engineering";
+class CourseEnrollmentViewModel extends ChangeNotifier {
+  // Private list holding currently active (enrolled) courses
+  final List<EnrolledCourse> _activeCourses = [];
 
-  // Available semesters
-  final List<String> semesters = ["Semester I, 2025", "Semester II, 2025"];
+  // Private list holding dropped or not approved courses
+  final List<EnrolledCourse> _droppedCourses = [];
 
-  // Currently selected semester
-  int selectedSemesterIndex = 0;
+  // Public getter for active courses (encapsulation)
+  List<EnrolledCourse> get activeCourses => _activeCourses;
 
-  // Enrollment lists
-  final List<String> activeRegistrations = [];
-  final List<String> droppedRegistrations = [];
+  // Public getter for dropped courses (encapsulation)
+  List<EnrolledCourse> get droppedCourses => _droppedCourses;
 
-  /// Called when user selects a semester
-  void selectSemester(int index) {
-    selectedSemesterIndex = index;
+  // Simulates loading enrolled courses from a backend or database
+  Future<void> loadEnrolledCourses() async {
+    await Future.delayed(const Duration(milliseconds: 400));
+    _activeCourses.clear();
+
+    // TODO: Fetch enrolled courses from backend API or local storage here
+
+    notifyListeners(); // Notify UI to rebuild
+  }
+
+  // Simulates loading dropped/unapproved courses from a backend
+  Future<void> loadDroppedCourses() async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    _droppedCourses.clear();
+
+    // TODO: Fetch dropped/unapproved courses from backend API or local storage here
+
+    notifyListeners(); // Notify UI to rebuild
+  }
+
+  // Moves a course from active to dropped list
+  void dropCourse(EnrolledCourse course) {
+    _activeCourses.remove(course);
+    _droppedCourses.add(course);
     notifyListeners();
-  }
-
-  /// Add courses to the active registrations
-  void addCourses(List<String> courses) {
-    activeRegistrations.addAll(courses);
-    notifyListeners();
-  }
-
-  /// Open a link (stub)
-  Future<void> openLink(String url) async {
-    debugPrint('Opening link: $url');
-    // Implement url_launcher or similar if needed
-  }
-
-  /// Handle "Add Course" flow
-  Future<void> onAddCourse(BuildContext context) async {
-    // Replace this import with your actual AddCoursePage import
-    // import 'addcourse.dart';
-
-    final selectedCourses = await Navigator.push<List<String>>(
-      context,
-      MaterialPageRoute(
-        builder: (context) => /* AddCoursePage(
-          program: program,
-          maxSelectableCourses: 5,
-        ), */
-        // Temporarily just return a stub page or logic:
-        Scaffold(
-          appBar: AppBar(title: const Text("Add Course Page Stub")),
-          body: Center(
-            child: ElevatedButton(
-              onPressed: () {
-                // Example returning some dummy courses
-                Navigator.pop<List<String>>(context, ["CS100", "CS101"]);
-              },
-              child: const Text("Select dummy courses & pop"),
-            ),
-          ),
-        ),
-      ),
-    );
-
-    if (selectedCourses != null && selectedCourses.isNotEmpty) {
-      addCourses(selectedCourses);
-    }
   }
 }
