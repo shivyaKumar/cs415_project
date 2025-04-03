@@ -9,27 +9,18 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
-<<<<<<< HEAD
   file_picker: ^9.2.1
   flutter:
     sdk: flutter
+  printing: ^5.10.0
   xml: ^6.3.0
+  file_saver: 0.2.14
+  intl: ^0.18.1
   url_launcher: ^6.1.7
-  cupertino_icons: ^1.0.8 
+  cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.9
   provider: ^6.0.0
   shared_preferences: ^2.0.15
-=======
-  file_picker: ^9.2.1           # Latest stable as of now
-  flutter:
-    sdk: flutter
-  xml: ^6.5.0                   # Latest stable
-  url_launcher: ^6.3.1         # Updated from 6.1.7
-  cupertino_icons: ^1.0.8
-  flutter_svg: ^2.0.9
-  provider: ^6.1.2              # Latest stable
-  shared_preferences: ^2.2.2    # Latest stable
->>>>>>> 5ea62f08284e985d04e45eec10d5f13f97ac9262
 
 dev_dependencies:
   flutter_test:
@@ -41,9 +32,16 @@ flutter:
   
   assets:
     - assets/SAGEONS_2.xml
-<<<<<<< HEAD
     - assets/STEMP.xml
-=======
->>>>>>> 5ea62f08284e985d04e45eec10d5f13f97ac9262
+    - assets/STEMP/courses.xml
+    - assets/STEMP/prerequisites.xml
+    - assets/STEMP/programLevels.xml
+    - assets/STEMP/programs.xml
+    - assets/STEMP/programTypes.xml
+    - assets/STEMP/semesters.xml
+    - assets/STEMP/subPrograms.xml
+    - assets/campuses.xml
     - assets/images/header.png
+    - assets/images/homepage.png
+    - assets/images/student.png
     - assets/images/usp_logo.svg

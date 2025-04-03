@@ -6,12 +6,19 @@
       </admissionRequirements>
       <courses>
         <year number="1">
-          <course code="CS111" courseName="Introduction to Computing"/>
-          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
-          <course code="IS121" courseName="Introduction to Information Systems"/>
-          <course code="MA111" courseName="Linear Algebra and Calculus"/>
-          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
-          <course code="UU114" courseName="English for Academic Purposes"/>
+          <semester number="1">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="IS121" name="Introduction to Information Systems"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+            <course code="UU100A" name="Information Literacy (Online)" type="half"/>
+          </semester>
+          <semester number="2">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="CS112" name="Data Structure and Algorithms" prerequisites="CS111"/>
+            <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
         </year>
       </courses>
     </program>
@@ -22,12 +29,17 @@
       </admissionRequirements>
       <courses>
         <year number="1">
-          <course code="IS121" courseName="Introduction to Information Systems"/>
-          <course code="IS122" courseName="Application Programming" prerequisite="IS121"/>
-          <course code="MA111" courseName="Linear Algebra and Calculus"/>
-          <course code="ST130" courseName="Basic Statistics"/>
-          <course code="UU114" courseName="English for Academic Purposes"/>
-          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
+          <semester number="1">
+            <course code="IS121" name="Introduction to Information Systems"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="ST130" name="Basic Statistics"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
+          <semester number="2">
+            <course code="IS122" name="Application Programming" prerequisites="IS121"/>
+            <course code="ST130" name="Basic Statistics"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
         </year>
       </courses>
     </program>
@@ -38,13 +50,20 @@
       </admissionRequirements>
       <courses>
         <year number="1">
-          <course code="CS111" courseName="Introduction to Computing"/>
-          <course code="IS104" courseName="Computing for Science and Technology"/>
-          <course code="MA111" courseName="Linear Algebra and Calculus"/>
-          <course code="MA112" courseName="Calculus I" prerequisite="MA111"/>
-          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
-          <course code="ST131" courseName="Introduction to Statistics"/>
-          <course code="UU114" courseName="English for Academic Purposes"/>
+          <semester number="1">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="IS104" name="Computing for Science and Technology"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="MA112" name="Calculus II" prerequisites="MA111"/>
+            <course code="ST131" name="Introduction to Statistics"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
+          <semester number="2">
+            <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+            <course code="MA112" name="Calculus II" prerequisites="MA111"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+            <course code="CS111" name="Introduction to Computing"/>
+          </semester>
         </year>
       </courses>
     </program>
@@ -57,17 +76,29 @@
       </admissionRequirements>
       <courses>
         <year number="1">
-          <course code="CS111" courseName="Introduction to Computing"/>
-          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
-          <course code="IS121" courseName="Introduction to Information Systems"/>
-          <course code="MA111" courseName="Linear Algebra and Calculus"/>
-          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
-          <course code="UU114" courseName="English for Academic Purposes"/>
-          <course code="UU100" courseName="Communication and Information Literacy"/>
-          <course code="CS211" courseName="Computer Organization" prerequisite="CS112"/>
-          <course code="CS215" courseName="Computer Communications and Management" prerequisite="CS211"/>
-          <course code="CS230" courseName="Requirements Engineering" prerequisite="CS112"/>
-          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
+          <semester number="1">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="IS121" name="Introduction to Information Systems"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+            <course code="UU100" name="Communication and Information Literacy"/>
+          </semester>
+          <semester number="2">
+            <course code="CS112" name="Data Structure and Algorithms" prerequisites="CS111"/>
+            <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
+        </year>
+        <year number="2">
+          <semester number="1">
+            <course code="CS211" name="Computer Organization" prerequisites="CS112"/>
+            <course code="CS230" name="Requirements Engineering" prerequisites="CS112"/>
+            <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+          </semester>
+          <semester number="2">
+            <course code="CS215" name="Computer Communications and Management" prerequisites="CS211"/>
+          </semester>
         </year>
       </courses>
     </program>
@@ -80,32 +111,477 @@
       </admissionRequirements>
       <courses>
         <year number="1">
-          <course code="CS112" courseName="Data Structure and Algorithms" prerequisite="CS111"/>
-          <course code="CS111" courseName="Introduction to Computing"/>
-          <course code="MA111" courseName="Linear Algebra and Calculus"/>
-          <course code="MA161" courseName="Discrete Mathematics" prerequisite="MA111"/>
-          <course code="UU114" courseName="English for Academic Purposes"/>
+          <semester number="1">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
+          <semester number="2">
+            <course code="CS112" name="Data Structure and Algorithms" prerequisites="CS111"/>
+            <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+          </semester>
         </year>
-        <year number="2" prerequisite="75% completion of Year 1">
-           <course code="CS211" courseName="Computer Organization" prerequisite="CS112"/>
-          <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisite="CS211"/>
-          <course code="IS222" courseName="Database Management Systems" prerequisite="IS121"/>
-          <course code="CS215" courseName="Computer Communications and Management" prerequisite="CS211"/>
-          <course code="UU200" courseName="Ethics and Governance"/>
-          <course code="UU204" courseName="Pacific Folks"/>
+        <year number="2" prerequisites="75% completion of Year 1">
+          <semester number="1">
+            <course code="CS211" name="Computer Organization" prerequisites="CS112"/>
+            <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+            <course code="UU200" name="Ethics and Governance"/>
+            <course code="UU204" name="Pacific Folks"/>
+          </semester>
+          <semester number="2">
+            <course code="UU200" name="Ethics and Governance"/>
+            <course code="UU204" name="Pacific Folks"/>
+            <course code="CS214" name="Design of Data Structure and Algorithms" prerequisites="CS112"/>
+            <course code="CS215" name="Computer Communications and Management" prerequisites="CS111"/>
+          </semester>
         </year>
-        <year number="3" prerequisite="75% completion of Year 2">
-          <course code="CS311" courseName="Operating Systems" prerequisite="CS211"/>
-          <course code="CS350" courseName=" Wireless Networks " prerequisite="CS311"/>
-          <course code="IS314" courseName="Computing Projects" prerequisite="IS222, CS241, IS226"/>
-          <course code="CS317" courseName=" Computer and Network Security" prerequisite="CS311"/>
-          <course code="CS310" courseName="Computer Systems" prerequisite="CS211"/>
-          <course code="CS324" courseName="Distributed Computing" prerequisite="CS211"/>
-          <course code="IS328" courseName="Data Mining" prerequisite="IS222"/>
-          <course code="IS333" courseName="Project Management" prerequisite="75% Completion of 200 Level"/>
-          <course code="CS351" courseName="Network Design and Administration" prerequisite=" CS310"/>
+        <year number="3" prerequisites="75% completion of Year 2">
+          <semester number="1">
+            <course code="CS310" name="Computer Systems" prerequisites="CS211"/>
+            <course code="CS311" name="Operating Systems" prerequisites="CS211"/>
+            <course code="IS333" name="Project Management" prerequisites="75% Completion of 200 Level"/>
+          </semester>
+          <semester number="2">
+            <choices>
+              <course code="CS350" name=" Wireless Networks " prerequisites="CS311"/>
+              <course code="IS314" name="Computing Projects" prerequisites="IS222, CS241, IS226"/>
+              <course code="CS317" name=" Computer and Network Security" prerequisites="CS311"/>
+            </choices>
+            <choices>
+              <course code="CS324" name="Distributed Computing" prerequisites="CS211"/>
+              <course code="IS328" name="Data Mining" prerequisites="IS222"/>
+            </choices>
+            <course code="CS351" name="Network Design and Administration" prerequisites=" CS310"/>
+          </semester>
         </year>
       </courses>
+    </program>
+
+    <program name="Bachelor of Arts (Information Systems)">
+      <subProgram name="Data Analytics">
+          <admissionRequirements>
+              <requirement>50% or equivalent in Mathematics in a Senate-recognised Year 13/Form 7 examination.</requirement>
+          </admissionRequirements>
+          <courses>
+            <year number="1">
+              <semester number="1">
+                <course code="IS121" name="Introduction to Information Systems"/>
+                <course code="MA111" name="Linear Algebra and Calculus"/>
+                <course code="ST130" name="Basic Statistics"/>
+                <course code="UU114" name="English for Academic Purposes"/>
+              </semester>
+              <semester number="2">
+                <course code="IS122" name="Application Programming" prerequisites="IS121"/>
+                <course code="ST130" name="Basic Statistics"/>
+                <course code="UU114" name="English for Academic Purposes"/>
+              </semester>
+            </year>
+            <year number="2" prerequisites="75% completion of Year 1">
+              <semester number="1">
+                <course code="IS221" name="Web Application Development"/>
+                <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+                <course code="IS202" name="Data Science" prerequisites="ST130"/>
+                <course code="UU200" name="Ethics and Governance"/>
+              </semester>
+              <semester number="2">
+                <course code="IS226" name="Systems, Analysis and Design" prerequisites="IS121"/>
+                <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+                <course code="UU200" name="Ethics and Governance"/>
+                <course code="UU204" name="Pacific Folks"/>
+              </semester>
+            </year>
+            <year number="3">
+              <semester number="1">
+                <course code="IS351" name="Data and Information Security" prerequisites="IS222"/>
+                <course code="IS333" name="Project Management" prerequisites="75% Completion of 200 Level"/>
+              </semester>
+              <semester number="2">
+                <course code="IS302" name="Data Analytics" prerequisites="IS226"/>
+                <course code="IS322" name="Business Information Systems" prerequisites="IS222"/>
+              </semester>
+            </year>
+          </courses>
+        </subProgram>
+    </program>
+      <program name="Bachelor of Arts (Information Systems)">
+      <subProgram name="Business Information Systems">
+          <admissionRequirements>
+              <requirement>50% or equivalent in Mathematics in a Senate-recognised Year 13/Form 7 examination.</requirement>
+          </admissionRequirements>
+          <courses>
+              <year number="1">
+                  <semester number="1">
+                      <course code="IS121" name="Introduction to Information Systems"/>
+                      <course code="MA111" name="Linear Algebra and Calculus"/>
+                      <course code="ST130" name="Basic Statistics"/>
+                      <course code="UU114" name="English for Academic Purposes"/>
+                  </semester>
+                  <semester number="2">
+                      <course code="IS122" name="Application Programming" prerequisites="IS121"/>
+                      <course code="ST130" name="Basic Statistics"/>
+                      <course code="UU114" name="English for Academic Purposes"/>
+                  </semester>
+              </year>
+              <year number="2" prerequisites="75% completion of Year 1">
+                  <semester number="1">
+                      <course code="IS221" name="Web Application Development"/>
+                      <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+                      <course code="IS226" name="Systems, Analysis and Design" prerequisites="IS121"/>
+                      <course code="UU200" name="Ethics and Governance"/>
+                  </semester>
+                  <semester number="2">
+                      <course code="IS226" name="Systems, Analysis and Design" prerequisites="IS121"/>
+                      <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+                      <course code="UU200" name="Ethics and Governance"/>
+                      <course code="UU204" name="Pacific Folks"/>
+                  </semester>
+              </year>
+              <year number="3">
+                  <semester number="1">
+                      <course code="IS322" name="Business Information Systems" prerequisites="IS222"/>
+                      <course code="IS333" name="Project Management" prerequisites="75% Completion of 200 Level"/>
+                  </semester>
+                  <semester number="2">
+                      <choices>
+                          <course code="IS314" name="Computing Projects"/>
+                          <course code="IS351" name="Data and Information Security" prerequisites="IS222"/>
+                      </choices>
+                  </semester>
+              </year>
+          </courses>
+      </subProgram>
+  </program>
+  <program name="Bachelor of Science (Electrical/Electronic Engineering)">
+    <admissionRequirements>
+        <requirement>A Senate recognised Year 13/Form 7 or equivalent examination, with passes in English, Mathematics, and Physics.</requirement>
+        <requirement>OR completion of the USP Foundation Programme with at least a grade C in MAF11, MAF12, PHF02, and PHF03.</requirement>
+    </admissionRequirements>
+    <courses>
+        <year number="1">
+            <semester number="1">
+                <course code="MA111" name="Linear Algebra and Calculus"/>
+                <course code="UU114" name="English for Academic Purposes"/>
+                <course code="EE102" name="Fundamentals for Electrical and Electronics Engineering"/>
+                <course code="PH102" name="PClassical Physics"/>
+            </semester>
+            <semester number="2">
+                <course code="MM103" name="Engineering Mechanics"/>
+                <course code="UU100A" name="Information Literacy (Online)"/>
+            </semester>
+        </year>
+        <year number="2" prerequisites="75% Completion of Year 1">
+            <semester number="1">
+              <choices>
+                  <course code="EE211" name="Electrical Machines"/>
+                  <course code="EE212" name="Analogue Electronics 1 "/>
+                  <course code="EE222" name="Digital Logic Design"/>
+                  <course code="EE224" name="Signals and Systems"/>
+                  <course code="EE225" name="Amplifiers and Power Electronics"/>
+              </choices>
+            </semester>
+            <semester number="2">
+                <course code="UU200" name="Ethics and Governance"/>
+                <course code="UU204" name="Pacific Folks"/>
+            </semester>
+        </year>
+          <year number="3">
+              <semester number="1">
+                  <choices>
+                      <course code="PH302" name="Advanced Physics"/>
+                      <course code="EE312" name="Control System Engineering"/>
+                      <course code="EE313" name="Microprocessor Applications"/>
+                      <course code="EE314" name="Electrical Engineering Design"/>
+                      <course code="EE321" name="Power Systems Analysis"/>
+                      <course code="EE323" name="Digital Control Systems"/>
+                      <course code="EE325" name="Electrical Drives"/>
+                      <course code="EE326" name="Embedded Systems"/>
+                  </choices>
+                  <course code="SC356" name="Research Skills " prerequisitess="Completion of eight 200 level courses"/>
+              </semester>
+              <semester number="2">
+                <course code="SC356" name="Research Skills "/>
+                <course code="IndustrialAttachment" name="10-Week Industrial Attachment"/>
+              </semester>
+          </year>
+      </courses>
+    </program>
+    <program name="Bachelor of Science (Mechanical Engineering)">
+          <admissionRequirements>
+              <requirement>A Senate recognised Year 13/Form 7 or equivalent examination, with passes in English, Mathematics, and Physics.</requirement>
+              <requirement>OR completion of the USP Foundation Programme with relevant mathematics and physics courses.</requirement>
+          </admissionRequirements>
+          <courses>
+              <year number="1">
+                  <semester number="1">
+                      <course code="PH102" name="Physics for Engineers"/>
+                      <course code="PH103" name="Quantum and Electrical Physics"/>
+                      <course code="MA111" name="Linear Algebra and Calculus"/>
+                      <course code="UU114" name="English for Academic Purposes"/>
+                  </semester>
+                  <semester number="2">
+                      <course code="MA112" name="Advanced Calculus"/>
+                      <course code="MM101" name="Engineering Graphics and Design"/>
+                      <course code="MM103" name="Engineering Mechanics"/>
+                      <course code="UU100A" name="Information Literacy (Online)"/>
+                  </semester>
+              </year>
+              <year number="2" prerequisites="Completion of Year 1">
+                  <semester number="1">
+                      <course code="PH202" name="Environmental Physics"/>
+                      <course code="PH204" name="Modern Physics"/>
+                      <course code="PH206" name="Electromagnetism and Electronics"/>
+                      <choices>
+                          <course code="MM211" name="Solid Mechanics 1"/>
+                          <course code="MM214" name="Dynamics"/>
+                          <course code="MM221" name="Thermodynamics and Heat Transfer"/>
+                          <course code="MM222" name="Fluid Mechanics"/>
+                          <course code="MM223" name="Manufacturing Processes"/>
+                      </choices>
+                  </semester>
+                  <semester number="2">
+                      <course code="UU200" name="Ethics and Governance"/>
+                      <course code="UU204" name="Pacific Folks"/>
+                  </semester>
+              </year>
+              <year number="3">
+                  <semester number="1">
+                      <course code="SC356" name="Scientific Computing"/>
+                      <choices>
+                          <course code="PH301" name="Renewable Energy Systems"/>
+                          <course code="PH302" name="Electronic Communication Systems"/>
+                          <course code="PH304" name="Solid State Physics"/>
+                          <course code="PH306" name="Special Topics"/>
+                      </choices>
+                      <choices>
+                          <course code="MM311" name="Applied Thermo Fluids"/>
+                          <course code="MM315" name="Solid Mechanics 2"/>
+                          <course code="MM321" name="Refrigeration and Air Conditioning"/>
+                          <course code="MM323" name="Manufacturing Systems"/>
+                      </choices>
+                  </semester>
+                  <semester number="2">
+                      <course code="IndustrialAttachment" name="10-Week Industrial Attachment"/>
+                  </semester>
+              </year>
+          </courses>
+  </program>
+    <programLevel name="Prescribed Programs">
+      <program name="Bachelors in Software Engineering">
+        <year number="1">
+          <semester number="1">
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="MA111" name="Linear Algebra and Calculus"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+            <course code="UU100A" name="Communication and Information Literacy"/>
+            <course code="MG101" name="Introduction to Management"/>
+            <course code="ST131" name="Introduction to Statistics"/>
+          </semester>
+          <semester number="2">
+            <course code="CS112" name="Data Structure and Algorithms" prerequisites="CS111"/>
+            <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+            <course code="CS111" name="Introduction to Computing"/>
+            <course code="UU114" name="English for Academic Purposes"/>
+            <course code="CS140" name="Introduction to Software Engineering"/>
+            <course code="MG101" name="Introduction to Management"/>
+          </semester>
+        </year>
+        <year number="2" prerequisites="Completion of 75% of 100 level">
+          <semester number="1">
+            <course code="CS211" name="Computer Organization" prerequisites="CS112"/>
+            <course code="CS230" name="Requirements Engineering" prerequisites="CS111, CS140"/>
+            <course code="IS221" name="Web Application Development"/>
+            <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+            <course code="UU200" name="Ethics and Governance"/>
+          </semester>
+          <semester number="2">
+            <course code="CS214" name="Design of Data Structure and Algorithms" prerequisites="CS211"/>
+            <course code="CS241" name="Software Design and Implementation" prerequisites="CS112, CS230"/>
+            <course code="UU200" name="Ethics and Governance"/>
+            <choices>
+              <course code="CS218" name="Mobile Computing" prerequisites="CS112"/>
+              <course code="CS219" name="Cloud Computing" prerequisites="CS112"/>
+            </choices>
+          </semester>
+        </year>
+        <year number="3">
+          <semester number="1">
+            <course code="CS310" name="Computer Systems" prerequisites="CS211"/>
+            <course code="CS311" name="Operating Systems" prerequisites="CS211"/>
+            <course code="IS333" name="Project Management" prerequisites="75% Completion of 200 Level"/>
+            <course code="CS352" name="Cybersecurity Principles"/>
+          </semester>
+          <semester number="2">
+            <course code="CS324" name="Distributed Systems" prerequisites="CS214 or CS218 or CS219"/>
+            <course code="CS341" name="Software Quality Assurance and Testing" prerequisites="CS241"/>
+            <course code="IS328" name="Data Mining" prerequisites="IS222"/>
+            <course code="IS314" name="Computing Project" prerequisites="IS222 or CS241"/>
+          </semester>
+        </year>
+        <year number="4">
+          <semester number="1">
+          <course code="CS415" name="Advance Software Engineering" prerequisites="75% completion of 300 BSE Level courses"/>
+          <choices>
+            <course code="CS403" name="Cyber Defense: Governance and Risk Management" prerequisites="CS352, 75% completion of 300 Level courses"/>
+            <course code="CS412" name="Artificial Intelligence" prerequisites="75% completion of 300 Level courses"/>
+            <course code="CS424" name="Big Data Technologies" prerequisites="75% completion of 300 Level courses"/>
+          </choices>
+          </semester>
+          <semester number="2">
+            <course code="CS400" name="Industrial Experience Project" prerequisites="Completion of All 100,200,300,400 level courses"/>
+          </semester>
+        </year>
+      </program>
+      </programLevel>
+    <program name="Bachelors in Networks and Security">
+      <year number="1">
+        <semester number="1">
+          <course code="CS111" name="Introduction to Computing"/>
+          <course code="MA111" name="Linear Algebra and Calculus"/>
+          <course code="UU114" name="English for Academic Purposes"/>
+          <course code="UU100A" name="Communication and Information Literacy"/>
+          <course code="MG101" name="Introduction to Management"/>
+          <course code="ST131" name="Introduction to Statistics"/>
+        </semester>
+        <semester number="2">
+          <course code="CS112" name="Data Structure and Algorithms" prerequisites="CS111"/>
+          <course code="MA161" name="Discrete Mathematics" prerequisites="MA111"/>
+          <course code="CS111" name="Introduction to Computing"/>
+          <course code="UU114" name="English for Academic Purposes"/>
+          <course code="CS150" name="Introduction to Software Engineering"/>
+          <course code="MG101" name="Introduction to Management"/>
+        </semester>
+      </year>
+      <year number="2" prerequisites="Completion of 75% of 100 level">
+        <semester number="1">
+          <course code="CS211" name="Computer Organization" prerequisites="CS112"/>
+          <course code="IS221" name="Web Application Development"/>
+          <course code="IS222" name="Database Management Systems" prerequisites="IS121"/>
+          <course code="UU200" name="Ethics and Governance"/>
+        </semester>
+        <semester number="2">
+          <course code="CS214" name="Design of Data Structure and Algorithms" prerequisites="CS211"/>
+          <course code="UU200" name="Ethics and Governance"/>
+          <course code="CS218" name="Mobile Computing" prerequisites="CS112"/>
+          <course code="CS219" name="Cloud Computing" prerequisites="CS112"/>
+        </semester>
+      </year>
+      <year number="3" prerequisites="Completion of 75% of 200 level">
+        <semester number="1">
+          <course code="CS310" name="Computer Systems" prerequisites="CS211"/>
+          <course code="CS311" name="Operating Systems" prerequisites="CS211"/>
+          <course code="IS333" name="Project Management" prerequisites="75% Completion of 200 Level"/>
+          <course code="CS352" name="Cybersecurity Principles"/>
+        </semester>
+        <semester number="2">
+          <course code="CS324" name="Distributed Systems" prerequisites="CS214, CS218, CS219"/>
+          <course code="CS317" name="Computer and Network Security " prerequisites="CS215"/>
+          <course code="CS350" name="Wireless Networks" prerequisites="CS215"/>
+          <course code="CS351" name="Network Design and Administration" prerequisites="CS310"/>
+        </semester>
+      </year>
+      <year number="4">
+          <semester number="1">
+          <choices>
+            <course code="CS403" name="Cyber Defense: Governance and Risk Management" prerequisites="CS352, 75% completion of 300 Level courses"/>
+            <course code="CS412" name="Artificial Intelligence" prerequisites="75% completion of 300 Level courses"/>
+            <course code="CS424" name="Big Data Technologies" prerequisites="75% completion of 300 Level courses"/>
+          </choices>
+          </semester>
+          <semester number="2">
+            <course code="CS400" name="Industrial Experience Project" prerequisites="Completion of All 100,200,300,400 level courses"/>
+          </semester>
+        </year>
+    </program>
+
+      <program name="Bachelor of Civil Engineering">
+        <admissionRequirements>
+            <requirement>A Senate recognised Year 13/Form 7 or equivalent examination, with passes in English, Mathematics, and Physics with at least 50%, and either Chemistry or Technology.</requirement>
+            <requirement>OR admission through the mature student entry criteria.</requirement>
+        </admissionRequirements>
+        <courses>
+            <year number="1">
+                <semester number="1">
+                    <choices>
+                        <course code="PH102" name="Classical Physics"/>
+                    </choices>
+                    <choices>
+                        <course code="MM101" name="Engineering Graphics and Design"/>
+                    </choices>
+                    <course code="UU114" name="English for Academic Purposes"/>
+                    <choices>
+                        <course code="MA111" name="Linear Algebra and Calculus"/>
+                    </choices>
+                    <course code="UU100A" name="Information Literacy (Online)"/>
+                </semester>
+                <semester number="2">
+                    <choices>
+                        <course code="EE102" name="Introduction to Electrical Engineering"/>
+                    </choices>
+                    <choices>
+                        <course code="MM103" name="Engineering Mathematics"/>
+                    </choices>
+                    <course code="CS111" name="Programming Concepts"/>
+                    <choices>
+                        <course code="MA112" name="Advanced Calculus"/>
+                    </choices>
+                </semester>
+            </year>
+            <year number="2">
+                <semester number="1">
+                    <course code="MA211" name="Advanced Calculus"/>
+                    <course code="CV211" name="Solid Mechanics 1"/>
+                    <course code="CV212" name="Metallurgy and Material Science"/>
+                    <course code="EV201" name="Environment and Society in the South Pacific"/>
+                    <course code="EN001" name="Industrial Work Experience (IWE)"/>
+                </semester>
+                <semester number="2">
+                    <course code="MA272" name="Engineering Mathematics 4"/>
+                    <course code="CV203" name="Engineering Survey"/>
+                    <course code="CV222" name="Fluid Mechanics"/>
+                    <course code="CH205" name="Chemistry for Engineers"/>
+                    <course code="EN001" name="Industrial Work Experience (IWE)"/>
+                </semester>
+            </year>
+            <year number="3">
+                <semester number="1">
+                    <course code="CV311" name="Concrete Technology"/>
+                    <course code="CV312" name="Structural Analysis"/>
+                    <course code="CV313" name="Transportation Engineering"/>
+                    <course code="CV316" name="Hydraulics"/>
+                    <course code="EN001" name="Industrial Work Experience (IWE)"/>
+                </semester>
+                <semester number="2">
+                    <course code="CV321" name="Steel Structures"/>
+                    <course code="CV322" name="Construction Management"/>
+                    <course code="CV323" name="Water Resources Engineering"/>
+                    <course code="CV324" name="Soil Mechanics"/>
+                </semester>
+            </year>
+            <year number="4">
+                <semester number="1">
+                    <course code="CV461" name="Project Management"/>
+                    <course code="CV469" name="Advanced Structural Design"/>
+                    <course code="CV488" name="Capstone Project Part 1"/>
+                    <choices>
+                        <course code="CV462" name="Foundation Engineering"/>
+                        <course code="CV463" name="Bridge Engineering"/>
+                        <course code="CV464" name="Hydrology"/>
+                    </choices>
+                </semester>
+                <semester number="2">
+                    <course code="CV491" name="Civil Engineering Practice"/>
+                    <course code="CV492" name="Capstone Project Part 2"/>
+                    <course code="CV499" name="Research Project"/>
+                    <choices>
+                        <course code="CV493" name="Traffic Engineering"/>
+                        <course code="CV494" name="Earthquake Engineering"/>
+                        <course code="CV495" name="Sustainable Infrastructure"/>
+                        <course code="CV496" name="Advanced Geotechnics"/>
+                    </choices>
+                </semester>
+            </year>
+        </courses>
     </program>
   </programLevel>
 
@@ -113,11 +589,15 @@
     <program name="Postgraduate Diploma in Information Technology">
       <courses>
         <year number="1">
-          <course code="SC400"/>
-          <course code="CS412" courseName="Artificial Intelligence" prerequisite="SC400"/>
-          <course code="CS415" courseName="Advanced Software Engineering" prerequisite="SC400"/>
-          <course code="CS424" courseName="Big Data Technologies" prerequisite="SC400"/>
-          <course code="CS427" courseName="Mobile Comunications" prerequisite="SC400"/>
+          <semester number="1">
+            <course code="SC400" name="Research Methods"/>
+            <course code="CS412" name="Artificial Intelligence"/>
+            <course code="CS415" name="Advanced Software Engineering"/>
+          </semester>
+          <semester number="2">
+            <course code="CS424" name="Big Data Technologies" />
+            <course code="CS427" name="Mobile Comunications" />
+          </semester>
         </year>
       </courses>
     </program>
@@ -125,9 +605,24 @@
     <program name="Master of Science in Computing Science">
       <courses>
         <year number="1">
-          <course code="SC400"/>
-          <course code="Elective" description="Three CS400-level courses" prerequisite="SC400"/>
-          <course code="Thesis" prerequisite="SC400 and three CS400-level courses"/>
+          <choices>
+            <course code="SC400" name="Research Methods"/>
+              <choices>
+                <course code="CS412" name="Artificial Intelligence"/>
+                <course code="CS415" name="Advanced Software Engineering"/>
+                <course code="CS424" name="Big Data Technologies"/>
+                <course code="CS427" name="Mobile Communications"/>
+                <course code="CS403" name="Cyber Defense: Governance and Risk Management"/>
+              </choices>
+            <course code="Thesis"/>
+            <choices>
+                <course code="CS412" name="Artificial Intelligence"/>
+                <course code="CS415" name="Advanced Software Engineering"/>
+                <course code="CS424" name="Big Data Technologies"/>
+                <course code="CS427" name="Mobile Communications"/>
+                <course code="CS403" name="Cyber Defense: Governance and Risk Management"/>
+              </choices>
+          </choices>
         </year>
       </courses>
     </program>
@@ -135,9 +630,9 @@
     <program name="Master of Science in Information Systems">
       <courses>
         <year number="1">
-          <course code="SC400"/>
-          <course code="Elective" description="Three IS400-level courses" prerequisite="SC400"/>
-          <course code="Thesis" prerequisite="SC400 and three IS400-level courses"/>
+          <course code="SC400" name="Research Methods"/>
+          <course code="Elective" description="Three IS400-level courses" prerequisites="SC400"/>
+          <course code="Thesis" prerequisites="SC400 and three IS400-level courses"/>
         </year>
       </courses>
     </program>

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../models/course_model.dart';
-import '../models/program_level_model.dart';
-import '../services/local_storage.dart';
+import 'package:intl/intl.dart';
+import '/services/xml_parser.dart';
+import '../../models/course_model.dart';
+import '../../models/program_level_model.dart';
+import '../../services/local_storage.dart';
+import 'package:file_saver/file_saver.dart'; // Import the file_saver package
+import 'dart:typed_data';
+import '/global.dart';
 
 class StempPage extends StatefulWidget {
   final List<ProgramLevel> programLevels;
@@ -15,26 +19,97 @@ class StempPage extends StatefulWidget {
 
 class StempPageState extends State<StempPage> {
   List<String> selectedCourses = [];
+  List<Course> courses = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCourses();
+  }
+
+  Future<void> _loadCourses() async {
+    try {
+      // Load courses
+      final coursesList = await loadCourses('assets/STEMP/courses.xml');
+
+      // Load prerequisites
+      final prerequisites = await loadPrerequisites('assets/STEMP/prerequisites.xml');
+
+      // Load program levels
+      final programLevels = await loadProgramLevels('assets/STEMP/programLevels.xml');
+
+      // Load programs
+      final programs = await loadPrograms('assets/STEMP/programs.xml');
+
+      // Load program types
+      final programTypes = await loadProgramTypes('assets/STEMP/programTypes.xml');
+
+      // Load semesters
+      final semesters = await loadSemesters('assets/STEMP/semesters.xml');
+
+      // Load sub-programs
+      final subPrograms = await loadSubPrograms('assets/STEMP/subPrograms.xml');
+
+      // Combine or process the data as needed
+      setState(() {
+        courses = coursesList;
+        // You can process and store other data here if needed
+      });
+    } catch (e) {
+      print('Error loading XML files: $e');
+    }
+  }
 
   bool canSelectCourse(Course course) {
+    if (course.type == "half") return true;
     if (selectedCourses.length >= 4) return false;
     if (course.prerequisites.isEmpty) return true;
     return course.prerequisites.every((prereq) => selectedCourses.contains(prereq));
   }
 
-  void toggleCourseSelection(String courseCode) {
+  void toggleCourseSelection(Course course) {
     setState(() {
-      if (selectedCourses.contains(courseCode)) {
-        selectedCourses.remove(courseCode);
-      } else if (selectedCourses.length < 4) {
-        selectedCourses.add(courseCode);
+      if (selectedCourses.contains(course.code)) {
+        selectedCourses.remove(course.code);
+      } else{
+        selectedCourses.add(course.code);
       }
     });
   }
 
   void proceedToEnrollment() async {
-    await LocalStorage.saveSelectedCourses(selectedCourses);
-    Navigator.pushNamed(context, '/enrollment');
+    try {
+      final email = loggedInEmails.isNotEmpty ? loggedInEmails.last : 'Unknown';
+
+      await LocalStorage.saveSelectedCourses(selectedCourses);
+
+      //format of date and time
+      final now = DateTime.now();
+      final formattedDateTime = DateFormat('yyyy-MM-dd HH:mm:ss').format(now);
+
+      
+      final courseList = selectedCourses.join('\n');
+      final fileContent = '''
+        Created by: $email
+        Date and Time: $formattedDateTime
+
+        Selected Courses:
+        $courseList
+        ''';
+      final bytes = Uint8List.fromList(fileContent.codeUnits);
+
+      // Save the file using FileSaver
+      await FileSaver.instance.saveFile(
+        name: "selected_courses",
+        bytes: bytes,
+        ext: "txt",
+        mimeType: MimeType.text,
+      );
+      Navigator.pushNamed(context, '/enrollment', arguments: selectedCourses);
+    } catch (e) {
+      // Handle any errors
+      print('Error saving file: $e');
+    }
   }
 
   @override
@@ -58,7 +133,6 @@ class StempPageState extends State<StempPage> {
           ),
           backgroundColor: Colors.transparent,
         ),
-        
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -72,11 +146,7 @@ class StempPageState extends State<StempPage> {
             const SizedBox(height: 10),
             Expanded(
               child: ListView(
-                children: widget.programLevels
-                    .expand((level) => level.programs)
-                    .expand((program) => program.years)
-                    .expand((year) => year.courses)
-                    .map((course) {
+                children: courses.map((course) {
                   return Card(
                     margin: const EdgeInsets.symmetric(vertical: 5),
                     child: CheckboxListTile(
@@ -89,10 +159,13 @@ class StempPageState extends State<StempPage> {
                               "Prerequisites: ${course.prerequisites.join(', ')}",
                               style: const TextStyle(color: Colors.grey),
                             )
-                          : null,
+                          : const Text(
+                              "No prerequisites",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                       value: selectedCourses.contains(course.code),
                       onChanged: canSelectCourse(course)
-                          ? (bool? value) => toggleCourseSelection(course.code)
+                          ? (bool? value) => toggleCourseSelection(course)
                           : null,
                     ),
                   );

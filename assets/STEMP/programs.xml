@@ -1,0 +1,20 @@
+<programs>
+    <program programName="Certificate in Computing" >
+        <year yearNumber="1">8 units</year>
+    </program>
+    <program programName="Certificate in Information Systems" />
+    <program programName="Certificate in Mathematics" />
+    <program programName="Diploma in Computing" />
+    <program programName="Bachelor of Science" />
+    <program programName="Bachelor of Science" />
+    <program programName="Bachelor of Arts" />
+    <program programName="Bachelor of Science" />
+    <program programName="Bachelor of Science"/>
+    <program programName="Bachelors in Software Engineering" />
+    <program programName="Bachelors in Networks and Security" />
+    <program programName="Bachelor of Civil Engineering" />
+    <program programName="Postgraduate Diploma in Information Technology" />
+    <program programName="Master of Science in Computing Science" />
+    <program programName="Master of Science in Information Systems" />
+    <program programName="Doctor of Philosophy" />
+</programs>

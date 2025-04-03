@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'global.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -49,6 +50,7 @@ class _LoginState extends State<Login> {
     // Student Login (must match regex & have password 12345)
     if (studentRegex.hasMatch(id) && password == "12345") {
       debugPrint('Login successful for student: $id');
+      loggedInEmails.add(id);
       Navigator.pushReplacementNamed(context, '/homepage');
       return;
     }
@@ -63,25 +65,20 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     const Color headerTeal = Color(0xFF009999);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 110,
+        automaticallyImplyLeading: false,
+        flexibleSpace: Image.asset(
+          'assets/images/header.png',
+          fit: BoxFit.fill,
+        ),
+      ),
       body: Column(
         children: [
-          SizedBox(
-            height: 110,
-            width: double.infinity,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    'assets/images/header.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: SingleChildScrollView(
               child: Center(
@@ -96,18 +93,24 @@ class _LoginState extends State<Login> {
                     ),
                     const SizedBox(height: 24),
                     Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                       child: Container(
                         width: 350,
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(
-                                    width: 110, child: Text('Email or ID:', style: TextStyle(fontSize: 16))),
+                                  width: 110,
+                                  child: Text(
+                                    'Email or ID:',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
@@ -123,10 +126,14 @@ class _LoginState extends State<Login> {
                             ),
                             const SizedBox(height: 16),
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(
-                                    width: 110, child: Text('Password:', style: TextStyle(fontSize: 16))),
+                                  width: 110,
+                                  child: Text(
+                                    'Password:',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
@@ -138,7 +145,10 @@ class _LoginState extends State<Login> {
                                       contentPadding: const EdgeInsets.all(10),
                                       suffixIcon: IconButton(
                                         icon: Icon(
-                                            _obscurePassword ? Icons.visibility_off : Icons.visibility),
+                                          _obscurePassword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                        ),
                                         onPressed: () {
                                           setState(() {
                                             _obscurePassword = !_obscurePassword;
@@ -174,16 +184,16 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            ),
-            _buildFooter(),
-          ],
-        ),
-      );
-    }
-  
-    Widget _buildFooter({double height = 80}) {
+          ),
+          _buildFooter(screenWidth: screenWidth),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFooter({double screenWidth = 0}) {
     return SizedBox(
-      height: height,
+      height: 80,
       child: Container(
         width: double.infinity,
         color: Colors.teal,

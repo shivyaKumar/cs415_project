@@ -1,0 +1,30 @@
+<courseAvailability>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="MA111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="ST131" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="UU114" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester1" yearName="year1"/>
+
+    <availability courseCode="UU114" semesterName="semester2" yearName="year1"/>
+    <availability courseCode="CS111" semesterName="semester2" yearName="year1"/>
+</courseAvailability>

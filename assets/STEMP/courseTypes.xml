@@ -1,0 +1,4 @@
+<courseTypes>
+    <courseType courseTypeName="Full" />
+    <courseType courseTypeName="Half" />
+</courseTypes>

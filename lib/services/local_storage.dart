@@ -12,7 +12,8 @@ class LocalStorage {
     String? data = prefs.getString('selected_courses');
     if (data != null) {
       return List<String>.from(jsonDecode(data));
+    } else {
+      return [];
     }
-    return [];
   }
 }

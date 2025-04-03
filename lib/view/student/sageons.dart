@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 
-import '../models/course_model.dart';
-import '../models/program_level_model.dart';
-import '../models/program_level_model.dart';
-import '../models/course_model.dart';
-import '../services/local_storage.dart';
+import '../../models/course_model.dart';
+import '../../models/program_level_model.dart';
+import '../../services/local_storage.dart';
 
 class SageonsPage extends StatefulWidget {
   final List<ProgramLevel> programLevels;

@@ -10,6 +10,25 @@ class HomeStaff extends StatelessWidget {
     Navigator.pushReplacementNamed(context, '/');
   }
 
+  // Navigation functions
+  void _navigateToRegister(BuildContext context) {
+    Navigator.pushNamed(context, '/registerStudent');
+  }
+
+  void _navigateToEdit(BuildContext context) {
+    Navigator.pushNamed(context, '/editStudent');
+  }
+
+  void _navigateToDelete(BuildContext context) {
+    Navigator.pushNamed(context, '/deleteStudent');
+  }
+
+  void _putOnHold(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Student account put on hold!")),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +105,8 @@ class HomeStaff extends StatelessWidget {
                   return _buildDashboardCard(
                     staffItems[index]['icon'],
                     staffItems[index]['title'],
+                    staffItems[index]['action'],
+                    context,
                   );
                 },
               ),
@@ -115,29 +136,29 @@ class HomeStaff extends StatelessWidget {
               ],
             ),
           ),
-          _buildDrawerItem(Icons.lock_open, 'Open Registration', context),
-          _buildDrawerItem(Icons.lock, 'Close Registration', context),
+          _buildDrawerItem(Icons.person_add, 'Register Student', _navigateToRegister, context),
+          _buildDrawerItem(Icons.edit, 'Edit Student', _navigateToEdit, context),
+          _buildDrawerItem(Icons.delete, 'Delete Student', _navigateToDelete, context),
+          _buildDrawerItem(Icons.pause_circle_filled, 'Put Student on Hold', _putOnHold, context),
         ],
       ),
     );
   }
 
-  Widget _buildDrawerItem(IconData icon, String title, BuildContext context) {
+  Widget _buildDrawerItem(IconData icon, String title, Function(BuildContext) action, BuildContext context) {
     return ListTile(
       leading: Icon(icon, color: Colors.indigo),
       title: Text(title, style: const TextStyle(fontSize: 16)),
-      onTap: () {
-        Navigator.pop(context);
-      },
+      onTap: () => action(context),
     );
   }
 
-  Widget _buildDashboardCard(IconData icon, String title) {
+  Widget _buildDashboardCard(IconData icon, String title, Function(BuildContext) action, BuildContext context) {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        onTap: () {},
+        onTap: () => action(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -186,7 +207,10 @@ class HomeStaff extends StatelessWidget {
   }
 }
 
+// Updated list with actions
 final List<Map<String, dynamic>> staffItems = [
-  {'icon': Icons.lock_open, 'title': 'Open Registration'},
-  {'icon': Icons.lock, 'title': 'Close Registration'},
+  {'icon': Icons.person_add, 'title': 'Register Student', 'action': (context) => Navigator.pushNamed(context, '/registerStudent')},
+  {'icon': Icons.edit, 'title': 'Edit Student', 'action': (context) => Navigator.pushNamed(context, '/editStudent')},
+  {'icon': Icons.delete, 'title': 'Delete Student', 'action': (context) => Navigator.pushNamed(context, '/deleteStudent')},
+  {'icon': Icons.pause_circle_filled, 'title': 'Put on Hold', 'action': (context) => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Student account put on hold!")))},
 ];

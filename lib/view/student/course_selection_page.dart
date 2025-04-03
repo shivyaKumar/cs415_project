@@ -1,5 +1,9 @@
+import 'package:cs415_project/view/widgets/custom_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import '../../viewmodels/registrationStatus_viewmodel.dart';
+
 
 class CourseSelectionPage extends StatelessWidget {
   const CourseSelectionPage({super.key});
@@ -23,41 +27,35 @@ class CourseSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> programs = ['SPACE', 'STEMP', 'SOLASS', 'SAGEONS', 'SAFE', 'SBM'];
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(160),
-        child: AppBar(
-          flexibleSpace: Stack(
-            fit: StackFit.expand,
-            children: [
-              Positioned(
-                left: 0,
-                right: 0,
-                child: Image.asset(
-                  'assets/images/header.png',
-                  fit: BoxFit.cover,
-                ),
+    final registrationStatus = Provider.of<RegistrationStatusViewModel>(context);
+
+    if (!registrationStatus.isRegistrationOpen) {
+      return Scaffold(
+        appBar: CustomHeader(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Center(
+              child: Text(
+                'Registrations are currently closed.',
+                style: TextStyle(fontSize: 18, color: Colors.red),
               ),
-              Positioned(
-                top: 60,
-                left: 0,
-                right: 0,
-                child: const Center(
-                  child: Text(
-                    'School Selection',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/enrollment'); // Navigate to enrollment page
+              },
+              child: const Text('View Enrolled Courses'),
+            ),
+          ],
         ),
-      ),
+        bottomNavigationBar: _buildFooter(), // Add the footer here
+      );
+    }
+
+    return Scaffold(
+      appBar: CustomHeader(),
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
