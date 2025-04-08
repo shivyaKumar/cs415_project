@@ -17,6 +17,9 @@ dependencies:
   flutter_svg: ^2.0.9
   provider: ^6.0.0
   shared_preferences: ^2.0.15  # Add shared_preferences here
+  xml: ^6.3.0
+  firebase_core: ^2.0.0
+  firebase_database: ^10.0.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +30,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/SAGEONS_2.xml
+    - assets/images/sbm_all_programmes.xml
     - assets/images/header.png
     - assets/images/usp_logo.svg

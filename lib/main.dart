@@ -5,14 +5,17 @@ import 'homepage.dart';
 import 'studentprofile.dart';
 import 'theme_provider.dart';
 import 'services/xml_parser.dart';
-import 'services/local_storage.dart';
 import 'models/program_level_model.dart';
-import 'enrollment_page.dart';
 import 'course_selection_page.dart';
+import 'enrollment_page.dart';
+import 'xml_screen.dart'; // Import the updated XML upload screen
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  List<ProgramLevel> programLevels = await loadProgramsFromXML('assets/images/SAGEONS_2.xml');
+
+  // Load program data from XML
+  List<ProgramLevel> programLevels =
+      await loadProgramsFromXML('assets/images/sbm_all_programmes.xml');
 
   runApp(
     ChangeNotifierProvider(
@@ -31,6 +34,7 @@ class MyApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'USP Student Management',
       theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
       initialRoute: '/',
@@ -38,8 +42,10 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Login(),
         '/homepage': (context) => const Homepage(),
         '/profile': (context) => const Profile(),
-        '/course-selection': (context) => CourseSelectionPage(programLevels: programLevels),
+        '/course-selection': (context) =>
+            CourseSelectionPage(programLevels: programLevels),
         '/enrollment': (context) => EnrollmentPage(),
+        '/upload-xml': (context) => const XmlUploadScreen(), // new route
       },
     );
   }

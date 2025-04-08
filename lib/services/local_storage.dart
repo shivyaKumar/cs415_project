@@ -10,9 +10,7 @@ class LocalStorage {
   static Future<List<String>> getSelectedCourses() async {
     final prefs = await SharedPreferences.getInstance();
     String? data = prefs.getString('selected_courses');
-    if (data != null) {
-      return List<String>.from(jsonDecode(data));
-    }
-    return [];
+    return List<String>.from(jsonDecode(data!));
+      return [];
   }
 }
