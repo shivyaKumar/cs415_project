@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../viewmodels/homepage_viewmodel.dart';
-import '../widgets/custom_footer.dart';
-import '../widgets/custom_header.dart';
+import '../../viewmodels/student/homepage_viewmodel.dart';
+import 'widgets/custom_footer.dart';
+import 'widgets/custom_header.dart';
 
 class Homepage extends StatelessWidget {
   final String username;

@@ -1,1858 +1,1556 @@
 <courseAvailability>
-    <!-- CS111 - Offered in both semesters -->
+    <!-- COJ Courses -->
     <course>
-        <course_code>CS111</course_code>
+        <course_code>COJ01</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS111</course_code>
+        <course_code>COJ01</course_code>
         <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
+    <course>
+        <course_code>COJ02</course_code>
+        <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS001 - Offered in both semesters -->
+    <course>
+        <course_code>COJ02</course_code>
+        <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
     <course>
-        <course_code>CS001</course_code>
+        <course_code>COJ03</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS001</course_code>
+        <course_code>COJ03</course_code>
         <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
+    <course>
+        <course_code>COJ04</course_code>
+        <semester>Semester 1</semester>
         <offered>true</offered>
+    </course>
+    <course>
+        <course_code>COJ04</course_code>
+        <semester>Semester 2</semester>
+        <offered>false</offered>
     </course>
 
-    <!-- CS112 - Offered only in Semester 2 -->
+    <!-- DG Courses -->
     <course>
-        <course_code>CS112</course_code>
+        <course_code>DG100</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS112</course_code>
+        <course_code>DG100</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS140 - Offered only in Semester 2 -->
+    <course>
+        <course_code>DG101</course_code>
+        <semester>Semester 1</semester>
+        <offered>true</offered>
+    </course>
+    <course>
+        <course_code>DG101</course_code>
+        <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
     <course>
-        <course_code>CS140</course_code>
+        <course_code>DG302</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS140</course_code>
+        <course_code>DG302</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS150 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS150</course_code>
+        <course_code>DG400</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CS150</course_code>
+        <course_code>DG400</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS211 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS211</course_code>
+        <course_code>DG410</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS211</course_code>
+        <course_code>DG410</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS214 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS214</course_code>
+        <course_code>DG415</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS214</course_code>
+        <course_code>DG415</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS215 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS215</course_code>
+        <course_code>DG421</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS215</course_code>
+        <course_code>DG421</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS218 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS218</course_code>
+        <course_code>DOJ01</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS218</course_code>
+        <course_code>DOJ01</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS219 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS219</course_code>
+        <course_code>DOJ02</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS219</course_code>
+        <course_code>DOJ02</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS230 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS230</course_code>
+        <course_code>GN400</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS230</course_code>
+        <course_code>GN400</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS241 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS241</course_code>
+        <course_code>GN401</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS241</course_code>
+        <course_code>GN401</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS310 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS310</course_code>
+        <course_code>GN402</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS310</course_code>
+        <course_code>GN402</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS311 - Offered only in Semester 1 -->
+    <course>
+        <course_code>HY101</course_code>
+        <semester>Semester 1</semester>
+        <offered>false</offered>
+    </course>
     <course>
-        <course_code>CS311</course_code>
+        <course_code>HY101</course_code>
+        <semester>Semester 2</semester>
+        <offered>true</offered>
+    </course>
+    <course>
+        <course_code>HY102</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS311</course_code>
+        <course_code>HY102</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS317 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS317</course_code>
+        <course_code>HY201</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CS317</course_code>
+        <course_code>HY201</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CS324 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS324</course_code>
+        <course_code>HY202</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CS324</course_code>
+        <course_code>HY202</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CS341 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS341</course_code>
+        <course_code>HY206</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS341</course_code>
+        <course_code>HY206</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS350 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS350</course_code>
+        <course_code>HY207</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS350</course_code>
+        <course_code>HY207</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS351 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS351</course_code>
+        <course_code>HY302</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS351</course_code>
+        <course_code>HY302</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS352 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS352</course_code>
+        <course_code>HY303</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS352</course_code>
+        <course_code>HY303</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS400 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS400</course_code>
+        <course_code>HY304</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS400</course_code>
+        <course_code>HY304</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS401 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS401</course_code>
+        <course_code>HY305</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS401</course_code>
+        <course_code>HY305</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS402 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS402</course_code>
+        <course_code>HY401</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CS402</course_code>
+        <course_code>HY401</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CS403 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS403</course_code>
+        <course_code>HY402</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>CS403</course_code>
+        <course_code>HY402</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- CS404 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS404</course_code>
+        <course_code>HY404</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS404</course_code>
+        <course_code>HY404</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS412 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS412</course_code>
+        <course_code>LW110</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS412</course_code>
+        <course_code>LW110</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS415 - Offered only in Semester 1 -->
     <course>
-        <course_code>CS415</course_code>
+        <course_code>LW111</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CS415</course_code>
+        <course_code>LW111</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CS424 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS424</course_code>
+        <course_code>LW112</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS424</course_code>
+        <course_code>LW112</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CS427 - Offered only in Semester 2 -->
     <course>
-        <course_code>CS427</course_code>
+        <course_code>LW113</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CS427</course_code>
+        <course_code>LW113</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-    <!-- CV203 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV203</course_code>
+        <course_code>LW201</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CV203</course_code>
+        <course_code>LW201</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CV211 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV211</course_code>
+        <course_code>LW202</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>CV211</course_code>
+        <course_code>LW202</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- CV212 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV212</course_code>
+        <course_code>LW203</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV212</course_code>
+        <course_code>LW203</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV222 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV222</course_code>
+        <course_code>LW204</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV222</course_code>
+        <course_code>LW204</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV311 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV311</course_code>
+        <course_code>LW205</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV311</course_code>
+        <course_code>LW205</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV312 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV312</course_code>
+        <course_code>LW206</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
-    </course>
-    <course>
-        <course_code>CV312</course_code>
-        <semester>Semester 2</semester>
         <offered>false</offered>
-    </course>
-
-    <!-- CV313 - Offered only in Semester 1 -->
-    <course>
-        <course_code>CV313</course_code>
-        <semester>Semester 1</semester>
-        <offered>true</offered>
     </course>
     <course>
-        <course_code>CV313</course_code>
+        <course_code>LW206</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- CV316 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV316</course_code>
+        <course_code>LW300</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV316</course_code>
+        <course_code>LW300</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV321 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV321</course_code>
+        <course_code>LW301</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV321</course_code>
+        <course_code>LW301</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV322 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV322</course_code>
+        <course_code>LW302</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CV322</course_code>
+        <course_code>LW302</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CV323 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV323</course_code>
+        <course_code>LW304</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV323</course_code>
+        <course_code>LW304</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV324 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV324</course_code>
+        <course_code>LW305</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV324</course_code>
+        <course_code>LW305</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV461 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV461</course_code>
+        <course_code>LW306</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV461</course_code>
+        <course_code>LW306</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV469 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV469</course_code>
+        <course_code>LW307</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV469</course_code>
+        <course_code>LW307</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV488 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV488</course_code>
+        <course_code>LW308</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV488</course_code>
+        <course_code>LW308</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV491 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV491</course_code>
+        <course_code>LW309</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV491</course_code>
+        <course_code>LW309</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV492 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV492</course_code>
+        <course_code>LW310</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV492</course_code>
+        <course_code>LW310</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV493 - Offered only in Semester 1 -->
     <course>
-        <course_code>CV493</course_code>
+        <course_code>LW322</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>CV493</course_code>
+        <course_code>LW322</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- CV494 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV494</course_code>
+        <course_code>LW330</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV494</course_code>
+        <course_code>LW330</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- CV496 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV496</course_code>
+        <course_code>LW331</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>CV496</course_code>
+        <course_code>LW331</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- CV499 - Offered only in Semester 2 -->
     <course>
-        <course_code>CV499</course_code>
+        <course_code>LW334</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>CV499</course_code>
+        <course_code>LW334</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-    <!-- EE102 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE102</course_code>
+        <course_code>LW352</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE102</course_code>
+        <course_code>LW352</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE211 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE211</course_code>
+        <course_code>LW353</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>EE211</course_code>
+        <course_code>LW353</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- EE212 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE212</course_code>
+        <course_code>LW355</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE212</course_code>
+        <course_code>LW355</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE213 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE213</course_code>
+        <course_code>LW356</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>EE213</course_code>
+        <course_code>LW356</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- EE222 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE222</course_code>
+        <course_code>LW370</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE222</course_code>
+        <course_code>LW370</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE224 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE224</course_code>
+        <course_code>LW372</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE224</course_code>
+        <course_code>LW372</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE225 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE225</course_code>
+        <course_code>LW373</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>EE225</course_code>
+        <course_code>LW373</course_code>
         <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
+    <course>
+        <course_code>LW374</course_code>
+        <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE312 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE312</course_code>
+        <course_code>LW374</course_code>
+        <semester>Semester 2</semester>
+        <offered>false</offered>
+    </course>
+    <course>
+        <course_code>LW390</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE312</course_code>
+        <course_code>LW390</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE313 - Offered only in Semester 1 (duplicate entry in original) -->
     <course>
-        <course_code>EE313</course_code>
+        <course_code>LW391</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE313</course_code>
+        <course_code>LW391</course_code>
         <semester>Semester 2</semester>
+        <offered>true</offered>
+    </course>
+    <course>
+        <course_code>LW395</course_code>
+        <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE314 - Offered only in Semester 2 -->
+    <course>
+        <course_code>LW395</course_code>
+        <semester>Semester 2</semester>
+        <offered>true</offered>
+    </course>
     <course>
-        <course_code>EE314</course_code>
+        <course_code>LW400</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE314</course_code>
+        <course_code>LW400</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE316 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE316</course_code>
+        <course_code>LW402</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE316</course_code>
+        <course_code>LW402</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE321 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE321</course_code>
+        <course_code>LW407</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE321</course_code>
+        <course_code>LW407</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE323 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE323</course_code>
+        <course_code>LW410</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE323</course_code>
+        <course_code>LW410</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE325 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE325</course_code>
+        <course_code>LW422</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>EE325</course_code>
+        <course_code>LW422</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- EE326 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE326</course_code>
+        <course_code>LW430</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE326</course_code>
+        <course_code>LW430</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE461 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE461</course_code>
+        <course_code>LW431</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE461</course_code>
+        <course_code>LW431</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE462 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE462</course_code>
+        <course_code>LW434</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE462</course_code>
+        <course_code>LW434</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE463 - Offered only in Semester 1 -->
+    
     <course>
-        <course_code>EE463</course_code>
+        <course_code>LW452</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>EE463</course_code>
+        <course_code>LW452</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- EE464 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE464</course_code>
+        <course_code>LW453</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>EE464</course_code>
+        <course_code>LW453</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- EE481 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE481</course_code>
+        <course_code>LW455</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE481</course_code>
+        <course_code>LW455</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE488 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE488</course_code>
+        <course_code>LW456</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EE488</course_code>
+        <course_code>LW456</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- EE491 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE491</course_code>
+        <course_code>LW470</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE491</course_code>
+        <course_code>LW470</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EE492 - Offered only in Semester 1 -->
     <course>
-        <course_code>EE492</course_code>
+        <course_code>LW471</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>EE492</course_code>
+        <course_code>LW471</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- EE499 - Offered only in Semester 2 -->
     <course>
-        <course_code>EE499</course_code>
+        <course_code>LW472</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>EE499</course_code>
+        <course_code>LW472</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- EN001 - Offered in both semesters -->
     <course>
-        <course_code>EN001</course_code>
+        <course_code>LW473</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>EN001</course_code>
+        <course_code>LW473</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-    <!-- IS104 - Year 4 -->
     <course>
-        <course_code>IS104</course_code>
+        <course_code>LW474</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS104</course_code>
+        <course_code>LW474</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- IS121 - Year 1 -->
     <course>
-        <course_code>IS121</course_code>
+        <course_code>LW490</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS121</course_code>
+        <course_code>LW490</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- IS122 - Year 1 -->
     <course>
-        <course_code>IS122</course_code>
+        <course_code>LW495</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS122</course_code>
+        <course_code>LW495</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS202 - Year 2 -->
     <course>
-        <course_code>IS202</course_code>
+        <course_code>LWD01</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS202</course_code>
+        <course_code>LWD01</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS221 - Year 2 -->
     <course>
-        <course_code>IS221</course_code>
+        <course_code>LWD02</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>IS221</course_code>
+        <course_code>LWD02</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS222 - Year 2 -->
     <course>
-        <course_code>IS222</course_code>
+        <course_code>LWD03</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>IS222</course_code>
+        <course_code>LWD03</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS226 - Year 2 -->
     <course>
-        <course_code>IS226</course_code>
+        <course_code>LWD04</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS226</course_code>
+        <course_code>LWD04</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS302 - Year 3 -->
     <course>
-        <course_code>IS302</course_code>
+        <course_code>LWD05</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS302</course_code>
+        <course_code>LWD05</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS314 - Year 3 -->
     <course>
-        <course_code>IS314</course_code>
+        <course_code>LWD06</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS314</course_code>
+        <course_code>LWD06</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS322 - Year 3 -->
     <course>
-        <course_code>IS322</course_code>
+        <course_code>LWD07</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS322</course_code>
+        <course_code>LWD07</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS328 - Year 3 -->
     <course>
-        <course_code>IS328</course_code>
+        <course_code>LWD08</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS328</course_code>
+        <course_code>LWD08</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS333 - Year 3 -->
     <course>
-        <course_code>IS333</course_code>
+        <course_code>LWD11</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS333</course_code>
+        <course_code>LWD11</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS351 - Year 3 -->
     <course>
-        <course_code>IS351</course_code>
+        <course_code>LWD12</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS351</course_code>
+        <course_code>LWD12</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS413 - Year 4 -->
     <course>
-        <course_code>IS413</course_code>
+        <course_code>LWD13</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>IS413</course_code>
+        <course_code>LWD13</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS414 - Year 4 -->
     <course>
-        <course_code>IS414</course_code>
+        <course_code>LWD14</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS414</course_code>
+        <course_code>LWD14</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS421 - Year 4 -->
     <course>
-        <course_code>IS421</course_code>
+        <course_code>LWD15</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS421</course_code>
+        <course_code>LWD15</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- IS428 - Year 4 -->
     <course>
-        <course_code>IS428</course_code>
+        <course_code>LWD16</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>IS428</course_code>
+        <course_code>LWD16</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS431 - Year 4 -->
     <course>
-        <course_code>IS431</course_code>
+        <course_code>LWD17</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS431</course_code>
+        <course_code>LWD17</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- IS432 - Year 4 -->
     <course>
-        <course_code>IS432</course_code>
+        <course_code>PL100</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>IS432</course_code>
+        <course_code>PL100</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- IS433 - Year 4 -->
     <course>
-        <course_code>IS433</course_code>
+        <course_code>PL101</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>IS433</course_code>
+        <course_code>PL101</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- IS434 - Year 4 -->
     <course>
-        <course_code>IS434</course_code>
+        <course_code>PL200</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>IS434</course_code>
+        <course_code>PL200</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
-    </course>
-    <course>
-    <course_code>MA102</course_code>
-    <semester>Semester 1</semester>
-    <offered>false</offered>
-    </course>
-    <course>
-        <course_code>MA102</course_code>
-        <semester>Semester 2</semester>
-        <offered>true</offered>
     </course>
-
-    <!-- MA111 - Year 1 (both semesters) -->
     <course>
-        <course_code>MA111</course_code>
+        <course_code>PL201</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA111</course_code>
+        <course_code>PL201</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- MA112 - Year 1 (both semesters) -->
     <course>
-        <course_code>MA112</course_code>
+        <course_code>PL202</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>MA112</course_code>
+        <course_code>PL202</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA161 - Year 1 -->
     <course>
-        <course_code>MA161</course_code>
+        <course_code>PL203</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MA161</course_code>
+        <course_code>PL203</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA211 - Year 2 -->
     <course>
-        <course_code>MA211</course_code>
+        <course_code>PL300</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA211</course_code>
+        <course_code>PL300</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
-    </course>
-
-    <!-- MA221 - Year 2 -->
-    <course>
-        <course_code>MA221</course_code>
-        <semester>Semester 1</semester>
         <offered>false</offered>
-    </course>
-    <course>
-        <course_code>MA221</course_code>
-        <semester>Semester 2</semester>
-        <offered>true</offered>
     </course>
-
-    <!-- MA272 - Year 2 -->
     <course>
-        <course_code>MA272</course_code>
+        <course_code>PL302</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MA272</course_code>
+        <course_code>PL302</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA312 - Year 3 -->
     <course>
-        <course_code>MA312</course_code>
+        <course_code>PL305</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MA312</course_code>
+        <course_code>PL305</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA313 - Year 3 -->
     <course>
-        <course_code>MA313</course_code>
+        <course_code>PL307</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA313</course_code>
+        <course_code>PL307</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MA321 - Year 3 -->
     <course>
-        <course_code>MA321</course_code>
+        <course_code>PL400</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MA321</course_code>
+        <course_code>PL400</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA341 - Year 3 -->
     <course>
-        <course_code>MA341</course_code>
+        <course_code>PL402</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA341</course_code>
+        <course_code>PL402</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MA411 - Year 4 -->
     <course>
-        <course_code>MA411</course_code>
+        <course_code>PL409</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MA411</course_code>
+        <course_code>PL409</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA416 - Year 4 -->
     <course>
-        <course_code>MA416</course_code>
+        <course_code>PL410</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA416</course_code>
+        <course_code>PL410</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MA420 - Year 4 (both semesters) -->
     <course>
-        <course_code>MA420</course_code>
+        <course_code>PL411</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA420</course_code>
+        <course_code>PL411</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MA441 - Year 4 -->
     <course>
-        <course_code>MA441</course_code>
+        <course_code>PP300</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>MA441</course_code>
+        <course_code>PP300</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- MA443 - Year 4 -->
     <course>
-        <course_code>MA443</course_code>
+        <course_code>PP301</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MA443</course_code>
+        <course_code>PP301</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM101</course_code>
+        <course_code>PP404</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM101</course_code>
+        <course_code>PP404</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM103 - Offered in Semester 2 -->
     <course>
-        <course_code>MM103</course_code>
+        <course_code>PP405</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM103</course_code>
+        <course_code>PP405</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
-    </course>
-
-    <!-- Year 2 Courses -->
-    <!-- MM211 - Offered in Semester 1 -->
-    <course>
-        <course_code>MM211</course_code>
-        <semester>Semester 1</semester>
         <offered>true</offered>
-    </course>
-    <course>
-        <course_code>MM211</course_code>
-        <semester>Semester 2</semester>
-        <offered>false</offered>
     </course>
-
-    <!-- MM212 - Offered in Semester 1 -->
     <course>
-        <course_code>MM212</course_code>
+        <course_code>PP406</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM212</course_code>
+        <course_code>PP406</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM214 - Offered in Semester 2 -->
     <course>
-        <course_code>MM214</course_code>
+        <course_code>PP407</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM214</course_code>
+        <course_code>PP407</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MM221 - Offered in Semester 1 -->
     <course>
-        <course_code>MM221</course_code>
+        <course_code>PS101</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM221</course_code>
+        <course_code>PS101</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
-    </course>
-
-    <!-- MM222 - Offered in Semester 2 -->
-    <course>
-        <course_code>MM222</course_code>
-        <semester>Semester 1</semester>
         <offered>false</offered>
-    </course>
-    <course>
-        <course_code>MM222</course_code>
-        <semester>Semester 2</semester>
-        <offered>true</offered>
     </course>
-
-    <!-- MM223 - Offered in Semester 2 -->
     <course>
-        <course_code>MM223</course_code>
+        <course_code>PS102</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM223</course_code>
+        <course_code>PS102</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- Year 3 Courses -->
-    <!-- MM311 - Offered in Semester 1 -->
     <course>
-        <course_code>MM311</course_code>
+        <course_code>PS103</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM311</course_code>
+        <course_code>PS103</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM312 - Offered in Semester 1 -->
     <course>
-        <course_code>MM312</course_code>
+        <course_code>PS107</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
-    </course>
-    <course>
-        <course_code>MM312</course_code>
-        <semester>Semester 2</semester>
         <offered>false</offered>
-    </course>
-
-    <!-- MM315 - Offered in Semester 1 -->
-    <course>
-        <course_code>MM315</course_code>
-        <semester>Semester 1</semester>
-        <offered>true</offered>
     </course>
     <course>
-        <course_code>MM315</course_code>
+        <course_code>PS107</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- MM316 - Offered in Semester 1 -->
     <course>
-        <course_code>MM316</course_code>
+        <course_code>PS203</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM316</course_code>
+        <course_code>PS203</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM321 - Offered in Semester 2 -->
     <course>
-        <course_code>MM321</course_code>
+        <course_code>PS205</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM321</course_code>
+        <course_code>PS205</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MM322 - Offered in Semester 2 -->
     <course>
-        <course_code>MM322</course_code>
+        <course_code>PS206</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM322</course_code>
+        <course_code>PS206</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MM323 - Offered in Semester 2 -->
     <course>
-        <course_code>MM323</course_code>
+        <course_code>PS303</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>MM323</course_code>
+        <course_code>PS303</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- MM324 - Offered in Semester 2 -->
     <course>
-        <course_code>MM324</course_code>
+        <course_code>PS304</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM324</course_code>
+        <course_code>PS304</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- Year 4 Courses -->
-    <!-- MM461 - Offered in Semester 1 -->
     <course>
-        <course_code>MM461</course_code>
+        <course_code>PS305</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM461</course_code>
+        <course_code>PS305</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM465 - Offered in Semester 1 -->
     <course>
-        <course_code>MM465</course_code>
+        <course_code>PS306</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM465</course_code>
+        <course_code>PS306</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM466 - Offered in Semester 1 -->
     <course>
-        <course_code>MM466</course_code>
+        <course_code>PS314</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>MM466</course_code>
+        <course_code>PS314</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- MM469 - Offered in Semester 2 -->
     <course>
-        <course_code>MM469</course_code>
+        <course_code>PS402</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM469</course_code>
+        <course_code>PS402</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MM481 - Offered in Semester 1 -->
     <course>
-        <course_code>MM481</course_code>
+        <course_code>PS407</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>MM481</course_code>
+        <course_code>PS407</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- MM488 - Offered in Semester 1 -->
     <course>
-        <course_code>MM488</course_code>
+        <course_code>PS408</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>MM488</course_code>
+        <course_code>PS408</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- MM491 - Offered in Semester 2 -->
     <course>
-        <course_code>MM491</course_code>
+        <course_code>SO100</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>MM491</course_code>
+        <course_code>SO100</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- MM492 - Offered in Semester 2 -->
     <course>
-        <course_code>MM492</course_code>
+        <course_code>SO122</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>MM492</course_code>
+        <course_code>SO122</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- MM499 - Offered in Semester 2 -->
     <course>
-        <course_code>MM499</course_code>
+        <course_code>SO200</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>MM499</course_code>
+        <course_code>SO200</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>PH102</course_code>
+        <course_code>SO201</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>PH102</course_code>
+        <course_code>SO201</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- PH103 - Offered in Semester 2 -->
     <course>
-        <course_code>PH103</course_code>
+        <course_code>SO207</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH103</course_code>
+        <course_code>SO207</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- PH106 - Offered in Semester 1 -->
     <course>
-        <course_code>PH106</course_code>
+        <course_code>SO212</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>PH106</course_code>
+        <course_code>SO212</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- ST130 - Offered in both semesters -->
     <course>
-        <course_code>ST130</course_code>
+        <course_code>SO300</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>ST130</course_code>
+        <course_code>SO300</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- ST131 - Offered in Semester 1 -->
     <course>
-        <course_code>ST131</course_code>
+        <course_code>SO301</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>ST131</course_code>
+        <course_code>SO301</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- Year 2 Courses -->
-    <!-- PH202 - Offered in Semester 2 -->
     <course>
-        <course_code>PH202</course_code>
+        <course_code>SO303</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH202</course_code>
+        <course_code>SO303</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- PH204 - Offered in Semester 1 -->
     <course>
-        <course_code>PH204</course_code>
+        <course_code>SO304</course_code>
         <semester>Semester 1</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
     <course>
-        <course_code>PH204</course_code>
+        <course_code>SO304</course_code>
         <semester>Semester 2</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
-
-    <!-- PH206 - Offered in Semester 2 -->
     <course>
-        <course_code>PH206</course_code>
+        <course_code>SO311</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>PH206</course_code>
+        <course_code>SO311</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- Year 3 Courses -->
-    <!-- PH301 - Offered in Semester 1 -->
     <course>
-        <course_code>PH301</course_code>
+        <course_code>SO401</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>PH301</course_code>
+        <course_code>SO401</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- PH302 - Offered in Semester 1 -->
     <course>
-        <course_code>PH302</course_code>
+        <course_code>SO408</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>PH302</course_code>
+        <course_code>SO408</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- PH304 - Offered in Semester 2 -->
     <course>
-        <course_code>PH304</course_code>
+        <course_code>SO409</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH304</course_code>
+        <course_code>SO409</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- PH306 - Offered in Semester 2 -->
     <course>
-        <course_code>PH306</course_code>
+        <course_code>SW100</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>PH306</course_code>
+        <course_code>SW100</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
-
-    <!-- Year 4 Courses -->
-    <!-- PH407 - Offered in Semester 2 -->
     <course>
-        <course_code>PH407</course_code>
+        <course_code>SW101</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH407</course_code>
+        <course_code>SW101</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- PH414 - Offered in Semester 2 -->
     <course>
-        <course_code>PH414</course_code>
+        <course_code>SW200</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH414</course_code>
+        <course_code>SW200</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- PH416 - Offered in Semester 1 -->
     <course>
-        <course_code>PH416</course_code>
+        <course_code>SW201</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>PH416</course_code>
+        <course_code>SW201</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- PH420 - Offered in Semester 2 -->
     <course>
-        <course_code>PH420</course_code>
+        <course_code>SW300</course_code>
         <semester>Semester 1</semester>
         <offered>false</offered>
     </course>
     <course>
-        <course_code>PH420</course_code>
+        <course_code>SW300</course_code>
         <semester>Semester 2</semester>
         <offered>true</offered>
     </course>
-
-    <!-- SC400 - Offered in Semester 1 -->
     <course>
-        <course_code>SC400</course_code>
+        <course_code>SW301</course_code>
         <semester>Semester 1</semester>
         <offered>true</offered>
     </course>
     <course>
-        <course_code>SC400</course_code>
+        <course_code>SW301</course_code>
         <semester>Semester 2</semester>
         <offered>false</offered>
     </course>
-
-    <!-- ST403 - Offered in Semester 2 -->
     <course>
-        <course_code>ST403</course_code>
+        <course_code>SW312</course_code>
         <semester>Semester 1</semester>
-        <offered>false</offered>
+        <offered>true</offered>
     </course>
     <course>
-        <course_code>ST403</course_code>
+        <course_code>SW312</course_code>
         <semester>Semester 2</semester>
-        <offered>true</offered>
+        <offered>false</offered>
     </course>
 </courseAvailability>

@@ -1,97 +1,748 @@
-<prerequisites>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS311"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="CS241"/>
-    <prerequisite prerequisiteName="IS226"/>
-    <prerequisite prerequisiteName="CS311"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="CS310"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="ST130"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="IS226"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="CS140"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS230"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS214"/>
-    <prerequisite prerequisiteName="CS218"/>
-    <prerequisite prerequisiteName="CS219"/>
-    <prerequisite prerequisiteName="CS241"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="IS222"/>
-    <prerequisite prerequisiteName="CS241"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS352"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS111"/>
-    <prerequisite prerequisiteName="MA111"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="IS121"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS112"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="CS211"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="CS214"/>
-    <prerequisite prerequisiteName="CS218"/>
-    <prerequisite prerequisiteName="CS219"/>
-    <prerequisite prerequisiteName="CS215"/>
-    <prerequisite prerequisiteName="CS215"/>
-    <prerequisite prerequisiteName="CS310"/>
-    <prerequisite prerequisiteName="CS352"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-    <prerequisite prerequisiteName="true"/>
-</prerequisites>
+<courses>
+  <course>
+    <courseCode>CS111</courseCode>
+    <courseName>Introduction to Computing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS121</courseCode>
+    <courseName>Introduction to Information Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA111</courseCode>
+    <courseName>Linear Algebra and Calculus</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU114</courseCode>
+    <courseName>English for Academic Purposes</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU100A</courseCode>
+    <courseName>Information Literacy (Online)</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS112</courseCode>
+    <courseName>Data Structure and Algorithms</courseName>
+    <prerequisite>CS111</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA161</courseCode>
+    <courseName>Discrete Mathematics</courseName>
+    <prerequisite>MA111</prerequisite>
+  </course>
+  <course>
+    <courseCode>ST130</courseCode>
+    <courseName>Basic Statistics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS122</courseCode>
+    <courseName>Application Programming</courseName>
+    <prerequisite>IS121</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS104</courseCode>
+    <courseName>Computing for Science and Technology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA112</courseCode>
+    <courseName>Calculus II</courseName>
+    <prerequisite>MA111</prerequisite>
+  </course>
+  <course>
+    <courseCode>ST131</courseCode>
+    <courseName>Introduction to Statistics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU100</courseCode>
+    <courseName>Communication and Information Literacy</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS211</courseCode>
+    <courseName>Computer Organization</courseName>
+    <prerequisite>CS112</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS230</courseCode>
+    <courseName>Requirements Engineering</courseName>
+    <prerequisite>CS111 or CS140</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS222</courseCode>
+    <courseName>Database Management Systems</courseName>
+    <prerequisite>IS121</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS215</courseCode>
+    <courseName>Computer Communications and Management</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS001</courseCode>
+    <courseName>Foundamentals of Computer Project</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU200</courseCode>
+    <courseName>Ethics and Governance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU204</courseCode>
+    <courseName>Pacific Folks</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS214</courseCode>
+    <courseName>Design of Data Structure and Algorithms</courseName>
+    <prerequisite>CS112</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS310</courseCode>
+    <courseName>Computer Systems</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS311</courseCode>
+    <courseName>Operating Systems</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS350</courseCode>
+    <courseName>Wireless Networks</courseName>
+    <prerequisite>CS311</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS317</courseCode>
+    <courseName>Computer and Network Security</courseName>
+    <prerequisite>CS311</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS324</courseCode>
+    <courseName>Distributed Computing</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS351</courseCode>
+    <courseName>Network Design and Administration</courseName>
+    <prerequisite>CS310</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS314</courseCode>
+    <courseName>Computing Projects</courseName>
+    <prerequisite>IS222, CS241, IS226</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS328</courseCode>
+    <courseName>Data Mining</courseName>
+    <prerequisite>IS222</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS333</courseCode>
+    <courseName>Project Management</courseName>
+    <prerequisite>75% Completion of 200 Level</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS351</courseCode>
+    <courseName>Data and Information Security</courseName>
+    <prerequisite>IS222</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS302</courseCode>
+    <courseName>Data Analytics</courseName>
+    <prerequisite>IS226</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS322</courseCode>
+    <courseName>Business Information Systems</courseName>
+    <prerequisite>IS222</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS221</courseCode>
+    <courseName>Web Application Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS202</courseCode>
+    <courseName>Data Science</courseName>
+    <prerequisite>ST130</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS226</courseCode>
+    <courseName>Systems, Analysis and Design</courseName>
+    <prerequisite>IS121</prerequisite>
+  </course>
+  <course>
+    <courseCode>CH105</courseCode>
+    <courseName>Chemistry for Physics Majors</courseName>
+    <prerequisite>true</prerequisite>
+    <note>Not required for EE or MM majors</note>
+  </course>
+  <course>
+    <courseCode>PH102</courseCode>
+    <courseName>Classical Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH103</courseCode>
+    <courseName>Quantum and Electrical Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA112</courseCode>
+    <courseName>Calculus II</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU100</courseCode>
+    <courseName>Communication and Information Literacy</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU114</courseCode>
+    <courseName>English for Academic Purposes</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH202</courseCode>
+    <courseName>Environmental Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH204</courseCode>
+    <courseName>Modern Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH206</courseCode>
+    <courseName>Electromagnetism and Electronics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU200</courseCode>
+    <courseName>Ethics and Governance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU204</courseCode>
+    <courseName>Pacific Worlds</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SC356</courseCode>
+    <courseName>Research Skills</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH301</courseCode>
+    <courseName>Renewable Energy Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH302</courseCode>
+    <courseName>Electronic Communication Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH304</courseCode>
+    <courseName>Solid State Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH306</courseCode>
+    <courseName>Special Topics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA111</courseCode>
+    <courseName>Linear Algebra and Calculus</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE102</courseCode>
+    <courseName>Fundamentals for Electrical and Electronics Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM103</courseCode>
+    <courseName>Engineering Mechanics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>UU100A</courseCode>
+    <courseName>Information Literacy (Online)</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE211</courseCode>
+    <courseName>Electrical Machines</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE212</courseCode>
+    <courseName>Analogue Electronics 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE222</courseCode>
+    <courseName>Digital Logic Design</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE224</courseCode>
+    <courseName>Signals and Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE225</courseCode>
+    <courseName>Amplifiers and Power Electronics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH302</courseCode>
+    <courseName>Advanced Physics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE312</courseCode>
+    <courseName>Control System Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE313</courseCode>
+    <courseName>Microprocessor Applications</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE314</courseCode>
+    <courseName>Electrical Engineering Design</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE321</courseCode>
+    <courseName>Power Systems Analysis</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE323</courseCode>
+    <courseName>Digital Control Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE325</courseCode>
+    <courseName>Electrical Drives</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE326</courseCode>
+    <courseName>Embedded Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>IndustrialAttachment</courseCode>
+    <courseName>10-Week Industrial Attachment</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PH102</courseCode>
+    <courseName>Physics for Engineers</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA112</courseCode>
+    <courseName>Advanced Calculus</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM101</courseCode>
+    <courseName>Engineering Graphics and Design</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM211</courseCode>
+    <courseName>Solid Mechanics 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM214</courseCode>
+    <courseName>Dynamics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM221</courseCode>
+    <courseName>Thermodynamics and Heat Transfer</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM222</courseCode>
+    <courseName>Fluid Mechanics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM223</courseCode>
+    <courseName>Manufacturing Processes</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM311</courseCode>
+    <courseName>Applied Thermo Fluids</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM315</courseCode>
+    <courseName>Solid Mechanics 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM321</courseCode>
+    <courseName>Refrigeration and Air Conditioning</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM323</courseCode>
+    <courseName>Manufacturing Systems</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS111</courseCode>
+    <courseName>Introduction to Computing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MG101</courseCode>
+    <courseName>Introduction to Management</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>ST131</courseCode>
+    <courseName>Introduction to Statistics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS112</courseCode>
+    <courseName>Data Structure and Algorithms</courseName>
+    <prerequisite>CS111</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA161</courseCode>
+    <courseName>Discrete Mathematics</courseName>
+    <prerequisite>MA111</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS140</courseCode>
+    <courseName>Introduction to Software Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS211</courseCode>
+    <courseName>Computer Organization</courseName>
+    <prerequisite>CS112</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS230</courseCode>
+    <courseName>Requirements Engineering</courseName>
+    <prerequisite>CS111 or CS140</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS221</courseCode>
+    <courseName>Web Application Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS222</courseCode>
+    <courseName>Database Management Systems</courseName>
+    <prerequisite>IS121</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS214</courseCode>
+    <courseName>Design of Data Structure and Algorithms</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS241</courseCode>
+    <courseName>Software Design and Implementation</courseName>
+    <prerequisite>CS112, CS230</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS218</courseCode>
+    <courseName>Mobile Computing</courseName>
+    <prerequisite>CS112</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS219</courseCode>
+    <courseName>Cloud Computing</courseName>
+    <prerequisite>CS112</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS310</courseCode>
+    <courseName>Computer Systems</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS311</courseCode>
+    <courseName>Operating Systems</courseName>
+    <prerequisite>CS211</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS333</courseCode>
+    <courseName>Project Management</courseName>
+    <prerequisite>75% Completion of 200 Level</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS352</courseCode>
+    <courseName>Cybersecurity Principles</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS324</courseCode>
+    <courseName>Distributed Systems</courseName>
+    <prerequisite>CS214 or CS218 or CS219</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS341</courseCode>
+    <courseName>Software Quality Assurance and Testing</courseName>
+    <prerequisite>CS241</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS328</courseCode>
+    <courseName>Data Mining</courseName>
+    <prerequisite>IS222</prerequisite>
+  </course>
+  <course>
+    <courseCode>IS314</courseCode>
+    <courseName>Computing Project</courseName>
+    <prerequisite>IS222 or CS241</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS403</courseCode>
+    <courseName>Cyber Defense: Governance and Risk Management</courseName>
+    <prerequisite>CS352, 75% completion of 300 Level courses</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS412</courseCode>
+    <courseName>Artificial Intelligence</courseName>
+    <prerequisite>75% completion of 300 Level courses</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS424</courseCode>
+    <courseName>Big Data Technologies</courseName>
+    <prerequisite>75% completion of 300 Level courses</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS400</courseCode>
+    <courseName>Industrial Experience Project</courseName>
+    <prerequisite>Completion of All 100,200,300,400 level courses</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS317</courseCode>
+    <courseName>Computer and Network Security</courseName>
+    <prerequisite>CS215</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS350</courseCode>
+    <courseName>Wireless Networks</courseName>
+    <prerequisite>CS215</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS351</courseCode>
+    <courseName>Network Design and Administration</courseName>
+    <prerequisite>CS310</prerequisite>
+  </course>
+  <course>
+    <courseCode>EE102</courseCode>
+    <courseName>Introduction to Electrical Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MM103</courseCode>
+    <courseName>Engineering Mathematics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS111</courseCode>
+    <courseName>Programming Concepts</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA211</courseCode>
+    <courseName>Advanced Calculus</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV211</courseCode>
+    <courseName>Solid Mechanics 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV212</courseCode>
+    <courseName>Metallurgy and Material Science</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EV201</courseCode>
+    <courseName>Environment and Society in the South Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>EN001</courseCode>
+    <courseName>Industrial Work Experience (IWE)</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>MA272</courseCode>
+    <courseName>Engineering Mathematics 4</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV203</courseCode>
+    <courseName>Engineering Survey</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV222</courseCode>
+    <courseName>Fluid Mechanics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CH205</courseCode>
+    <courseName>Chemistry for Engineers</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV311</courseCode>
+    <courseName>Concrete Technology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV312</courseCode>
+    <courseName>Structural Analysis</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV313</courseCode>
+    <courseName>Transportation Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV316</courseCode>
+    <courseName>Hydraulics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV321</courseCode>
+    <courseName>Steel Structures</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV322</courseCode>
+    <courseName>Construction Management</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV323</courseCode>
+    <courseName>Water Resources Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV324</courseCode>
+    <courseName>Soil Mechanics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV461</courseCode>
+    <courseName>Project Management</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV469</courseCode>
+    <courseName>Advanced Structural Design</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV488</courseCode>
+    <courseName>Capstone Project Part 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV462</courseCode>
+    <courseName>Foundation Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV463</courseCode>
+    <courseName>Bridge Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV464</courseCode>
+    <courseName>Hydrology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV491</courseCode>
+    <courseName>Civil Engineering Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV492</courseCode>
+    <courseName>Capstone Project Part 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV499</courseCode>
+    <courseName>Research Project</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV493</courseCode>
+    <courseName>Traffic Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV494</courseCode>
+    <courseName>Earthquake Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV495</courseCode>
+    <courseName>Sustainable Infrastructure</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CV496</courseCode>
+    <courseName>Advanced Geotechnics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SC400</courseCode>
+    <courseName>Research Methods</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS415</courseCode>
+    <courseName>Advanced Software Engineering</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>CS427</courseCode>
+    <courseName>Mobile Communications</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>Thesis</courseCode>
+    <courseName>Thesis</courseName>
+    <prerequisite>SC400 and three IS400-level courses</prerequisite>
+  </course>
+  <course>
+    <courseCode>Supervised Report</courseCode>
+    <courseName>Supervised Report</courseName>
+    <prerequisite>SC400, IS431 and four IS400-level courses</prerequisite>
+  </course>
+</courses>

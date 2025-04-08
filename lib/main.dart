@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Import all views used in the application
-import 'view/staff/homeStaff.dart';
+import 'view/SASstaff/homeStaff.dart';
 import 'view/SAdminPages/SASManage.dart';
 import 'view/student/stemp.dart';
 import 'view/SAdminPages/SAdminHome.dart';
-import 'view/SAS/homeSAS.dart';
+import 'view/SASmanager/homeSAS.dart';
 import 'view/student/homepage.dart';
 import 'login.dart';
 import 'view/student/studentprofile.dart';
 import 'view/student/course_selection_page.dart';
 import 'view/student/enrollment_page.dart';
-import 'view/staff/registerST.dart';
-import 'models/program_level_model.dart';
-import 'view/student/sageons.dart';
+import 'view/SASstaff/registerST.dart';
+import 'models/student/program_level_model.dart';
+import 'view/student/solass.dart';
 import 'view/student/finance.dart';
 
 // Import all ViewModel (state management) classes
 import 'viewmodels/login_viewmodel.dart';
-import 'viewmodels/homepage_viewmodel.dart';
-import 'viewmodels/profile_viewmodel.dart';
-import 'viewmodels/course_enrollment_viewmodel.dart';
-import 'viewmodels/finance_viewmodel.dart';
+import 'viewmodels/student/homepage_viewmodel.dart';
+import 'viewmodels/student/profile_viewmodel.dart';
+import 'viewmodels/student/course_enrollment_viewmodel.dart';
+import 'viewmodels/student/finance_viewmodel.dart';
 import 'viewmodels/registrationStatus_viewmodel.dart';
 
 // Import services
@@ -32,9 +32,9 @@ import 'theme_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load program levels from XML files
-  List<ProgramLevel> programLevels = await loadProgramLevels('assets/SAGEONS_2.xml');
-  List<ProgramLevel> programLevels1 = await loadProgramLevels('assets/STEMP.xml');
+  // Load program levels from XML files for STEMP and SoLaSS
+  List<ProgramLevel> stempProgramLevels = await loadProgramLevels('STEMP', 'programLevels.xml');
+  List<ProgramLevel> solassProgramLevels = await loadProgramLevels('SOLASS', 'programLevels.xml');
 
   runApp(
     MultiProvider(
@@ -48,21 +48,21 @@ void main() async {
         ChangeNotifierProvider(create: (_) => RegistrationStatusViewModel()), // Registration status state
       ],
       child: MyApp(
-        programLevels: programLevels,
-        programLevels1: programLevels1,
+        stempProgramLevels: stempProgramLevels,
+        solassProgramLevels: solassProgramLevels,
       ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  final List<ProgramLevel> programLevels;
-  final List<ProgramLevel> programLevels1;
+  final List<ProgramLevel> stempProgramLevels;
+  final List<ProgramLevel> solassProgramLevels;
 
   const MyApp({
     super.key,
-    required this.programLevels,
-    required this.programLevels1,
+    required this.stempProgramLevels,
+    required this.solassProgramLevels,
   });
 
   @override
@@ -94,8 +94,8 @@ class MyApp extends StatelessWidget {
         '/homeStaff': (context) => HomeStaff(), // SAS Staff Dashboard
         '/course_selection': (context) => CourseSelectionPage(), // Course selection page
         '/enrollment': (context) => EnrollmentPage(), // Enrollment page
-        '/sageons': (context) => SageonsPage(programLevels: programLevels), // Sageons page
-        '/stemp': (context) => StempPage(programLevels: programLevels1), // STEMP page
+        '/stemp': (context) => StempPage(programLevels: stempProgramLevels), // STEMP page
+        '/solass': (context) => SolassPage(programLevels: solassProgramLevels), // SoLaSS page
         '/registerStudent': (context) => RegisterStudentPage(), // Register student page
       },
     );

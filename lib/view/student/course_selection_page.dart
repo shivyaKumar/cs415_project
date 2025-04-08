@@ -1,9 +1,8 @@
-import 'package:cs415_project/view/widgets/custom_header.dart';
+import 'package:cs415_project/view/student/widgets/custom_header.dart';
+import 'package:cs415_project/view/student/widgets/custom_footer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/registrationStatus_viewmodel.dart';
-
 
 class CourseSelectionPage extends StatelessWidget {
   const CourseSelectionPage({super.key});
@@ -16,7 +15,9 @@ class CourseSelectionPage extends StatelessWidget {
       case 'STEMP':
         Navigator.pushNamed(context, '/stemp');
         break;
-      // Add other pages when available
+      case 'SOLASS':
+        Navigator.pushNamed(context, '/solass');
+        break;
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('$programName page is under development!')),
@@ -26,12 +27,13 @@ class CourseSelectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width; // Dynamically get screen width
     final List<String> programs = ['SPACE', 'STEMP', 'SOLASS', 'SAGEONS', 'SAFE', 'SBM'];
     final registrationStatus = Provider.of<RegistrationStatusViewModel>(context);
 
     if (!registrationStatus.isRegistrationOpen) {
       return Scaffold(
-        appBar: CustomHeader(),
+        appBar: const CustomHeader(), // Use the custom header
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -50,19 +52,19 @@ class CourseSelectionPage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: _buildFooter(), // Add the footer here
+        bottomNavigationBar: CustomFooter(screenWidth: screenWidth), // Use the custom footer
       );
     }
 
     return Scaffold(
-      appBar: CustomHeader(),
+      appBar: const CustomHeader(), // Use the custom header
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
           Expanded(
             child: GridView.builder(
-              padding: EdgeInsets.all(16),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              padding: const EdgeInsets.all(16),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
@@ -80,7 +82,11 @@ class CourseSelectionPage extends StatelessWidget {
                     child: Center(
                       child: Text(
                         programs[index],
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -88,88 +94,9 @@ class CourseSelectionPage extends StatelessWidget {
               },
             ),
           ),
-          _buildFooter(), 
+          CustomFooter(screenWidth: screenWidth), // Use the custom footer
         ],
       ),
     );
-  }
-
-  Widget _buildFooter({double height = 80}) {
-    return SizedBox(
-      height: height,
-      child: Container(
-        width: double.infinity,
-        color: Colors.teal,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/copyright'),
-                        child: const Text(
-                          'Copyright',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text('|', style: TextStyle(color: Colors.white)),
-                      const SizedBox(width: 8),
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/contact'),
-                        child: const Text(
-                          'Contact Us',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    '© Copyright 1968 - 2025. All Rights Reserved.',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/images/usp_logo.svg',
-                  width: 133,
-                  height: 60,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Text('The University of the South Pacific', style: TextStyle(color: Colors.white)),
-                  Text('Laucala Campus, Suva, Fiji', style: TextStyle(color: Colors.white)),
-                  Text('Tel: +679 323 1000', style: TextStyle(color: Colors.white)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _openLink(String url) {
-    print('Opening link: $url');
   }
 }

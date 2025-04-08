@@ -3,21 +3,21 @@ import '/services/xml_parser.dart';
 import '../../models/student/course_model.dart';
 import '../../models/student/program_level_model.dart';
 import '../../services/local_storage.dart';
-import 'widgets/custom_header.dart';
-import 'widgets/custom_footer.dart';
+import 'widgets/custom_header.dart'; // Import custom header
+import 'widgets/custom_footer.dart'; // Import custom footer
 
-class StempPage extends StatefulWidget {
+class SolassPage extends StatefulWidget {
   final List<ProgramLevel> programLevels;
-  const StempPage({super.key, required this.programLevels});
+  const SolassPage({super.key, required this.programLevels});
 
   @override
-  StempPageState createState() => StempPageState();
+  SolassPageState createState() => SolassPageState();
 }
 
-class StempPageState extends State<StempPage> {
+class SolassPageState extends State<SolassPage> {
   List<String> selectedCourses = [];
   List<Course> courses = [];
-  Map<String, List<String>> courseAvailability = {};
+  Map<String, List<String>> courseAvailability = {}; // Map to store course availability by semester
 
   @override
   void initState() {
@@ -27,13 +27,16 @@ class StempPageState extends State<StempPage> {
 
   Future<void> _loadCourses() async {
     try {
-      final coursesList = await loadCourses('STEMP', 'courseTypes.xml');
-      final prerequisites = await loadPrerequisites('STEMP', 'prerequisites.xml');
-      final availability = await loadCourseAvailability('STEMP', 'courseAvailability.xml');
+      // Load courses from the SoLaSS folder
+      final coursesList = await loadCourses('SOLASS', 'courses.xml');
+      final prerequisites = await loadPrerequisites('SOLASS', 'prerequisites.xml');
+
+      // Load course availability
+      final availability = await loadCourseAvailability('SOLASS', 'courseAvailability.xml');
 
       setState(() {
         courses = coursesList;
-        courseAvailability = availability;
+        courseAvailability = availability; // Store course availability data
       });
     } catch (e) {
       print('Error loading XML files: $e');
@@ -41,9 +44,10 @@ class StempPageState extends State<StempPage> {
   }
 
   bool canSelectCourse(Course course) {
-    if (course.type == "half") return true;
-    if (selectedCourses.length >= 4) return false;
-    if (course.prerequisites.isEmpty) return true;
+    // Check if the course is a half course or full course using sem_type
+    if (course.type == "half") return true; // Half courses can always be selected
+    if (selectedCourses.length >= 4) return false; // Limit to 4 courses
+    if (course.prerequisites.isEmpty) return true; // No prerequisites, can select
     return course.prerequisites.every((prereq) => selectedCourses.contains(prereq));
   }
 
@@ -59,7 +63,31 @@ class StempPageState extends State<StempPage> {
 
   void proceedToEnrollment() async {
     try {
+      //final email = loggedInEmails.isNotEmpty ? loggedInEmails.last : 'Unknown';
+
       await LocalStorage.saveSelectedCourses(selectedCourses);
+
+      // Format date and time
+      // final now = DateTime.now();
+      // final formattedDateTime = DateFormat('yyyy-MM-dd HH:mm:ss').format(now);
+
+      // final courseList = selectedCourses.join('\n');
+      // final fileContent = '''
+      //   Created by: $email
+      //   Date and Time: $formattedDateTime
+
+      //   Selected Courses:
+      //   $courseList
+      //   ''';
+      // final bytes = Uint8List.fromList(fileContent.codeUnits);
+
+      // // Save the file using FileSaver
+      // await FileSaver.instance.saveFile(
+      //   name: "selected_courses",
+      //   bytes: bytes,
+      //   ext: "txt",
+      //   mimeType: MimeType.text,
+      // );
       Navigator.pushNamed(context, '/enrollment', arguments: selectedCourses);
     } catch (e) {
       print('Error saving file: $e');
@@ -68,10 +96,9 @@ class StempPageState extends State<StempPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
+    final double screenWidth = MediaQuery.of(context).size.width; // Move screenWidth here
     return Scaffold(
-      appBar: const CustomHeader(),
+      appBar: const CustomHeader(), // Use the custom header
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -134,7 +161,7 @@ class StempPageState extends State<StempPage> {
               child: const Center(child: Text("Proceed to Enrollment")),
             ),
             const SizedBox(height: 20),
-            CustomFooter(screenWidth: screenWidth),
+            CustomFooter(screenWidth: screenWidth), // Use the custom footer
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-import '../../models/invoice_model.dart';
+import '../models/student/invoice_model.dart';
 
 class PDFService {
   static Future<void> generateInvoicePDF(Invoice invoice) async {

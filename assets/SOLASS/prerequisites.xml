@@ -1,0 +1,1040 @@
+<courses>
+  <!-- COJ Courses -->
+  <course>
+    <courseCode>COJ01</courseCode>
+    <courseName>Introduction to Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>COJ02</courseCode>
+    <courseName>Courts and Their Processes</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>COJ03</courseCode>
+    <courseName>Criminal Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>COJ04</courseCode>
+    <courseName>Civil Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- DG Courses -->
+  <course>
+    <courseCode>DG100</courseCode>
+    <courseName>Introduction to Leadership, Governance and Human Rights</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG101</courseCode>
+    <courseName>Principles of Good Leadership and Governance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG102</courseCode>
+    <courseName>Laws, Legal Systems and Access to Justice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG200</courseCode>
+    <courseName>Human Rights at Local, National, Regional and International</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG201</courseCode>
+    <courseName>Introduction to the Role and Challenges of Human Rights Defenders</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG202</courseCode>
+    <courseName>Corruption and Anti-Corruption in Pacific Island Countries</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG301</courseCode>
+    <courseName>Leadership, Governance and Human Rights Internship</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG302</courseCode>
+    <courseName>Building Resilience Among Human Rights Defenders</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG400</courseCode>
+    <courseName>Advanced Research Methodology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG403</courseCode>
+    <courseName>Public Financial Management</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG404</courseCode>
+    <courseName>Ethics of Governance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG405</courseCode>
+    <courseName>Special Topic in Governance in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG406</courseCode>
+    <courseName>Theories of Governance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG407</courseCode>
+    <courseName>Conflict and Justice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG408</courseCode>
+    <courseName>Public Policy Implementation and Appraisal</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG410</courseCode>
+    <courseName>Development Theories and Alternatives</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG411</courseCode>
+    <courseName>Governance and Governments in the South Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG413</courseCode>
+    <courseName>Special Topic in Development Studies 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG414</courseCode>
+    <courseName>Special Topic in Development Studies 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG415</courseCode>
+    <courseName>Urbanisation, Development and Urban Planning</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG416</courseCode>
+    <courseName>Development Internship</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG417</courseCode>
+    <courseName>NGOs, Civil Society and Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG421</courseCode>
+    <courseName>Development and Change in the Contemporary Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DG422</courseCode>
+    <courseName>Environmental Change and Green Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- DOJ Courses -->
+  <course>
+    <courseCode>DOJ01</courseCode>
+    <courseName>Professionalism and Communication in Court Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>DOJ02</courseCode>
+    <courseName>Judicial Administration</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- GN Courses -->
+  <course>
+    <courseCode>GN400</courseCode>
+    <courseName>Gender and Feminisms in the Pacific Context</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>GN401</courseCode>
+    <courseName>Gender, Global Change and Development in a Comparative Perspective</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>GN402</courseCode>
+    <courseName>Gender and Environment</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- HY Courses -->
+  <course>
+    <courseCode>HY101</courseCode>
+    <courseName>Pacific Islands Prehistory</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY102</courseCode>
+    <courseName>20th Century World History</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY201</courseCode>
+    <courseName>Pacific History: Colonial Worlds to Independence</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY202</courseCode>
+    <courseName>Pacific History: Pre-colonial Power Struggle in Polynesia</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY206</courseCode>
+    <courseName>Modern East Asian History</courseName>
+    <prerequisite>HY101 or HY102</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY207</courseCode>
+    <courseName>Pacific History: Melanesian Worlds</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY302</courseCode>
+    <courseName>Special Topic: History of Fiji</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY303</courseCode>
+    <courseName>Special Topic: USA in Asia Pacific Region</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY304</courseCode>
+    <courseName>Pacific History: Protest and Identity</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY305</courseCode>
+    <courseName>British Empire and Commonwealth</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY401</courseCode>
+    <courseName>Reading and Viewing in Pacific History</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY402</courseCode>
+    <courseName>Migration and Culture</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>HY404</courseCode>
+    <courseName>Special Topic</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- LW Courses -->
+  <course>
+    <courseCode>LW110</courseCode>
+    <courseName>Law and Society</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW111</courseCode>
+    <courseName>Courts and Dispute Resolution 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW112</courseCode>
+    <courseName>Legislation</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW113</courseCode>
+    <courseName>Courts and Dispute Resolution 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW201</courseCode>
+    <courseName>Law of Contract 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW202</courseCode>
+    <courseName>Law of Contract 2</courseName>
+    <prerequisite>LW201</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW203</courseCode>
+    <courseName>Torts 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW204</courseCode>
+    <courseName>Torts 2</courseName>
+    <prerequisite>LW203</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW205</courseCode>
+    <courseName>Criminal Law and Procedure 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW206</courseCode>
+    <courseName>Criminal Law and Procedure 2</courseName>
+    <prerequisite>LW205</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW300</courseCode>
+    <courseName>Property Law 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW301</courseCode>
+    <courseName>Property Law 2</courseName>
+    <prerequisite>LW300</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW302</courseCode>
+    <courseName>Equity and Trusts</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW303</courseCode>
+    <courseName>Succession</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW304</courseCode>
+    <courseName>Legal Drafting</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW305</courseCode>
+    <courseName>Current Developments in Pacific Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW306</courseCode>
+    <courseName>Legal Ethics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW307</courseCode>
+    <courseName>Evidence</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW308</courseCode>
+    <courseName>Constitutional Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW309</courseCode>
+    <courseName>Administrative Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW310</courseCode>
+    <courseName>Family Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW312</courseCode>
+    <courseName>E-Commerce Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW314</courseCode>
+    <courseName>Special Topic</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW317</courseCode>
+    <courseName>Health Law and Ethics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW322</courseCode>
+    <courseName>Intellectual Property Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW324</courseCode>
+    <courseName>European Union Law Relating to the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW330</courseCode>
+    <courseName>Public International Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW331</courseCode>
+    <courseName>Human Rights</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW334</courseCode>
+    <courseName>Serious Financial Crimes</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW340</courseCode>
+    <courseName>Pacific Land Tenure</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW341</courseCode>
+    <courseName>Customary Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW352</courseCode>
+    <courseName>Regional Environmental Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW353</courseCode>
+    <courseName>International Environmental Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW355</courseCode>
+    <courseName>Law of the Sea</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW356</courseCode>
+    <courseName>Marine Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW370</courseCode>
+    <courseName>Company and Partnership Law 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW371</courseCode>
+    <courseName>Company and Partnership Law 2</courseName>
+    <prerequisite>LW370</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW372</courseCode>
+    <courseName>Commercial Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW373</courseCode>
+    <courseName>Foreign Trade and Investment Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW374</courseCode>
+    <courseName>Revenue and Taxation Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW375</courseCode>
+    <courseName>Labour Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW390</courseCode>
+    <courseName>Research Project</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW391</courseCode>
+    <courseName>Law Clinic</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW392</courseCode>
+    <courseName>Civil Procedure</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW393</courseCode>
+    <courseName>Advocacy Skills and Prosecutorial Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW395</courseCode>
+    <courseName>Special Topic: Climate Change Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW395A</courseCode>
+    <courseName>Special Topic International Fisheries Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW395C</courseCode>
+    <courseName>Special Topic International Criminal Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW400</courseCode>
+    <courseName>Advanced Pacific Legal System</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW402</courseCode>
+    <courseName>Advanced Equity and Trusts</courseName>
+    <prerequisite>LW302</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW403</courseCode>
+    <courseName>Advanced Succession</courseName>
+    <prerequisite>LW303</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW407</courseCode>
+    <courseName>Advanced Evidence</courseName>
+    <prerequisite>LW307</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW410</courseCode>
+    <courseName>Advanced Family Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW412</courseCode>
+    <courseName>Advanced E-Commerce Law</courseName>
+    <prerequisite>LW312</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW414</courseCode>
+    <courseName>Advanced Special Topic</courseName>
+    <prerequisite>LW314</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW417</courseCode>
+    <courseName>Advanced Health Law and Ethics</courseName>
+    <prerequisite>LW317</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW422</courseCode>
+    <courseName>Advanced Intellectual Property Law</courseName>
+    <prerequisite>LW322</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW424</courseCode>
+    <courseName>Advanced European Union Law Relating to the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW430</courseCode>
+    <courseName>Advanced Public International Law</courseName>
+    <prerequisite>LW330</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW431</courseCode>
+    <courseName>Advanced Human Rights</courseName>
+    <prerequisite>LW331</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW434</courseCode>
+    <courseName>Advanced Serious Financial Crimes</courseName>
+    <prerequisite>LW334</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW440</courseCode>
+    <courseName>Advanced Pacific Land Tenure</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW441</courseCode>
+    <courseName>Advanced Customary Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW452</courseCode>
+    <courseName>Advanced Regional Environmental Law</courseName>
+    <prerequisite>LW352</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW453</courseCode>
+    <courseName>Advanced International Environmental Law</courseName>
+    <prerequisite>LW353</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW455</courseCode>
+    <courseName>Advanced Law of the Sea</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW456</courseCode>
+    <courseName>Advanced Marine Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW470</courseCode>
+    <courseName>Advanced Company and Partnership Law 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW471</courseCode>
+    <courseName>Advanced Company and Partnership Law 2</courseName>
+    <prerequisite>LW470</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW472</courseCode>
+    <courseName>Advanced Commercial Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW473</courseCode>
+    <courseName>Advanced Foreign Trade and Investment Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW474</courseCode>
+    <courseName>Advanced Revenue and Taxation Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW475</courseCode>
+    <courseName>Advanced Labour Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW490</courseCode>
+    <courseName>Advanced Research Project</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW492</courseCode>
+    <courseName>Advanced Civil Procedure</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW493</courseCode>
+    <courseName>Advanced Advocacy Skills and Prosecutorial Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW495</courseCode>
+    <courseName>Advanced Special Topic: Climate Change Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW495A</courseCode>
+    <courseName>Advanced Special Topic International Fisheries Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LW495C</courseCode>
+    <courseName>Advanced Special Topic International Criminal Law</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- LWD Courses -->
+  <course>
+    <courseCode>LWD01</courseCode>
+    <courseName>Criminal Litigation Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD02</courseCode>
+    <courseName>Civil Litigation Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD03</courseCode>
+    <courseName>Wills and Estates Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD04</courseCode>
+    <courseName>Conveyancing Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD05</courseCode>
+    <courseName>Business Law, Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD06</courseCode>
+    <courseName>Family Law and Human Rights, Skills and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD07</courseCode>
+    <courseName>Ethics and Professionalism and Work Skills</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD08</courseCode>
+    <courseName>Practice Placement</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD11</courseCode>
+    <courseName>Back to Basics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD12</courseCode>
+    <courseName>Working Within Limits</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD13</courseCode>
+    <courseName>Making the Right Expression</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD14</courseCode>
+    <courseName>Putting on the Style, Getting Organised</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD15</courseCode>
+    <courseName>Topping and Tailing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD16</courseCode>
+    <courseName>Particular Cases</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>LWD17</courseCode>
+    <courseName>Drafting Workshop</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- PL Courses -->
+  <course>
+    <courseCode>PL100</courseCode>
+    <courseName>Politics and Government</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL101</courseCode>
+    <courseName>Politics of Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL200</courseCode>
+    <courseName>Pacific in a Changing World Order</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL201</courseCode>
+    <courseName>International Politics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL202</courseCode>
+    <courseName>Political Ideologies</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL203</courseCode>
+    <courseName>Governance and Development in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL300</courseCode>
+    <courseName>Parties, Electoral Politics and Democracy: Case Studies</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL302</courseCode>
+    <courseName>International Politics of Asia-Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL305</courseCode>
+    <courseName>Politics of Human Rights</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL307</courseCode>
+    <courseName>Political Leadership</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL400</courseCode>
+    <courseName>Regional Diplomacy in the Pacific Islands</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL402</courseCode>
+    <courseName>Intervention and Peace Building</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL403</courseCode>
+    <courseName>Pacific Politics</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL409</courseCode>
+    <courseName>Diplomacy, Negotiations and Statecraft</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL410</courseCode>
+    <courseName>World Politics and International Relations</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PL411</courseCode>
+    <courseName>Research Essay in Diplomacy and International Affairs</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- PP Courses -->
+  <course>
+    <courseCode>PP101</courseCode>
+    <courseName>Contemporary Issues in Pacific Policing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP201</courseCode>
+    <courseName>Comparative and International Policing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP202</courseCode>
+    <courseName>Police and Society in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP300</courseCode>
+    <courseName>Action Research in a Police Context</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP301</courseCode>
+    <courseName>Police Leadership and Command Management</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP302</courseCode>
+    <courseName>Ethical Dimensions in Policing</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP404</courseCode>
+    <courseName>Border Management and the Security Context</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP405</courseCode>
+    <courseName>Ethical Issues in Leadership and Command</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP406</courseCode>
+    <courseName>Border Security Intelligence and the International Security Environment</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PP407</courseCode>
+    <courseName>International Cooperation, Partnership and the Border Security Context</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- PS Courses -->
+  <course>
+    <courseCode>PS101</courseCode>
+    <courseName>Introduction to Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS102</courseCode>
+    <courseName>Developmental Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS103</courseCode>
+    <courseName>Research Methods and Analysis for Social Sciences 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS107</courseCode>
+    <courseName>Approaches to Social Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS203</courseCode>
+    <courseName>Psychological Research Methods and Analysis 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS205</courseCode>
+    <courseName>Cognitive Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS206</courseCode>
+    <courseName>Cross-cultural Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS303</courseCode>
+    <courseName>Psychological Research Methods and Analysis 3</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS304</courseCode>
+    <courseName>Psychology of Personality and Individual Differences</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS305</courseCode>
+    <courseName>Psychology of Individual and Community Health</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS306</courseCode>
+    <courseName>Cognitive Neuropsychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS314</courseCode>
+    <courseName>Applying Psychology in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS402</courseCode>
+    <courseName>Advanced Cross-cultural Psychology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS407</courseCode>
+    <courseName>Psychological Assessment</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>PS408</courseCode>
+    <courseName>Clinical and Counselling Intervention</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- SO Courses -->
+  <course>
+    <courseCode>SO100</courseCode>
+    <courseName>Themes and Perspectives in Sociology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO122</courseCode>
+    <courseName>Classical Sociological Theories and Methodologies</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO200</courseCode>
+    <courseName>Modern Social Theory</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO201</courseCode>
+    <courseName>Society, Culture and Change in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO207</courseCode>
+    <courseName>Families, Sexuality and Change in the Pacific</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO212</courseCode>
+    <courseName>Race and Ethnicity</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO300</courseCode>
+    <courseName>Research Methods in Sociology</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO301</courseCode>
+    <courseName>Sociology of Public Policy and Administration</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO303</courseCode>
+    <courseName>Advanced Sociological Theory</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO304</courseCode>
+    <courseName>Religion and Politics in Contemporary Society</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO311</courseCode>
+    <courseName>Crime and Deviance</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO401</courseCode>
+    <courseName>Theories of Social Inequality</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO408</courseCode>
+    <courseName>Issues in Social and Public Policy</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO409</courseCode>
+    <courseName>Social Development</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SO415</courseCode>
+    <courseName>Contemporary Social Issues</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+
+  <!-- SW Courses -->
+  <course>
+    <courseCode>SW100</courseCode>
+    <courseName>Introduction to Social and Community Work Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW101</courseCode>
+    <courseName>Social Policy: An Introduction</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW200</courseCode>
+    <courseName>Fieldwork Practice 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW201</courseCode>
+    <courseName>Social and Community Work Practice 1</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW300</courseCode>
+    <courseName>Fieldwork Practice 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW301</courseCode>
+    <courseName>Social and Community Work Practice 2</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+  <course>
+    <courseCode>SW312</courseCode>
+    <courseName>Counselling Theory and Practice</courseName>
+    <prerequisite>true</prerequisite>
+  </course>
+</courses>

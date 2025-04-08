@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../viewmodels/homepage_viewmodel.dart';
+import '../../../viewmodels/student/homepage_viewmodel.dart';
 
 /// A reusable header widget (AppBar) for pages that share
 /// the same user menu, except login.
@@ -45,6 +45,9 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
           offset: const Offset(0, kToolbarHeight),
           onSelected: (value) {
             switch (value) {
+              case 'home':
+                Navigator.pushNamed(context, '/homepage'); // Navigate to Home
+                break;
               case 'profile':
                 Navigator.pushNamed(context, '/profile');
                 break;
@@ -75,6 +78,26 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
               child: Text('Hi, ${homepageViewModel.username ?? 'Guest'}'),
             ),
             const PopupMenuDivider(),
+
+            PopupMenuItem<String>(
+              value: 'home',
+              child: Container(
+                color: (currentRoute == '/homepage') ? navbarBlue : null,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: (currentRoute == '/homepage') ? Colors.white : Colors.black,
+                  ),
+                  title: Text(
+                    'Home',
+                    style: TextStyle(
+                      color: (currentRoute == '/homepage') ? Colors.white : Colors.black,
+                      fontWeight: (currentRoute == '/homepage') ? FontWeight.bold : FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
             // Profile
             PopupMenuItem<String>(

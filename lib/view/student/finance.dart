@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ViewModel handles business logic and data fetching (SOLID: SRP, OOP: Separation of Concerns)
-import '../../viewmodels/finance_viewmodel.dart';
+import '../../viewmodels/student/finance_viewmodel.dart';
 
 // Data models that represent individual entities (OOP: Encapsulation)
-import '../../models/invoice_model.dart';
-import '../../models/hold_model.dart';
-import '../../models/payment_model.dart';
-import '../../models/refund_model.dart';
+import '../../models/student/invoice_model.dart';
+import '../../models/student/hold_model.dart';
+import '../../models/student/payment_model.dart';
+import '../../models/student/refund_model.dart';
 
 // Custom reusable widgets for header and footer 
-import '../widgets/custom_header.dart';
-import '../widgets/custom_footer.dart';
+import 'widgets/custom_header.dart';
+import 'widgets/custom_footer.dart';
 
 // Service class responsible for generating PDF files (SOLID: SRP)
 import '../../services/pdf_service.dart';

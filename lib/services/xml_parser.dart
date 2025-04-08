@@ -1,21 +1,23 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:xml/xml.dart' as xml;
 
-import '../models/course_model.dart';
-import '../models/program_level_model.dart';
-import '../models/program_model.dart';
-import '../models/year_model.dart';
+import '../models/student/course_model.dart';
+import '../models/student/program_level_model.dart';
+import '../models/student/program_model.dart';
+import '../models/student/year_model.dart';
+// Import the CourseAvailability model
 
-/// Load courses from the courses.xml file
-Future<List<Course>> loadCourses(String filePath) async {
+/// Load courses from the courseTypes.xml file
+Future<List<Course>> loadCourses(String folder, String fileName) async {
   try {
+    final String filePath = 'assets/$folder/$fileName';
     final String xmlString = await rootBundle.loadString(filePath);
     final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
 
     return document.findAllElements('course').map((courseNode) {
       final courseCode = courseNode.getAttribute('code') ?? '';
       final courseName = courseNode.getAttribute('courseName') ?? '';
-      final type = courseNode.getAttribute('courseTypeName') ?? '';
+      final semType = courseNode.getAttribute('sem_type')?.toLowerCase() == 'true'; // Check sem_type
       final prerequisitesString = courseNode.getAttribute('prerequisites') ?? '';
       final prerequisites = prerequisitesString.isNotEmpty
           ? prerequisitesString.split(',')
@@ -25,7 +27,7 @@ Future<List<Course>> loadCourses(String filePath) async {
         code: courseCode,
         name: courseName,
         prerequisites: prerequisites,
-        type: type,
+        type: semType ? "full" : "half", // Use semType to determine course type
       );
     }).toList();
   } catch (e) {
@@ -35,8 +37,9 @@ Future<List<Course>> loadCourses(String filePath) async {
 }
 
 /// Load prerequisites from the prerequisites.xml file
-Future<Map<String, List<String>>> loadPrerequisites(String filePath) async {
+Future<Map<String, List<String>>> loadPrerequisites(String folder, String fileName) async {
   try {
+    final String filePath = 'assets/$folder/$fileName';
     final String xmlString = await rootBundle.loadString(filePath);
     final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
 
@@ -54,8 +57,9 @@ Future<Map<String, List<String>>> loadPrerequisites(String filePath) async {
 }
 
 /// Load program levels from the programLevels.xml file
-Future<List<ProgramLevel>> loadProgramLevels(String filePath) async {
+Future<List<ProgramLevel>> loadProgramLevels(String folder, String fileName) async {
   try {
+    final String filePath = 'assets/$folder/$fileName';
     final String xmlString = await rootBundle.loadString(filePath);
     final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
 
@@ -68,7 +72,7 @@ Future<List<ProgramLevel>> loadProgramLevels(String filePath) async {
           final courses = yearNode.findAllElements('course').map((courseNode) {
             final courseCode = courseNode.getAttribute('code') ?? '';
             final courseName = courseNode.getAttribute('courseName') ?? '';
-            final type = courseNode.getAttribute('courseTypeName') ?? '';
+            final semType = courseNode.getAttribute('sem_type')?.toLowerCase() == 'true'; // Check sem_type
             final prerequisitesString = courseNode.getAttribute('prerequisites') ?? '';
             final prerequisites = prerequisitesString.isNotEmpty
                 ? prerequisitesString.split(',')
@@ -78,7 +82,7 @@ Future<List<ProgramLevel>> loadProgramLevels(String filePath) async {
               code: courseCode,
               name: courseName,
               prerequisites: prerequisites,
-              type: type,
+              type: semType ? "full" : "half", // Use semType to determine course type
             );
           }).toList();
           return Year(yearNumber: yearNumber, courses: courses);
@@ -93,9 +97,39 @@ Future<List<ProgramLevel>> loadProgramLevels(String filePath) async {
   }
 }
 
-/// Load programs from the programs.xml file
-Future<List<Program>> loadPrograms(String filePath) async {
+/// Load course availability from the courseAvailability.xml file
+Future<Map<String, List<String>>> loadCourseAvailability(String folder, String fileName) async {
   try {
+    final String filePath = 'assets/$folder/$fileName';
+    final String xmlString = await rootBundle.loadString(filePath);
+    final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
+
+    final Map<String, List<String>> availabilityMap = {};
+
+    for (final courseNode in document.findAllElements('course')) {
+      final courseCode = courseNode.findElements('course_code').first.text;
+      final semester = courseNode.findElements('semester').first.text;
+      final offered = courseNode.findElements('offered').first.text.toLowerCase() == 'true';
+
+      if (offered) {
+        if (!availabilityMap.containsKey(courseCode)) {
+          availabilityMap[courseCode] = [];
+        }
+        availabilityMap[courseCode]!.add(semester);
+      }
+    }
+
+    return availabilityMap;
+  } catch (e) {
+    print("Error parsing course availability XML: $e");
+    return {};
+  }
+}
+
+/// Load programs from the programs.xml file
+Future<List<Program>> loadPrograms(String folder, String fileName) async {
+  try {
+    final String filePath = 'assets/$folder/$fileName';
     final String xmlString = await rootBundle.loadString(filePath);
     final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
 
@@ -106,7 +140,7 @@ Future<List<Program>> loadPrograms(String filePath) async {
         final courses = yearNode.findAllElements('course').map((courseNode) {
           final courseCode = courseNode.getAttribute('code') ?? '';
           final courseName = courseNode.getAttribute('courseName') ?? '';
-          final type = courseNode.getAttribute('courseTypeName') ?? '';
+          final semType = courseNode.getAttribute('sem_type')?.toLowerCase() == 'true'; // Check sem_type
           final prerequisitesString = courseNode.getAttribute('prerequisites') ?? '';
           final prerequisites = prerequisitesString.isNotEmpty
               ? prerequisitesString.split(',')
@@ -116,7 +150,7 @@ Future<List<Program>> loadPrograms(String filePath) async {
             code: courseCode,
             name: courseName,
             prerequisites: prerequisites,
-            type: type,
+            type: semType ? "full" : "half", // Use semType to determine course type
           );
         }).toList();
         return Year(yearNumber: yearNumber, courses: courses);
@@ -125,51 +159,6 @@ Future<List<Program>> loadPrograms(String filePath) async {
     }).toList();
   } catch (e) {
     print("Error parsing programs XML: $e");
-    return [];
-  }
-}
-
-/// Load program types from the programTypes.xml file
-Future<List<String>> loadProgramTypes(String filePath) async {
-  try {
-    final String xmlString = await rootBundle.loadString(filePath);
-    final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
-
-    return document.findAllElements('programType').map((element) {
-      return element.getAttribute('programTypeName') ?? 'Unknown Program Type';
-    }).toList();
-  } catch (e) {
-    print("Error parsing program types XML: $e");
-    return [];
-  }
-}
-
-/// Load semesters from the semesters.xml file
-Future<List<String>> loadSemesters(String filePath) async {
-  try {
-    final String xmlString = await rootBundle.loadString(filePath);
-    final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
-
-    return document.findAllElements('semester').map((element) {
-      return element.getAttribute('semesterName') ?? 'Unknown Semester';
-    }).toList();
-  } catch (e) {
-    print("Error parsing semesters XML: $e");
-    return [];
-  }
-}
-
-/// Load sub-programs from the subPrograms.xml file
-Future<List<String>> loadSubPrograms(String filePath) async {
-  try {
-    final String xmlString = await rootBundle.loadString(filePath);
-    final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
-
-    return document.findAllElements('subProgram').map((element) {
-      return element.getAttribute('subProgramName') ?? 'Unknown Sub-Program';
-    }).toList();
-  } catch (e) {
-    print("Error parsing sub-programs XML: $e");
     return [];
   }
 }

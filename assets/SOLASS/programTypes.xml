@@ -1,0 +1,23 @@
+<programTypes>
+    <programType programName="Bachelor Of Arts(History)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Law)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Pacific Policing)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Politics and International Affairs)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Psychology)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Social Work)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(Sociology)" programTypeName="Single Major" />
+    <programType programName="Bachelor Of Arts(History)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Law)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Pacific Policing)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Politics and International Affairs)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Psychology)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Social Work)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(Sociology)" programTypeName="Double Major" />
+    <programType programName="Bachelor Of Arts(History)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Law)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Pacific Policing)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Politics and International Affairs)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Psychology)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Social Work)" programTypeName="Minor" />
+    <programType programName="Bachelor Of Arts(Sociology)" programTypeName="Minor" />
+</programTypes>

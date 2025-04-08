@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/invoice_model.dart';
-import '../models/hold_model.dart';
-import '../models/payment_model.dart';
-import '../models/refund_model.dart';
+import '../../models/student/invoice_model.dart';
+import '../../models/student/hold_model.dart';
+import '../../models/student/payment_model.dart';
+import '../../models/student/refund_model.dart';
 
 /// ViewModel responsible for managing and notifying changes to finance-related data.
 /// Applies the ChangeNotifier pattern for reactive UI updates using Provider (OOP: Encapsulation & SRP).

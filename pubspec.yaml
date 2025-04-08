@@ -35,11 +35,20 @@ flutter:
     - assets/STEMP.xml
     - assets/STEMP/courses.xml
     - assets/STEMP/prerequisites.xml
-    - assets/STEMP/programLevels.xml
+    - assets/STEMP/courseAvailability.xml
+    - assets/STEMP/courseTypes.xml
     - assets/STEMP/programs.xml
     - assets/STEMP/programTypes.xml
-    - assets/STEMP/semesters.xml
     - assets/STEMP/subPrograms.xml
+    - assets/SOLASS/courses.xml
+    - assets/SOLASS/prerequisites.xml
+    - assets/SOLASS/courseAvailability.xml
+    - assets/SOLASS/courseTypes.xml
+    - assets/SOLASS/programs.xml
+    - assets/SOLASS/programTypes.xml
+    - assets/SOLASS/subPrograms.xml
+    - assets/programLevels.xml
+    - assets/semesters.xml
     - assets/campuses.xml
     - assets/images/header.png
     - assets/images/homepage.png

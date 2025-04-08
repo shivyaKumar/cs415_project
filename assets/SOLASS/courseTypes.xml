@@ -1,0 +1,205 @@
+<courses>
+    <course code="COJ01" courseName="Introduction to Law" sem_type="true"/>
+    <course code="COJ02" courseName="Courts and Their Processes" sem_type="true"/>
+    <course code="COJ03" courseName="Criminal Law" sem_type="true"/>
+    <course code="COJ04" courseName="Civil Law" sem_type="true"/>
+    <course code="DG100" courseName="Introduction to Leadership, Governance and Human Rights" sem_type="true"/>
+    <course code="DG101" courseName="Principles of Good Leadership and Governance" sem_type="true"/>
+    <course code="DG102" courseName="Laws, Legal Systems and Access to Justice" sem_type="true"/>
+    <course code="DG200" courseName="Human Rights at Local, National, Regional and International" sem_type="true"/>
+    <course code="DG201" courseName="Introduction to the Role and Challenges of Human Rights Defenders" sem_type="true"/>
+    <course code="DG202" courseName="Corruption and Anti-Corruption in Pacific Island Countries" sem_type="true"/>
+    <course code="DG301" courseName="Leadership, Governance and Human Rights Internship" sem_type="true"/>
+    <course code="DG302" courseName="Building Resilience Among Human Rights Defenders" sem_type="true"/>
+    <course code="DG400" courseName="Advanced Research Methodology" sem_type="true"/>
+    <course code="DG403" courseName="Public Financial Management" sem_type="true"/>
+    <course code="DG404" courseName="Ethics of Governance" sem_type="true"/>
+    <course code="DG405" courseName="Special Topic in Governance in the Pacific" sem_type="true"/>
+    <course code="DG406" courseName="Theories of Governance" sem_type="true"/>
+    <course code="DG407" courseName="Conflict and Justice" sem_type="true"/>
+    <course code="DG408" courseName="Public Policy Implementation and Appraisal" sem_type="true"/>
+    <course code="DG410" courseName="Development Theories and Alternatives" sem_type="true"/>
+    <course code="DG411" courseName="Governance and Governments in the South Pacific" sem_type="true"/>
+    <course code="DG413" courseName="Special Topic in Development Studies 1" sem_type="true"/>
+    <course code="DG414" courseName="Special Topic in Development Studies 2" sem_type="true"/>
+    <course code="DG415" courseName="Urbanisation, Development and Urban Planning" sem_type="true"/>
+    <course code="DG416" courseName="Development Internship" sem_type="true"/>
+    <course code="DG417" courseName="NGOs, Civil Society and Development" sem_type="true"/>
+    <course code="DG421" courseName="Development and Change in the Contemporary Pacific" sem_type="true"/>
+    <course code="DG422" courseName="Environmental Change and Green Development" sem_type="true"/>
+    <course code="DOJ01" courseName="Professionalism and Communication in Court Practice" sem_type="true"/>
+    <course code="DOJ02" courseName="Judicial Administration" sem_type="true"/>
+    <course code="GN400" courseName="Gender and Feminisms in the Pacific Context" sem_type="true"/>
+    <course code="GN401" courseName="Gender, Global Change and Development in a Comparative Perspective" sem_type="true"/>
+    <course code="GN402" courseName="Gender and Environment" sem_type="true"/>
+    <course code="HY101" courseName="Pacific Islands Prehistory" sem_type="true"/>
+    <course code="HY102" courseName="20th Century World History" sem_type="true"/>
+    <course code="HY201" courseName="Pacific History: Colonial Worlds to Independence" sem_type="true"/>
+    <course code="HY202" courseName="Pacific History: Pre-colonial Power Struggle in Polynesia" sem_type="true"/>
+    <course code="HY206" courseName="Modern East Asian History" sem_type="true"/>
+    <course code="HY207" courseName="Pacific History: Melanesian Worlds" sem_type="true"/>
+    <course code="HY302" courseName="Special Topic: History of Fiji" sem_type="true"/>
+    <course code="HY303" courseName="Special Topic: USA in Asia Pacific Region" sem_type="true"/>
+    <course code="HY304" courseName="Pacific History: Protest and Identity" sem_type="true"/>
+    <course code="HY305" courseName="British Empire and Commonwealth" sem_type="true"/>
+    <course code="HY401" courseName="Reading and Viewing in Pacific History" sem_type="true"/>
+    <course code="HY402" courseName="Migration and Culture" sem_type="true"/>
+    <course code="HY404" courseName="Special Topic" sem_type="true"/>
+    <course code="LW110" courseName="Law and Society" sem_type="true"/>
+    <course code="LW111" courseName="Courts and Dispute Resolution 1" sem_type="true"/>
+    <course code="LW112" courseName="Legislation" sem_type="true"/>
+    <course code="LW113" courseName="Courts and Dispute Resolution 2" sem_type="true"/>
+    <course code="LW201" courseName="Law of Contract 1" sem_type="true"/>
+    <course code="LW202" courseName="Law of Contract 2" sem_type="true"/>
+    <course code="LW203" courseName="Torts 1" sem_type="true"/>
+    <course code="LW204" courseName="Torts 2" sem_type="true"/>
+    <course code="LW205" courseName="Criminal Law and Procedure 1" sem_type="true"/>
+    <course code="LW206" courseName="Criminal Law and Procedure 2" sem_type="true"/>
+    <course code="LW300" courseName="Property Law 1" sem_type="true"/>
+    <course code="LW301" courseName="Property Law 2" sem_type="true"/>
+    <course code="LW302" courseName="Equity and Trusts" sem_type="true"/>
+    <course code="LW303" courseName="Succession" sem_type="true"/>
+    <course code="LW304" courseName="Legal Drafting" sem_type="true"/>
+    <course code="LW305" courseName="Current Developments in Pacific Law" sem_type="true"/>
+    <course code="LW306" courseName="Legal Ethics" sem_type="true"/>
+    <course code="LW307" courseName="Evidence" sem_type="true"/>
+    <course code="LW308" courseName="Constitutional Law" sem_type="true"/>
+    <course code="LW309" courseName="Administrative Law" sem_type="true"/>
+    <course code="LW310" courseName="Family Law" sem_type="true"/>
+    <course code="LW312" courseName="E-Commerce Law" sem_type="true"/>
+    <course code="LW314" courseName="Special Topic" sem_type="true"/>
+    <course code="LW317" courseName="Health Law and Ethics" sem_type="true"/>
+    <course code="LW322" courseName="Intellectual Property Law" sem_type="true"/>
+    <course code="LW324" courseName="European Union Law Relating to the Pacific" sem_type="true"/>
+    <course code="LW330" courseName="Public International Law" sem_type="true"/>
+    <course code="LW331" courseName="Human Rights" sem_type="true"/>
+    <course code="LW334" courseName="Serious Financial Crimes" sem_type="true"/>
+    <course code="LW340" courseName="Pacific Land Tenure" sem_type="true"/>
+    <course code="LW341" courseName="Customary Law" sem_type="true"/>
+    <course code="LW352" courseName="Regional Environmental Law" sem_type="true"/>
+    <course code="LW353" courseName="International Environmental Law" sem_type="true"/>
+    <course code="LW355" courseName="Law of the Sea" sem_type="true"/>
+    <course code="LW356" courseName="Marine Law" sem_type="true"/>
+    <course code="LW370" courseName="Company and Partnership Law 1" sem_type="true"/>
+    <course code="LW371" courseName="Company and Partnership Law 2" sem_type="true"/>
+    <course code="LW372" courseName="Commercial Law" sem_type="true"/>
+    <course code="LW373" courseName="Foreign Trade and Investment Law" sem_type="true"/>
+    <course code="LW374" courseName="Revenue and Taxation Law" sem_type="true"/>
+    <course code="LW375" courseName="Labour Law" sem_type="true"/>
+    <course code="LW390" courseName="Research Project" sem_type="true"/>
+    <course code="LW391" courseName="Law Clinic" sem_type="true"/>
+    <course code="LW392" courseName="Civil Procedure" sem_type="true"/>
+    <course code="LW393" courseName="Advocacy Skills and Prosecutorial Practice" sem_type="true"/>
+    <course code="LW395" courseName="Special Topic: Climate Change Law" sem_type="true"/>
+    <course code="LW395A" courseName="Special Topic International Fisheries Law" sem_type="true"/>
+    <course code="LW395C" courseName="Special Topic International Criminal Law" sem_type="true"/>
+    <course code="LW400" courseName="Advanced Pacific Legal System" sem_type="true"/>
+    <course code="LW402" courseName="Advanced Equity and Trusts" sem_type="true"/>
+    <course code="LW403" courseName="Advanced Succession" sem_type="true"/>
+    <course code="LW407" courseName="Advanced Evidence" sem_type="true"/>
+    <course code="LW410" courseName="Advanced Family Law" sem_type="true"/>
+    <course code="LW412" courseName="Advanced E-Commerce Law" sem_type="true"/>
+    <course code="LW414" courseName="Advanced Special Topic" sem_type="true"/>
+    <course code="LW417" courseName="Advanced Health Law and Ethics" sem_type="true"/>
+    <course code="LW422" courseName="Advanced Intellectual Property Law" sem_type="true"/>
+    <course code="LW424" courseName="Advanced European Union Law Relating to the Pacific" sem_type="true"/>
+    <course code="LW430" courseName="Advanced Public International Law" sem_type="true"/>
+    <course code="LW431" courseName="Advanced Human Rights" sem_type="true"/>
+    <course code="LW434" courseName="Advanced Serious Financial Crimes" sem_type="true"/>
+    <course code="LW440" courseName="Advanced Pacific Land Tenure" sem_type="true"/>
+    <course code="LW441" courseName="Advanced Customary Law" sem_type="true"/>
+    <course code="LW452" courseName="Advanced Regional Environmental Law" sem_type="true"/>
+    <course code="LW453" courseName="Advanced International Environmental Law" sem_type="true"/>
+    <course code="LW455" courseName="Advanced Law of the Sea" sem_type="true"/>
+    <course code="LW456" courseName="Advanced Marine Law" sem_type="true"/>
+    <course code="LW470" courseName="Advanced Company and Partnership Law 1" sem_type="true"/>
+    <course code="LW471" courseName="Advanced Company and Partnership Law 2" sem_type="true"/>
+    <course code="LW472" courseName="Advanced Commercial Law" sem_type="true"/>
+    <course code="LW473" courseName="Advanced Foreign Trade and Investment Law" sem_type="true"/>
+    <course code="LW474" courseName="Advanced Revenue and Taxation Law" sem_type="true"/>
+    <course code="LW475" courseName="Advanced Labour Law" sem_type="true"/>
+    <course code="LW490" courseName="Advanced Research Project" sem_type="true"/>
+    <course code="LW492" courseName="Advanced Civil Procedure" sem_type="true"/>
+    <course code="LW493" courseName="Advanced Advocacy Skills and Prosecutorial Practice" sem_type="true"/>
+    <course code="LW495" courseName="Advanced Special Topic: Climate Change Law" sem_type="true"/>
+    <course code="LW495A" courseName="Advanced Special Topic International Fisheries Law" sem_type="true"/>
+    <course code="LW495C" courseName="Advanced Special Topic International Criminal Law" sem_type="true"/>
+    <course code="LWD01" courseName="Criminal Litigation Skills and Practice" sem_type="true"/>
+    <course code="LWD02" courseName="Civil Litigation Skills and Practice" sem_type="true"/>
+    <course code="LWD03" courseName="Wills and Estates Skills and Practice" sem_type="true"/>
+    <course code="LWD04" courseName="Conveyancing Skills and Practice" sem_type="true"/>
+    <course code="LWD05" courseName="Business Law, Skills and Practice" sem_type="true"/>
+    <course code="LWD06" courseName="Family Law and Human Rights, Skills and Practice" sem_type="true"/>
+    <course code="LWD07" courseName="Ethics and Professionalism and Work Skills" sem_type="true"/>
+    <course code="LWD08" courseName="Practice Placement" sem_type="true"/>
+    <course code="LWD11" courseName="Back to Basics" sem_type="true"/>
+    <course code="LWD12" courseName="Working Within Limits" sem_type="true"/>
+    <course code="LWD13" courseName="Making the Right Expression" sem_type="true"/>
+    <course code="LWD14" courseName="Putting on the Style, Getting Organised" sem_type="true"/>
+    <course code="LWD15" courseName="Topping and Tailing" sem_type="true"/>
+    <course code="LWD16" courseName="Particular Cases" sem_type="true"/>
+    <course code="LWD17" courseName="Drafting Workshop" sem_type="true"/>
+    <course code="PL100" courseName="Politics and Government" sem_type="true"/>
+    <course code="PL101" courseName="Politics of Development" sem_type="true"/>
+    <course code="PL200" courseName="Pacific in a Changing World Order" sem_type="true"/>
+    <course code="PL201" courseName="International Politics" sem_type="true"/>
+    <course code="PL202" courseName="Political Ideologies" sem_type="true"/>
+    <course code="PL203" courseName="Governance and Development in the Pacific" sem_type="true"/>
+    <course code="PL300" courseName="Parties, Electoral Politics and Democracy: Case Studies" sem_type="true"/>
+    <course code="PL302" courseName="International Politics of Asia-Pacific" sem_type="true"/>
+    <course code="PL305" courseName="Politics of Human Rights" sem_type="true"/>
+    <course code="PL307" courseName="Political Leadership" sem_type="true"/>
+    <course code="PL400" courseName="Regional Diplomacy in the Pacific Islands" sem_type="true"/>
+    <course code="PL402" courseName="Intervention and Peace Building" sem_type="true"/>
+    <course code="PL403" courseName="Pacific Politics" sem_type="true"/>
+    <course code="PL409" courseName="Diplomacy, Negotiations and Statecraft" sem_type="true"/>
+    <course code="PL410" courseName="World Politics and International Relations" sem_type="true"/>
+    <course code="PL411" courseName="Research Essay in Diplomacy and International Affairs" sem_type="true"/>
+    <course code="PP101" courseName="Contemporary Issues in Pacific Policing" sem_type="true"/>
+    <course code="PP201" courseName="Comparative and International Policing" sem_type="true"/>
+    <course code="PP202" courseName="Police and Society in the Pacific" sem_type="true"/>
+    <course code="PP300" courseName="Action Research in a Police Context" sem_type="true"/>
+    <course code="PP301" courseName="Police Leadership and Command Management" sem_type="true"/>
+    <course code="PP302" courseName="Ethical Dimensions in Policing" sem_type="true"/>
+    <course code="PP404" courseName="Border Management and the Security Context" sem_type="true"/>
+    <course code="PP405" courseName="Ethical Issues in Leadership and Command" sem_type="true"/>
+    <course code="PP406" courseName="Border Security Intelligence and the International Security Environment" sem_type="true"/>
+    <course code="PP407" courseName="International Cooperation, Partnership and the Border Security Context" sem_type="true"/>
+    <course code="PS101" courseName="Introduction to Psychology" sem_type="true"/>
+    <course code="PS102" courseName="Developmental Psychology" sem_type="true"/>
+    <course code="PS103" courseName="Research Methods and Analysis for Social Sciences 1" sem_type="true"/>
+    <course code="PS107" courseName="Approaches to Social Psychology" sem_type="true"/>
+    <course code="PS203" courseName="Psychological Research Methods and Analysis 2" sem_type="true"/>
+    <course code="PS205" courseName="Cognitive Psychology" sem_type="true"/>
+    <course code="PS206" courseName="Cross-cultural Psychology" sem_type="true"/>
+    <course code="PS303" courseName="Psychological Research Methods and Analysis 3" sem_type="true"/>
+    <course code="PS304" courseName="Psychology of Personality and Individual Differences" sem_type="true"/>
+    <course code="PS305" courseName="Psychology of Individual and Community Health" sem_type="true"/>
+    <course code="PS306" courseName="Cognitive Neuropsychology" sem_type="true"/>
+    <course code="PS314" courseName="Applying Psychology in the Pacific" sem_type="true"/>
+    <course code="PS402" courseName="Advanced Cross-cultural Psychology" sem_type="true"/>
+    <course code="PS407" courseName="Psychological Assessment" sem_type="true"/>
+    <course code="PS408" courseName="Clinical and Counselling Intervention" sem_type="true"/>
+    <course code="SO100" courseName="Themes and Perspectives in Sociology" sem_type="true"/>
+    <course code="SO122" courseName="Classical Sociological Theories and Methodologies" sem_type="true"/>
+    <course code="SO200" courseName="Modern Social Theory" sem_type="true"/>
+    <course code="SO201" courseName="Society, Culture and Change in the Pacific" sem_type="true"/>
+    <course code="SO207" courseName="Families, Sexuality and Change in the Pacific" sem_type="true"/>
+    <course code="SO212" courseName="Race and Ethnicity" sem_type="true"/>
+    <course code="SO300" courseName="Research Methods in Sociology" sem_type="true"/>
+    <course code="SO301" courseName="Sociology of Public Policy and Administration" sem_type="true"/>
+    <course code="SO303" courseName="Advanced Sociological Theory" sem_type="true"/>
+    <course code="SO304" courseName="Religion and Politics in Contemporary Society" sem_type="true"/>
+    <course code="SO311" courseName="Crime and Deviance" sem_type="true"/>
+    <course code="SO401" courseName="Theories of Social Inequality" sem_type="true"/>
+    <course code="SO408" courseName="Issues in Social and Public Policy" sem_type="true"/>
+    <course code="SO409" courseName="Social Development" sem_type="true"/>
+    <course code="SO415" courseName="Contemporary Social Issues" sem_type="true"/>
+    <course code="SW100" courseName="Introduction to Social and Community Work Practice" sem_type="true"/>
+    <course code="SW101" courseName="Social Policy: An Introduction" sem_type="true"/>
+    <course code="SW200" courseName="Fieldwork Practice 1" sem_type="true"/>
+    <course code="SW201" courseName="Social and Community Work Practice 1" sem_type="true"/>
+    <course code="SW300" courseName="Fieldwork Practice 2" sem_type="true"/>
+    <course code="SW301" courseName="Social and Community Work Practice 2" sem_type="true"/>
+    <course code="SW312" courseName="Counselling Theory and Practice" sem_type="true"/>
+</courses>

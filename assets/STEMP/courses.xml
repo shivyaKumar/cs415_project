@@ -1,309 +1,134 @@
 <courses>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="IS121" courseName="Introduction to Information Systems"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="UU100A" courseName="Information Literacy (Online)" courseTypeName="half"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS121" courseName="Introduction to Information Systems"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS122" courseName="Application Programming" prerequisites="IS121"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="IS104" courseName="Computing for Science and Technology"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="MA112" courseName="Calculus II" prerequisites="MA111"/>
-    <course code="ST131" courseName="Introduction to Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="MA112" courseName="Calculus II" prerequisites="MA111"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="IS121" courseName="Introduction to Information Systems"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="UU100" courseName="Communication and Information Literacy"/>
-    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS211" courseName="Computer Organization" prerequisites="CS112"/>
-    <course code="CS230" courseName="Requirements Engineering" prerequisites="CS112"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="CS215" courseName="Computer Communications and Management" prerequisites="CS211"/>
-    <course code="CS001" courseName="Foundamentals of Computer Project"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS211" courseName="Computer Organization" prerequisites="CS112"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisites="CS112"/>
-    <course code="CS215" courseName="Computer Communications and Management" prerequisites="CS111"/>
-    <course code="CS310" courseName="Computer Systems" prerequisites="CS211"/>
-    <course code="CS311" courseName="Operating Systems" prerequisites="CS211"/>
-    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level"/>
-    <course code="CS350" courseName=" Wireless Networks " prerequisites="CS311"/>
-    <course code="IS314" courseName="Computing Projects" prerequisites="IS222, CS241, IS226"/>
-    <course code="CS317" courseName=" Computer and Network Security" prerequisites="CS311"/>
-    <course code="CS324" courseName="Distributed Computing" prerequisites="CS211"/>
-    <course code="IS328" courseName="Data Mining" prerequisites="IS222"/>
-    <course code="CS351" courseName="Network Design and Administration" prerequisites=" CS310"/>
-    <course code="IS121" courseName="Introduction to Information Systems"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS122" courseName="Application Programming" prerequisites="IS121"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS221" courseName="Web Application Development"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="IS202" courseName="Data Science" prerequisites="ST130"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="IS226" courseName="Systems, Analysis and Design" prerequisites="IS121"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="IS351" courseName="Data and Information Security" prerequisites="IS222"/>
-    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level"/>
-    <course code="IS302" courseName="Data Analytics" prerequisites="IS226"/>
-    <course code="IS322" courseName="Business Information Systems" prerequisites="IS222"/>
-    <course code="IS121" courseName="Introduction to Information Systems"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS122" courseName="Application Programming" prerequisites="IS121"/>
-    <course code="ST130" courseName="Basic Statistics"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="IS221" courseName="Web Application Development"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="IS226" courseName="Systems, Analysis and Design" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="IS226" courseName="Systems, Analysis and Design" prerequisites="IS121"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="IS322" courseName="Business Information Systems" prerequisites="IS222"/>
-    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level"/>
-    <course code="IS314" courseName="Computing Projects"/>
-    <course code="IS351" courseName="Data and Information Security" prerequisites="IS222"/>
-    <course code="PH102" courseName="Classical Physics"/>
-    <course code="PH103" courseName="Quantum and Electrical Physics"/>
-    <course code="CH105" courseName="Chemistry for Applied Science"/>
-    <course code="MA112" courseName="Calculus II"/>
-    <course code="UU100" courseName="Communication and Information Literacy"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="PH202" courseName="Environmental Physics"/>
-    <course code="PH204" courseName="Modern Physics"/>
-    <course code="PH206" courseName="Electromagnetism and Electronics"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Worlds"/>
-    <course code="SC356" courseName="Research Skills"/>
-    <course code="PH301" courseName="Renewable Energy Systems"/>
-    <course code="PH302" courseName="Electronic Communication Systems"/>
-    <course code="PH304" courseName="Solid State Physics"/>
-    <course code="PH306" courseName="Special Topics"/>
-    <course code="CH105" courseName="Chemistry for Physics Majors" note="Not required for EE or MM majors"/>
-    <course code="PH102" courseName="Classical Physics"/>
-    <course code="PH103" courseName="Quantum and Electrical Physics"/>
-    <course code="MA112" courseName="Calculus II"/>
-    <course code="UU100" courseName="Communication and Information Literacy"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="PH202" courseName="Environmental Physics "/>
-    <course code="PH204" courseName="Modern Physics"/>
-    <course code="PH206" courseName="Electromagnetism and Electronics"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Worlds"/>
-    <course code="SC356" courseName="Research Skills"/>
-    <course code="PH301" courseName="Renewable Energy Systems"/>
-    <course code="PH302" courseName="Electronic Communication Systems"/>
-    <course code="PH304" courseName="Solid State Physics"/>
-    <course code="PH306" courseName="Special Topics"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="EE102" courseName="Fundamentals for Electrical and Electronics Engineering"/>
-    <course code="PH102" courseName="Classical Physics"/>
-    <course code="MM103" courseName="Engineering Mechanics"/>
-    <course code="UU100A" courseName="Information Literacy (Online)"/>
-    <course code="EE211" courseName="Electrical Machines"/>
-    <course code="EE212" courseName="Analogue Electronics 1 "/>
-    <course code="EE222" coursecourseName="Digital Logic Design"/>
-    <course code="EE224" coursecourseName="Signals and Systems"/>
-    <course code="EE225" coursecourseName="Amplifiers and Power Electronics"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="PH302" courseName="Advanced Physics"/>
-    <course code="EE312" courseName="Control System Engineering"/>
-    <course code="EE313" courseName="Microprocessor Applications"/>
-    <course code="EE314" courseName="Electrical Engineering Design"/>
-    <course code="EE321" courseName="Power Systems Analysis"/>
-    <course code="EE323" courseName="Digital Control Systems"/>
-    <course code="EE325" courseName="Electrical Drives"/>
-    <course code="EE326" courseName="Embedded Systems"/>
-    <course code="SC356" courseName="Research Skills" prerequisitess="Completion of eight 200 level courses"/>
-    <course code="SC356" courseName="Research Skills"/>
-    <course code="IndustrialAttachment" courseName="10-Week Industrial Attachment"/>
-    <course code="PH102" courseName="Physics for Engineers"/>
-    <course code="PH103" courseName="Quantum and Electrical Physics"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="MA112" courseName="Advanced Calculus"/>
-    <course code="MM101" courseName="Engineering Graphics and Design"/>
-    <course code="MM103" courseName="Engineering Mechanics"/>
-    <course code="UU100A" courseName="Information Literacy (Online)"/>
-    <course code="MM211" courseName="Solid Mechanics 1"/>
-    <course code="MM214" courseName="Dynamics"/>
-    <course code="MM221" courseName="Thermodynamics and Heat Transfer"/>
-    <course code="MM222" courseName="Fluid Mechanics"/>
-    <course code="MM223" courseName="Manufacturing Processes"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="UU204" courseName="Pacific Folks"/>
-    <course code="PH301" courseName="Renewable Energy Systems"/>
-    <course code="PH302" courseName="Electronic Communication Systems"/>
-    <course code="PH304" courseName="Solid State Physics"/>
-    <course code="PH306" courseName="Special Topics"/>
-    <course code="MM311" courseName="Applied Thermo Fluids"/>
-    <course code="MM315" courseName="Solid Mechanics 2"/>
-    <course code="MM321" courseName="Refrigeration and Air Conditioning"/>
-    <course code="MM323" courseName="Manufacturing Systems"/>
-    <course code="IndustrialAttachment" courseName="10-Week Industrial Attachment"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="UU100A" courseName="Communication and Information Literacy"/>
-    <course code="MG101" courseName="Introduction to Management"/>
-    <course code="ST131" courseName="Introduction to Statistics"/>
-    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS140" courseName="Introduction to Software Engineering"/>
-    <course code="MG101" courseName="Introduction to Management"/>
-    <course code="CS211" courseName="Computer Organization" prerequisites="CS112"/>
-    <course code="CS230" courseName="Requirements Engineering" prerequisites="CS111, CS140"/>
-    <course code="IS221" courseName="Web Application Development"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisites="CS211"/>
-    <course code="CS241" courseName="Software Design and Implementation" prerequisites="CS112, CS230"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="CS218" courseName="Mobile Computing" prerequisites="CS112"/>
-    <course code="CS219" courseName="Cloud Computing" prerequisites="CS112"/>
-    <course code="CS310" courseName="Computer Systems" prerequisites="CS211"/>
-    <course code="CS311" courseName="Operating Systems" prerequisites="CS211"/>
-    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level"/>
-    <course code="CS352" courseName="Cybersecurity Principles"/>
-    <course code="CS324" courseName="Distributed Systems" prerequisites="CS214 or CS218 or CS219"/>
-    <course code="CS341" courseName="Software Quality Assurance and Testing" prerequisites="CS241"/>
-    <course code="IS328" courseName="Data Mining" prerequisites="IS222"/>
-    <course code="IS314" courseName="Computing Project" prerequisites="IS222 or CS241"/>
-    <course code="CS403" courseName="Cyber Defense: Governance and Risk Management" prerequisites="CS352, 75% completion of 300 Level courses"/>
-    <course code="CS412" courseName="Artificial Intelligence" prerequisites="75% completion of 300 Level courses"/>
-    <course code="CS424" courseName="Big Data Technologies" prerequisites="75% completion of 300 Level courses"/>
-    <course code="CS400" courseName="Industrial Experience Project" prerequisites="Completion of All 100,200,300,400 level courses"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="UU100A" courseName="Communication and Information Literacy"/>
-    <course code="MG101" courseName="Introduction to Management"/>
-    <course code="ST131" courseName="Introduction to Statistics"/>
-    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111"/>
-    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111"/>
-    <course code="CS111" courseName="Introduction to Computing"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="CS150" courseName="Introduction to Software Engineering"/>
-    <course code="MG101" courseName="Introduction to Management"/>
-    <course code="CS211" courseName="Computer Organization" prerequisites="CS112"/>
-    <course code="IS221" courseName="Web Application Development"/>
-    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisites="CS211"/>
-    <course code="UU200" courseName="Ethics and Governance"/>
-    <course code="CS218" courseName="Mobile Computing" prerequisites="CS112"/>
-    <course code="CS219" courseName="Cloud Computing" prerequisites="CS112"/>
-    <course code="CS310" courseName="Computer Systems" prerequisites="CS211"/>
-    <course code="CS311" courseName="Operating Systems" prerequisites="CS211"/>
-    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level"/>
-    <course code="CS352" courseName="Cybersecurity Principles"/>
-    <course code="CS324" courseName="Distributed Systems" prerequisites="CS214, CS218, CS219"/>
-    <course code="CS317" courseName="Computer and Network Security " prerequisites="CS215"/>
-    <course code="CS350" courseName="Wireless Networks" prerequisites="CS215"/>
-    <course code="CS351" courseName="Network Design and Administration" prerequisites="CS310"/>
-    <course code="CS403" courseName="Cyber Defense: Governance and Risk Management" prerequisites="CS352, 75% completion of 300 Level courses"/>
-    <course code="CS412" courseName="Artificial Intelligence" prerequisites="75% completion of 300 Level courses"/>
-    <course code="CS424" courseName="Big Data Technologies" prerequisites="75% completion of 300 Level courses"/>
-    <course code="CS400" courseName="Industrial Experience Project" prerequisites="Completion of All 100,200,300,400 level courses"/>
-    <course code="PH102" courseName="Classical Physics"/>
-    <course code="MM101" courseName="Engineering Graphics and Design"/>
-    <course code="UU114" courseName="English for Academic Purposes"/>
-    <course code="MA111" courseName="Linear Algebra and Calculus"/>
-    <course code="UU100A" courseName="Information Literacy (Online)"/>
-    <course code="EE102" courseName="Introduction to Electrical Engineering"/>
-    <course code="MM103" courseName="Engineering Mathematics"/>
-    <course code="CS111" courseName="Programming Concepts"/>
-    <course code="MA112" courseName="Advanced Calculus"/>
-    <course code="MA211" courseName="Advanced Calculus"/>
-    <course code="CV211" courseName="Solid Mechanics 1"/>
-    <course code="CV212" courseName="Metallurgy and Material Science"/>
-    <course code="EV201" courseName="Environment and Society in the South Pacific"/>
-    <course code="EN001" courseName="Industrial Work Experience (IWE)"/>
-    <course code="MA272" courseName="Engineering Mathematics 4"/>
-    <course code="CV203" courseName="Engineering Survey"/>
-    <course code="CV222" courseName="Fluid Mechanics"/>
-    <course code="CH205" courseName="Chemistry for Engineers"/>
-    <course code="EN001" courseName="Industrial Work Experience (IWE)"/>
-    <course code="CV311" courseName="Concrete Technology"/>
-    <course code="CV312" courseName="Structural Analysis"/>
-    <course code="CV313" courseName="Transportation Engineering"/>
-    <course code="CV316" courseName="Hydraulics"/>
-    <course code="EN001" courseName="Industrial Work Experience (IWE)"/>
-    <course code="CV321" courseName="Steel Structures"/>
-    <course code="CV322" courseName="Construction Management"/>
-    <course code="CV323" courseName="Water Resources Engineering"/>
-    <course code="CV324" courseName="Soil Mechanics"/>
-    <course code="CV461" courseName="Project Management"/>
-    <course code="CV469" courseName="Advanced Structural Design"/>
-    <course code="CV488" courseName="Capstone Project Part 1"/>
-    <course code="CV462" courseName="Foundation Engineering"/>
-    <course code="CV463" courseName="Bridge Engineering"/>
-    <course code="CV464" courseName="Hydrology"/>
-    <course code="CV491" courseName="Civil Engineering Practice"/>
-    <course code="CV492" courseName="Capstone Project Part 2"/>
-    <course code="CV499" courseName="Research Project"/>
-    <course code="CV493" courseName="Traffic Engineering"/>
-    <course code="CV494" courseName="Earthquake Engineering"/>
-    <course code="CV495" courseName="Sustainable Infrastructure"/>
-    <course code="CV496" courseName="Advanced Geotechnics"/>
-    <course code="SC400" courseName="Research Methods"/>
-    <course code="CS412" courseName="Artificial Intelligence"/>
-    <course code="CS415" courseName="Advanced Software Engineering"/>
-    <course code="CS424" courseName="Big Data Technologies" />
+    <course code="CS111" courseName="Introduction to Computing" />
+    <course code="IS121" courseName="Introduction to Information Systems" />
+    <course code="MA111" courseName="Linear Algebra and Calculus" />
+    <course code="UU114" courseName="English for Academic Purposes" />
+    <course code="UU100A" courseName="Information Literacy (Online)" />
+    <course code="CS112" courseName="Data Structure and Algorithms" prerequisites="CS111" />
+    <course code="MA161" courseName="Discrete Mathematics" prerequisites="MA111" />
+    <course code="ST130" courseName="Basic Statistics" />
+    <course code="IS122" courseName="Application Programming" prerequisites="IS121" />
+    <course code="IS104" courseName="Computing for Science and Technology" />
+    <course code="MA112" courseName="Calculus II" prerequisites="MA111" />
+    <course code="ST131" courseName="Introduction to Statistics" />
+    <course code="UU100" courseName="Communication and Information Literacy" />
+    <course code="CS211" courseName="Computer Organization" prerequisites="CS112" />
+    <course code="CS230" courseName="Requirements Engineering" prerequisites="CS112" />
+    <course code="IS222" courseName="Database Management Systems" prerequisites="IS121" />
+    <course code="CS215" courseName="Computer Communications and Management" prerequisites="CS211" />
+    <course code="CS001" courseName="Foundamentals of Computer Project" />
+    <course code="UU200" courseName="Ethics and Governance" />
+    <course code="UU204" courseName="Pacific Folks" />
+    <course code="CS214" courseName="Design of Data Structure and Algorithms" prerequisites="CS112" />
+    <course code="CS310" courseName="Computer Systems" prerequisites="CS211" />
+    <course code="CS311" courseName="Operating Systems" prerequisites="CS211" />
+    <course code="IS333" courseName="Project Management" prerequisites="75% Completion of 200 Level" />
+    <course code="CS350" courseName=" Wireless Networks " prerequisites="CS311" />
+    <course code="IS314" courseName="Computing Projects" prerequisites="IS222, CS241, IS226" />
+    <course code="CS317" courseName=" Computer and Network Security" prerequisites="CS311" />
+    <course code="CS324" courseName="Distributed Computing" prerequisites="CS211" />
+    <course code="IS328" courseName="Data Mining" prerequisites="IS222" />
+    <course code="CS351" courseName="Network Design and Administration" prerequisites=" CS310" />
+    <course code="IS221" courseName="Web Application Development" />
+    <course code="IS202" courseName="Data Science" prerequisites="ST130" />
+    <course code="IS226" courseName="Systems, Analysis and Design" prerequisites="IS121" />
+    <course code="IS351" courseName="Data and Information Security" prerequisites="IS222" />
+    <course code="IS302" courseName="Data Analytics" prerequisites="IS226" />
+    <course code="IS322" courseName="Business Information Systems" prerequisites="IS222" />
+    <course code="PH102" courseName="Classical Physics" />
+    <course code="PH103" courseName="Quantum and Electrical Physics" />
+    <course code="CH105" courseName="Chemistry for Applied Science" />
+    <course code="PH202" courseName="Environmental Physics" />
+    <course code="PH204" courseName="Modern Physics" />
+    <course code="PH206" courseName="Electromagnetism and Electronics" />
+    <course code="SC356" courseName="Research Skills" />
+    <course code="PH301" courseName="Renewable Energy Systems" />
+    <course code="PH302" courseName="Electronic Communication Systems" />
+    <course code="PH304" courseName="Solid State Physics" />
+    <course code="PH306" courseName="Special Topics" />
+    <course code="CH105" courseName="Chemistry for Physics Majors" note="Not required for EE or MM majors" />
+    <course code="EE102" courseName="Fundamentals for Electrical and Electronics Engineering" />
+    <course code="MM103" courseName="Engineering Mechanics" />
+    <course code="EE211" courseName="Electrical Machines" />
+    <course code="EE212" courseName="Analogue Electronics 1 " />
+    <course code="EE222" coursecourseName="Digital Logic Design" />
+    <course code="EE224" coursecourseName="Signals and Systems" />
+    <course code="EE225" coursecourseName="Amplifiers and Power Electronics" />
+    <course code="PH302" courseName="Advanced Physics" />
+    <course code="EE312" courseName="Control System Engineering" />
+    <course code="EE313" courseName="Microprocessor Applications" />
+    <course code="EE314" courseName="Electrical Engineering Design" />
+    <course code="EE321" courseName="Power Systems Analysis" />
+    <course code="EE323" courseName="Digital Control Systems" />
+    <course code="EE325" courseName="Electrical Drives" />
+    <course code="EE326" courseName="Embedded Systems" />
+    <course code="IndustrialAttachment" courseName="10-Week Industrial Attachment" />
+    <course code="PH102" courseName="Physics for Engineers" />
+    <course code="MA112" courseName="Advanced Calculus" />
+    <course code="MM101" courseName="Engineering Graphics and Design" />
+    <course code="MM211" courseName="Solid Mechanics 1" />
+    <course code="MM214" courseName="Dynamics" />
+    <course code="MM221" courseName="Thermodynamics and Heat Transfer" />
+    <course code="MM222" courseName="Fluid Mechanics" />
+    <course code="MM223" courseName="Manufacturing Processes" />
+    <course code="MM311" courseName="Applied Thermo Fluids" />
+    <course code="MM315" courseName="Solid Mechanics 2" />
+    <course code="MM321" courseName="Refrigeration and Air Conditioning" />
+    <course code="MM323" courseName="Manufacturing Systems" />
+    <course code="MG101" courseName="Introduction to Management" />
+    <course code="CS140" courseName="Introduction to Software Engineering" />
+    <course code="CS241" courseName="Software Design and Implementation" prerequisites="CS112, CS230" />
+    <course code="CS218" courseName="Mobile Computing" prerequisites="CS112" />
+    <course code="CS219" courseName="Cloud Computing" prerequisites="CS112" />
+    <course code="CS352" courseName="Cybersecurity Principles" />
+    <course code="CS324" courseName="Distributed Systems" prerequisites="CS214 or CS218 or CS219" />
+    <course code="CS341" courseName="Software Quality Assurance and Testing" prerequisites="CS241" />
+    <course code="IS314" courseName="Computing Project" prerequisites="IS222 or CS241" />
+    <course code="CS403" courseName="Cyber Defense: Governance and Risk Management" prerequisites="CS352, 75% completion of 300 Level courses" />
+    <course code="CS412" courseName="Artificial Intelligence" prerequisites="75% completion of 300 Level courses" />
+    <course code="CS424" courseName="Big Data Technologies" prerequisites="75% completion of 300 Level courses" />
+    <course code="CS400" courseName="Industrial Experience Project" prerequisites="Completion of All 100,200,300,400 level courses" />
+    <course code="CS150" courseName="Introduction to Software Engineering" />
+    <course code="CS317" courseName="Computer and Network Security " prerequisites="CS215" />
+    <course code="CS350" courseName="Wireless Networks" prerequisites="CS215" />
+    <course code="EE102" courseName="Introduction to Electrical Engineering" />
+    <course code="MM103" courseName="Engineering Mathematics" />
+    <course code="CS111" courseName="Programming Concepts" />
+    <course code="MA211" courseName="Advanced Calculus" />
+    <course code="CV211" courseName="Solid Mechanics 1" />
+    <course code="CV212" courseName="Metallurgy and Material Science" />
+    <course code="EV201" courseName="Environment and Society in the South Pacific" />
+    <course code="EN001" courseName="Industrial Work Experience (IWE)" />
+    <course code="MA272" courseName="Engineering Mathematics 4" />
+    <course code="CV203" courseName="Engineering Survey" />
+    <course code="CV222" courseName="Fluid Mechanics" />
+    <course code="CH205" courseName="Chemistry for Engineers" />
+    <course code="CV311" courseName="Concrete Technology" />
+    <course code="CV312" courseName="Structural Analysis" />
+    <course code="CV313" courseName="Transportation Engineering" />
+    <course code="CV316" courseName="Hydraulics" />
+    <course code="CV321" courseName="Steel Structures" />
+    <course code="CV322" courseName="Construction Management" />
+    <course code="CV323" courseName="Water Resources Engineering" />
+    <course code="CV324" courseName="Soil Mechanics" />
+    <course code="CV461" courseName="Project Management" />
+    <course code="CV469" courseName="Advanced Structural Design" />
+    <course code="CV488" courseName="Capstone Project Part 1" />
+    <course code="CV462" courseName="Foundation Engineering" />
+    <course code="CV463" courseName="Bridge Engineering" />
+    <course code="CV464" courseName="Hydrology" />
+    <course code="CV491" courseName="Civil Engineering Practice" />
+    <course code="CV492" courseName="Capstone Project Part 2" />
+    <course code="CV499" courseName="Research Project" />
+    <course code="CV493" courseName="Traffic Engineering" />
+    <course code="CV494" courseName="Earthquake Engineering" />
+    <course code="CV495" courseName="Sustainable Infrastructure" />
+    <course code="CV496" courseName="Advanced Geotechnics" />
+    <course code="SC400" courseName="Research Methods" />
+    <course code="CS415" courseName="Advanced Software Engineering" />
     <course code="CS427" courseName="Mobile Comunications" />
-    <course code="CS412" courseName="Artificial Intelligence"/>
-    <course code="CS415" courseName="Advanced Software Engineering"/>
-    <course code="CS424" courseName="Big Data Technologies"/>
-    <course code="CS427" courseName="Mobile Communications"/>
-    <course code="CS403" courseName="Cyber Defense: Governance and Risk Management"/>
-    <course code="Thesis"/>
-    <course code="CS412" courseName="Artificial Intelligence"/>
-    <course code="CS415" courseName="Advanced Software Engineering"/>
-    <course code="CS424" courseName="Big Data Technologies"/>
-    <course code="CS427" courseName="Mobile Communications"/>
-    <course code="CS403" courseName="Cyber Defense: Governance and Risk Management"/>
-    <course code="SC400" courseName="Research Methods"/>
-    <course code="Thesis" prerequisites="SC400 and three IS400-level courses"/>
-    <course code="Supervised Report" prerequisites="SC400, IS431 and four IS400-level courses"/>
+    <course code="CS427" courseName="Mobile Communications" />
+    <course code="Thesis" />
+    <course code="Thesis" prerequisites="SC400 and three IS400-level courses" />
+    <course code="Supervised Report" prerequisites="SC400, IS431 and four IS400-level courses" />
 </courses>
