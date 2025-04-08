@@ -36,13 +36,20 @@ class _LoginState extends State<Login> {
     }
 
     // SAS Manager Login
-    if (id.toLowerCase() == "sasmanage" && password == "sasmanage") {
+    if (id.toLowerCase() == "SA1110122" && password == "sasmanage1") {
+      Navigator.of(context).pushReplacementNamed('/homeSAS');
+      return;
+    } else if (id.toLowerCase() == "SA1120121" && password == "sasmanage2") {
       Navigator.of(context).pushReplacementNamed('/homeSAS');
       return;
     }
 
     // SAS Staff Login
-    if (id.toLowerCase() == "sasstaff" && password == "sasstaff") {
+    if (id.toLowerCase() == "SS1064925" && password == "sasstaff1") {
+      Navigator.of(context).pushReplacementNamed('/homeStaff');
+      return;
+    }
+    else if (id.toLowerCase() == "SS10565294" && password == "sasstaff2") {
       Navigator.of(context).pushReplacementNamed('/homeStaff');
       return;
     }

@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import '../../../../viewmodels/sAdmin/superAdmin_viewmodel.dart';
 
-import '../../../viewmodels/student/homepage_viewmodel.dart';
-
-/// A reusable header widget (AppBar) for pages that share
-/// the same user menu, except login.
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
+  final String title; // Dynamic title
+
+  const CustomHeader({super.key, required this.title});
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  // We can reuse the same highlight color that we used in other pages
   static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
-
-  const CustomHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Access the HomepageViewModel to handle logout, username, etc.
-    final homepageViewModel = Provider.of<HomepageViewModel>(context);
-
-    // Grab the current route name to highlight the active page
     final String currentRoute = ModalRoute.of(context)?.settings.name ?? '';
+    final superAdminViewModel = Provider.of<SuperAdminDashboardViewModel>(context, listen: false);
 
     return AppBar(
       backgroundColor: const Color(0xFF009999),
@@ -38,6 +33,14 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
               fit: BoxFit.contain,
             ),
           ),
+          Text(
+            title, // Use the dynamic title
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
         ],
       ),
       actions: [
@@ -46,147 +49,59 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
           onSelected: (value) {
             switch (value) {
               case 'home':
-                Navigator.pushNamed(context, '/homepage'); // Navigate to Home
+                Navigator.pushNamed(context, '/homeSA'); // Navigate to Home
                 break;
-              case 'profile':
-                Navigator.pushNamed(context, '/profile');
-                break;
-              case 'myEnrollment':
-                Navigator.pushNamed(context, '/myEnrollment');
-                break;
-              case 'courses':
-                Navigator.pushNamed(context, '/courses');
-                break;
-              case 'finance':
-                Navigator.pushNamed(context, '/finance');
+              case 'removestaff':
+                Navigator.pushNamed(context, '/removestaff'); // Navigate to Remove Staff
                 break;
               case 'logout':
-                // Delegate logout to the ViewModel
-                homepageViewModel.logout(context);
+                _handleLogout(context, superAdminViewModel); // Handle logout
                 break;
             }
           },
           child: const Padding(
             padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.person, size: 32, color: Colors.white),
+            child: Icon(Icons.menu, size: 32, color: Colors.white),
           ),
-          // We highlight the current route by comparing currentRoute
           itemBuilder: (context) => [
-            // Display the username from the ViewModel
-            PopupMenuItem<String>(
-              enabled: false,
-              child: Text('Hi, ${homepageViewModel.username ?? 'Guest'}'),
-            ),
-            const PopupMenuDivider(),
-
             PopupMenuItem<String>(
               value: 'home',
               child: Container(
-                color: (currentRoute == '/homepage') ? navbarBlue : null,
+                color: (currentRoute == '/homeSA') ? navbarBlue : null,
                 child: ListTile(
                   leading: Icon(
                     Icons.home,
-                    color: (currentRoute == '/homepage') ? Colors.white : Colors.black,
+                    color: (currentRoute == '/homeSA') ? Colors.white : Colors.black,
                   ),
                   title: Text(
                     'Home',
                     style: TextStyle(
-                      color: (currentRoute == '/homepage') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/homepage') ? FontWeight.bold : FontWeight.normal,
+                      color: (currentRoute == '/homeSA') ? Colors.white : Colors.black,
+                      fontWeight: (currentRoute == '/homeSA') ? FontWeight.bold : FontWeight.normal,
                     ),
                   ),
                 ),
               ),
             ),
-
-            // Profile
             PopupMenuItem<String>(
-              value: 'profile',
+              value: 'removestaff',
               child: Container(
-                // If we are currently on '/profile', highlight in navbarBlue
-                color: (currentRoute == '/profile') ? navbarBlue : null,
+                color: (currentRoute == '/removestaff') ? navbarBlue : null,
                 child: ListTile(
                   leading: Icon(
-                    Icons.person,
-                    color: (currentRoute == '/profile') ? Colors.white : Colors.black,
+                    Icons.person_remove,
+                    color: (currentRoute == '/removestaff') ? Colors.white : Colors.black,
                   ),
                   title: Text(
-                    'Profile',
+                    'Remove Staff',
                     style: TextStyle(
-                      color: (currentRoute == '/profile') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/profile') ? FontWeight.bold : FontWeight.normal,
+                      color: (currentRoute == '/removestaff') ? Colors.white : Colors.black,
+                      fontWeight: (currentRoute == '/removestaff') ? FontWeight.bold : FontWeight.normal,
                     ),
                   ),
                 ),
               ),
             ),
-
-            // My Enrollment
-            PopupMenuItem<String>(
-              value: 'myEnrollment',
-              child: Container(
-                color: (currentRoute == '/myEnrollment') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.how_to_reg,
-                    color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'My Enrollment',
-                    style: TextStyle(
-                      color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/myEnrollment') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Courses
-            PopupMenuItem<String>(
-              value: 'courses',
-              child: Container(
-                color: (currentRoute == '/courses') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.menu_book,
-                    color: (currentRoute == '/courses') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'Courses',
-                    style: TextStyle(
-                      color: (currentRoute == '/courses') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/courses') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Finance
-            PopupMenuItem<String>(
-              value: 'finance',
-              child: Container(
-                color: (currentRoute == '/finance') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.attach_money,
-                    color: (currentRoute == '/finance') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'Finance',
-                    style: TextStyle(
-                      color: (currentRoute == '/finance') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/finance') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const PopupMenuDivider(),
-
-            // Logout
             const PopupMenuItem<String>(
               value: 'logout',
               child: ListTile(
@@ -198,5 +113,12 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
     );
+  }
+
+  void _handleLogout(BuildContext context, SuperAdminDashboardViewModel viewModel) {
+    // Perform any logout-related logic, such as clearing session data
+    viewModel.handleLogout(context); // Pass the context to the handleLogout method
+    // Navigate to the login page
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
   }
 }

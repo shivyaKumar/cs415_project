@@ -1,216 +1,113 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import '../../viewmodels/sAdmin/removeStaff_viewmodel.dart';
+import 'widgets/custom_header.dart';
+import 'widgets/custom_footer.dart';
 
-class RemoveStaffPage extends StatefulWidget {
-  const RemoveStaffPage({super.key});
-
-  @override
-  _RemoveStaffPageState createState() => _RemoveStaffPageState();
-}
-
-class _RemoveStaffPageState extends State<RemoveStaffPage> {
-  // Flag to indicate whether Managers or Staffs is selected
-  bool isManagerSelected = true;
-
-  final List<Map<String, String>> managers = [
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "qualification": "MBA"
-    },
-    {
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "email": "jane.smith@example.com",
-      "qualification": "PhD"
-    },
-    {
-      "firstName": "Michael",
-      "lastName": "Brown",
-      "email": "michael.brown@example.com",
-      "qualification": "BSc"
-    },
-  ];
-
-  final List<Map<String, String>> staffs = [
-    {
-      "firstName": "Alice",
-      "lastName": "Johnson",
-      "email": "alice.johnson@example.com",
-      "qualification": "BA"
-    },
-    {
-      "firstName": "Bob",
-      "lastName": "Williams",
-      "email": "bob.williams@example.com",
-      "qualification": "MA"
-    },
-  ];
-
+class RemoveStaffPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Select the correct list based on the selected category
-    final List<Map<String, String>> currentList =
-        isManagerSelected ? managers : staffs;
+    final viewModel = context.watch<RemoveStaffViewModel>();
+    final isManagerSelected = viewModel.isManagerSelected;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Get the current list (managers or staff)
+    final items = viewModel.currentList;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(160),
-        child: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
-            color: Colors.white,
-          ),
-          flexibleSpace: Stack(
-            fit: StackFit.expand,
-            children: [
-              Positioned(
-                left: 0,
-                right: 0,
-                child: Image.asset(
-                  'assets/images/header.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 60,
-                left: 0,
-                right: 0,
-                child: const Center(
-                  child: Text(
-                    'Manage Staff',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: Colors.transparent,
-        ),
+      appBar: CustomHeader(
+        title: isManagerSelected ? 'View & Remove Managers' : 'View & Remove Staff',
       ),
       body: Column(
         children: [
-          // Card selection for Managers and Staffs
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildSelectionCard(
-                  title: "Managers",
-                  isSelected: isManagerSelected,
-                  onTap: () {
-                    setState(() {
-                      isManagerSelected = true;
-                    });
-                  },
-                ),
-                const SizedBox(width: 16),
-                _buildSelectionCard(
-                  title: "Staffs",
-                  isSelected: !isManagerSelected,
-                  onTap: () {
-                    setState(() {
-                      isManagerSelected = false;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-          // DataTable for selected category (Managers or Staffs)
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  headingRowColor:
-                      WidgetStateColor.resolveWith((states) => Colors.teal),
-                  columns: const [
-                    DataColumn(
-                      label: Text('First Name',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ),
-                    DataColumn(
-                      label: Text('Last Name',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ),
-                    DataColumn(
-                      label: Text('Email',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ),
-                    DataColumn(
-                      label: Text('Qualification',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ),
-                    DataColumn(label: Text('Remove')),
-                  ],
-                  rows: currentList
-                      .map(
-                        (staffOrManager) => DataRow(
-                          cells: [
-                            DataCell(Text(staffOrManager["firstName"]!)),
-                            DataCell(Text(staffOrManager["lastName"]!)),
-                            DataCell(Text(staffOrManager["email"]!)),
-                            DataCell(Text(staffOrManager["qualification"]!)),
-                            DataCell(
-                              IconButton(
-                                icon: const Icon(Icons.cancel, color: Colors.red),
-                                onPressed: () {
-                                  // Remove staff or manager
-                                  setState(() {
-                                    currentList.remove(staffOrManager);
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
+          // Toggle buttons to switch between Managers and Staff
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildToggleButton(
+                context: context,
+                title: 'Managers',
+                isSelected: isManagerSelected,
+                onTap: () => viewModel.toggleSelection(true),
               ),
-            ),
+              const SizedBox(width: 16),
+              _buildToggleButton(
+                context: context,
+                title: 'Staff',
+                isSelected: !isManagerSelected,
+                onTap: () => viewModel.toggleSelection(false),
+              ),
+            ],
           ),
-          _buildFooter(),
+          const SizedBox(height: 16),
+          // Display the list of Managers or Staff
+          Expanded(
+            child: items.isEmpty
+                ? Center(
+                    child: Text(
+                      isManagerSelected ? 'No Managers Found' : 'No Staff Found',
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      if (isManagerSelected) {
+                        final manager = items[index];
+                        return ListTile(
+                          title: Text('${manager.firstName} ${manager.lastName}'),
+                          subtitle: Text(
+                            'Qualification: ${manager.qualification}\nField: ${manager.fieldOfQualification}',
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              _showConfirmationDialog(context, viewModel, manager);
+                            },
+                          ),
+                        );
+                      } else {
+                        final staff = items[index];
+                        return ListTile(
+                          title: Text('${staff.firstName} ${staff.lastName}'),
+                          subtitle: Text('Employment Type: ${staff.employmentType}'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              _showConfirmationDialog(context, viewModel, staff);
+                            },
+                          ),
+                        );
+                      }
+                    },
+                  ),
+          ),
         ],
       ),
+      bottomNavigationBar: CustomFooter(screenWidth: screenWidth),
     );
   }
 
-  // Helper method to create cards for Managers and Staffs
-  Widget _buildSelectionCard(
-      {required String title, required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildToggleButton({
+    required BuildContext context,
+    required String title,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
         decoration: BoxDecoration(
           color: isSelected ? Colors.teal : Colors.grey[300],
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
-            BoxShadow(
-              color: isSelected ? Colors.teal : Colors.transparent,
-              spreadRadius: 1,
-              blurRadius: 5,
-            ),
+            if (isSelected)
+              BoxShadow(
+                color: Colors.teal.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+              ),
           ],
         ),
         child: Text(
@@ -218,98 +115,41 @@ class _RemoveStaffPageState extends State<RemoveStaffPage> {
           style: TextStyle(
             color: isSelected ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFooter({double height = 80}) {
-    return SizedBox(
-      height: height,
-      child: Container(
-        width: double.infinity,
-        color: Colors.teal,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/copyright'),
-                        child: const Text(
-                          'Copyright',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text('|', style: TextStyle(color: Colors.white)),
-                      const SizedBox(width: 8),
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/contact'),
-                        child: const Text(
-                          'Contact Us',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    '© Copyright 1968 - 2025. All Rights Reserved.',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
+  void _showConfirmationDialog(BuildContext context, RemoveStaffViewModel viewModel, dynamic user) {
+    final isManagerSelected = viewModel.isManagerSelected;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Confirm Removal'),
+          content: Text(
+            isManagerSelected
+                ? 'Are you sure you want to remove this manager?'
+                : 'Are you sure you want to remove this staff member?',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cancel'),
             ),
-            Expanded(
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/images/usp_logo.svg',
-                  width: 133,
-                  height: 60,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Text(
-                    'The University of the South Pacific',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Text(
-                    'Laucala Campus, Suva, Fiji',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Text(
-                    'Tel: +679 323 1000',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
+            TextButton(
+              onPressed: () {
+                viewModel.removeUser(user);
+                Navigator.of(context).pop();
+              },
+              child: const Text('Remove', style: TextStyle(color: Colors.red)),
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
-  }
-
-  void _openLink(String url) {
-    print('Opening link: $url');
   }
 }

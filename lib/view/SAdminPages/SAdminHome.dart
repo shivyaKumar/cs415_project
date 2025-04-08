@@ -1,5 +1,6 @@
+import 'widgets/custom_footer.dart';
+import 'widgets/custom_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/sAdmin/superAdmin_viewmodel.dart';
 
@@ -10,63 +11,15 @@ class SuperAdminDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     return ChangeNotifierProvider(
-      create: (_) => SuperAdminDashboardViewModel(context),
+      create: (_) => SuperAdminDashboardViewModel(),
       child: Consumer<SuperAdminDashboardViewModel>(
         builder: (context, viewModel, child) {
           return Scaffold(
             backgroundColor: Colors.indigo[50],
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(160),
-              child: AppBar(
-                leading: Builder(
-                  builder: (context) => IconButton(
-                    icon: const Icon(Icons.menu),
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                    color: Colors.white,
-                  ),
-                ),
-                flexibleSpace: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      child: Image.asset(
-                        'assets/images/header.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      top: 60,
-                      left: 0,
-                      right: 0,
-                      child: const Center(
-                        child: Text(
-                          'Super Admin Dashboard',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 30,
-                      right: 16,
-                      child: IconButton(
-                        icon: const Icon(Icons.logout),
-                        onPressed: viewModel.handleLogout,
-                        tooltip: 'Logout',
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                backgroundColor: Colors.transparent,
-              ),
+            appBar: const CustomHeader(
+              title: 'Super Admin Dashboard',
             ),
             drawer: Drawer(
               child: Column(
@@ -86,9 +39,9 @@ class SuperAdminDashboard extends StatelessWidget {
                     ),
                   ),
                   _buildDrawerItem(
-                    Icons.admin_panel_settings,
-                    'Manage SAS Managers',
-                    () => viewModel.manageSasManagers(),
+                    Icons.person_remove,
+                    'Remove Managers and Staffs',
+                    () => viewModel.deleteSasManager(context, ''), // Pass context here
                   ),
                 ],
               ),
@@ -111,59 +64,19 @@ class SuperAdminDashboard extends StatelessWidget {
                       mainAxisSpacing: 12,
                       childAspectRatio: 1.2,
                     ),
-                    itemCount: 1, // Only one item for managing SAS Managers
+                    itemCount: 1, // Two items: Add and Remove Managers and Staff
                     itemBuilder: (context, index) {
-                      return _buildDashboardCard(
-                        Icons.admin_panel_settings,
-                        'Manage SAS Managers',
-                        () => viewModel.manageSasManagers(),
-                      );
+                        return _buildDashboardCard(
+                          Icons.person_remove,
+                          'Remove Managers and Staffs',
+                          () => viewModel.deleteSasManager(context, ''),
+                        );
                     },
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: headerTeal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              '© 2025 The University of the South Pacific',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: SvgPicture.asset(
-                            'assets/images/usp_logo.svg',
-                            width: 133,
-                            height: 60,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
-                            Text(
-                              'Laucala Campus, Suva, Fiji',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],
             ),
+            bottomNavigationBar: CustomFooter(screenWidth: screenWidth),
           );
         },
       ),

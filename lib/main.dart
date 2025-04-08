@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 // Import all views used in the application
 import 'view/SASstaff/homeStaff.dart';
-import 'view/SAdminPages/SASManage.dart';
 import 'view/student/stemp.dart';
 import 'view/SAdminPages/SAdminHome.dart';
 import 'view/SASmanager/homeSAS.dart';
@@ -16,6 +15,7 @@ import 'view/SASstaff/registerST.dart';
 import 'models/student/program_level_model.dart';
 import 'view/student/solass.dart';
 import 'view/student/finance.dart';
+import 'view/SAdminPages/RemoveStaff.dart';
 
 // Import all ViewModel (state management) classes
 import 'viewmodels/login_viewmodel.dart';
@@ -24,6 +24,9 @@ import 'viewmodels/student/profile_viewmodel.dart';
 import 'viewmodels/student/course_enrollment_viewmodel.dart';
 import 'viewmodels/student/finance_viewmodel.dart';
 import 'viewmodels/registrationStatus_viewmodel.dart';
+import 'viewmodels/sAdmin/superAdmin_viewmodel.dart';
+import 'viewmodels/sAdmin/SASManage_viewmodel.dart';
+import 'viewmodels/sAdmin/removeStaff_viewmodel.dart';
 
 // Import services
 import 'services/xml_parser.dart';
@@ -46,6 +49,12 @@ void main() async {
         ChangeNotifierProvider(create: (_) => CourseEnrollmentViewModel()), // Course enrollment state
         ChangeNotifierProvider(create: (_) => FinancePageViewModel()), // Finance page state
         ChangeNotifierProvider(create: (_) => RegistrationStatusViewModel()), // Registration status state
+        ChangeNotifierProvider(create: (_) => SuperAdminDashboardViewModel()), // Super Admin Dashboard state
+        ChangeNotifierProvider(create: (_) => SASManageViewModel()), // SAS Manager state
+        ChangeNotifierProxyProvider<SASManageViewModel, RemoveStaffViewModel>(
+          create: (_) => RemoveStaffViewModel(manageViewModel: SASManageViewModel()),
+          update: (_, sasManageViewModel, __) => RemoveStaffViewModel(manageViewModel: sasManageViewModel),
+        ),
       ],
       child: MyApp(
         stempProgramLevels: stempProgramLevels,
@@ -90,7 +99,7 @@ class MyApp extends StatelessWidget {
         '/finance': (context) => const FinancePage(), // Finance summary page
         '/homeSAS': (context) => const SasManagerDashboard(), // SAS Manager Dashboard
         '/homeSA': (context) => const SuperAdminDashboard(), // Super Admin Dashboard
-        '/sas_manage': (context) => const SASManage(), // SAS Manage page
+        '/removestaff': (context) => RemoveStaffPage(), // Remove Staff page
         '/homeStaff': (context) => HomeStaff(), // SAS Staff Dashboard
         '/course_selection': (context) => CourseSelectionPage(), // Course selection page
         '/enrollment': (context) => EnrollmentPage(), // Enrollment page
