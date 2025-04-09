@@ -25,18 +25,30 @@ class SolassPageState extends State<SolassPage> {
     _loadCourses();
   }
 
+  int getCourseYear(String courseCode) {
+    if (courseCode.length >= 3) {
+      final yearChar = courseCode[2]; // Get the third character
+      final year = int.tryParse(yearChar); // Try to parse it as an integer
+      return year ?? 0; // Return 0 if parsing fails
+    }
+    return 0; // Return 0 if the course code is invalid
+  }
+
   Future<void> _loadCourses() async {
     try {
-      // Load courses from the SoLaSS folder
-      final coursesList = await loadCourses('SOLASS', 'courses.xml');
+      final coursesList = await loadCourses('SOLASS', 'courseTypes.xml');
       final prerequisites = await loadPrerequisites('SOLASS', 'prerequisites.xml');
-
-      // Load course availability
       final availability = await loadCourseAvailability('SOLASS', 'courseAvailability.xml');
 
       setState(() {
-        courses = coursesList;
-        courseAvailability = availability; // Store course availability data
+        courseAvailability = availability;
+        courses = coursesList.where((course) {
+          final courseYear = getCourseYear(course.code);
+          final availableSemesters = availability[course.code] ?? [];
+          // Only include first-year courses and courses available in Semester 1 or Both
+          return courseYear == 1 &&
+              (availableSemesters.contains('Semester 1') || availableSemesters.contains('Both'));
+        }).toList();
       });
     } catch (e) {
       print('Error loading XML files: $e');
