@@ -5,6 +5,8 @@ import 'widgets/custom_header.dart';
 import 'widgets/custom_footer.dart';
 
 class RemoveStaffPage extends StatelessWidget {
+  const RemoveStaffPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<RemoveStaffViewModel>();

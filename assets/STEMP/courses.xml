@@ -63,8 +63,6 @@
     <course code="EE325" courseName="Electrical Drives" />
     <course code="EE326" courseName="Embedded Systems" />
     <course code="IndustrialAttachment" courseName="10-Week Industrial Attachment" />
-    <course code="PH102" courseName="Physics for Engineers" />
-    <course code="MA112" courseName="Advanced Calculus" />
     <course code="MM101" courseName="Engineering Graphics and Design" />
     <course code="MM211" courseName="Solid Mechanics 1" />
     <course code="MM214" courseName="Dynamics" />
@@ -93,7 +91,6 @@
     <course code="CS350" courseName="Wireless Networks" prerequisites="CS215" />
     <course code="EE102" courseName="Introduction to Electrical Engineering" />
     <course code="MM103" courseName="Engineering Mathematics" />
-    <course code="CS111" courseName="Programming Concepts" />
     <course code="MA211" courseName="Advanced Calculus" />
     <course code="CV211" courseName="Solid Mechanics 1" />
     <course code="CV212" courseName="Metallurgy and Material Science" />

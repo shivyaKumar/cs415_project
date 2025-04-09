@@ -23,9 +23,15 @@ class SasManagerDashboard extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(height: 20),
-                const Text(
-                  'Welcome, SAS Manager!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+                Text(
+                  viewModel.isRegistrationOpen
+                      ? 'Registration is Open'
+                      : 'Registration is Closed',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigo,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
@@ -49,12 +55,6 @@ class SasManagerDashboard extends StatelessWidget {
                           title: 'Close Registration',
                           description: 'Disable course registration for students.',
                           onTap: () => viewModel.handleTileTap('Close Registration'),
-                        ),
-                        _buildDashboardTile(
-                          icon: Icons.school,
-                          title: 'Course Selection',
-                          description: 'Access the course selection page.',
-                          onTap: viewModel.navigateToCourseSelection,
                         ),
                       ],
                     ),

@@ -98,44 +98,6 @@ class Homepage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 16),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/profile');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
-                                  vertical: 12,
-                                ),
-                              ),
-                              child: const Text(
-                                'My Profile',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/enrollment');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
-                                  vertical: 12,
-                                ),
-                              ),
-                              child: const Text(
-                                'Enroll Now',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),

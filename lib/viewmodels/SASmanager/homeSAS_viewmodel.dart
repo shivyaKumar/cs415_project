@@ -4,6 +4,7 @@ import '../registrationStatus_viewmodel.dart';
 
 class SasManagerDashboardViewModel extends ChangeNotifier {
   final BuildContext context;
+  bool isRegistrationOpen = true;
 
   SasManagerDashboardViewModel(this.context);
 
@@ -16,11 +17,14 @@ class SasManagerDashboardViewModel extends ChangeNotifier {
 
     if (action == 'Open Registration') {
       registrationStatus.openRegistration();
+      isRegistrationOpen = true;
       _showSnackBar('Registration is now open!');
     } else if (action == 'Close Registration') {
       registrationStatus.closeRegistration();
+      isRegistrationOpen = false;
       _showSnackBar('Registration is now closed!');
     }
+    notifyListeners();
   }
 
   void navigateToCourseSelection() {

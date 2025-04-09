@@ -25,6 +25,15 @@ class StempPageState extends State<StempPage> {
     _loadCourses();
   }
 
+  int getCourseYear(String courseCode) {
+    if (courseCode.length >= 3) {
+      final yearChar = courseCode[2]; // Get the third character
+      final year = int.tryParse(yearChar); // Try to parse it as an integer
+      return year ?? 0; // Return 0 if parsing fails
+    }
+    return 0; // Return 0 if the course code is invalid
+  }
+
   Future<void> _loadCourses() async {
     try {
       final coursesList = await loadCourses('STEMP', 'courseTypes.xml');
@@ -32,8 +41,14 @@ class StempPageState extends State<StempPage> {
       final availability = await loadCourseAvailability('STEMP', 'courseAvailability.xml');
 
       setState(() {
-        courses = coursesList;
         courseAvailability = availability;
+        courses = coursesList.where((course) {
+          final courseYear = getCourseYear(course.code);
+          final availableSemesters = availability[course.code] ?? [];
+          // Only include first-year courses and courses available in Semester 1 or Both
+          return courseYear == 1 &&
+              (availableSemesters.contains('Semester 1') || availableSemesters.contains('Both'));
+        }).toList();
       });
     } catch (e) {
       print('Error loading XML files: $e');
@@ -58,13 +73,24 @@ class StempPageState extends State<StempPage> {
   }
 
   void proceedToEnrollment() async {
-    try {
-      await LocalStorage.saveSelectedCourses(selectedCourses);
-      Navigator.pushNamed(context, '/enrollment', arguments: selectedCourses);
-    } catch (e) {
-      print('Error saving file: $e');
-    }
+  try {
+    await LocalStorage.saveSelectedCourses(selectedCourses);
+    Navigator.pushNamed(
+      context,
+      '/enrollment',
+      arguments: selectedCourses.map((code) {
+        final course = courses.firstWhere((c) => c.code == code);
+        return {
+          'code': course.code,
+          'title': course.name,
+          'campus': 'Laucala', // Default campus
+        };
+      }).toList(),
+    );
+  } catch (e) {
+    print('Error saving file: $e');
   }
+}
 
   @override
   Widget build(BuildContext context) {

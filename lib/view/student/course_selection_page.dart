@@ -1,8 +1,8 @@
-import 'package:cs415_project/view/student/widgets/custom_header.dart';
-import 'package:cs415_project/view/student/widgets/custom_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/registrationStatus_viewmodel.dart';
+import 'widgets/custom_header.dart';
+import 'widgets/custom_footer.dart';
 
 class CourseSelectionPage extends StatelessWidget {
   const CourseSelectionPage({super.key});
@@ -27,13 +27,20 @@ class CourseSelectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width; // Dynamically get screen width
-    final List<String> programs = ['SPACE', 'STEMP', 'SOLASS', 'SAGEONS', 'SAFE', 'SBM'];
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final List<String> programs = [
+      'SPACE',
+      'STEMP',
+      'SOLASS',
+      'SAGEONS',
+      'SAFE',
+      'SBM',
+    ];
     final registrationStatus = Provider.of<RegistrationStatusViewModel>(context);
 
     if (!registrationStatus.isRegistrationOpen) {
       return Scaffold(
-        appBar: const CustomHeader(), // Use the custom header
+        appBar: const CustomHeader(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -46,57 +53,62 @@ class CourseSelectionPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/enrollment'); // Navigate to enrollment page
+                Navigator.pushNamed(context, '/enrollment');
               },
               child: const Text('View Enrolled Courses'),
             ),
           ],
         ),
-        bottomNavigationBar: CustomFooter(screenWidth: screenWidth), // Use the custom footer
+        bottomNavigationBar: CustomFooter(screenWidth: screenWidth),
       );
     }
 
     return Scaffold(
-      appBar: const CustomHeader(), // Use the custom header
-      backgroundColor: Colors.transparent,
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 2,
-              ),
-              itemCount: programs.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () => navigateTo(context, programs[index]),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        programs[index],
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+      appBar: const CustomHeader(),
+      backgroundColor: Colors.indigo[50],
+      body: Center( // Center the tiles on the page
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Wrap(
+            spacing: 16.0, // Horizontal spacing between tiles
+            runSpacing: 16.0, // Vertical spacing between tiles
+            children: programs.map((program) {
+              return GestureDetector(
+                onTap: () => navigateTo(context, program),
+                child: Container(
+                  width: 150, // Fixed width for each tile
+                  height: 150, // Fixed height for square tiles
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF08305D), // Navy blue color
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
                       ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      program,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            }).toList(),
           ),
-          CustomFooter(screenWidth: screenWidth), // Use the custom footer
-        ],
+        ),
       ),
+      bottomNavigationBar: CustomFooter(screenWidth: screenWidth),
     );
   }
 }
