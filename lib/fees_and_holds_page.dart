@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-
+import 'dart:math';
 import 'firebase_service.dart';
 import 'models/student_model.dart';
 import 'models/student_course_fee_model.dart';
@@ -47,32 +47,78 @@ class _FeesAndHoldsPageState extends State<FeesAndHoldsPage> {
     });
   }
 
-  Future<void> _generatePDF() async {
-    final pdf = pw.Document();
+Future<void> _generatePDF() async {
+  final pdf = pw.Document();
 
-    pdf.addPage(
-      pw.MultiPage(
-        build: (context) => [
-          pw.Text('Student Invoice', style: pw.TextStyle(fontSize: 24)),
-          pw.SizedBox(height: 20),
-          if (student != null) ...[
-            pw.Text('Student ID: ${student!.id}', style: pw.TextStyle(fontSize: 12)),
-            pw.Text('Name: ${student!.name}', style: pw.TextStyle(fontSize: 12)),
-            pw.Text('Program: ${student!.program}', style: pw.TextStyle(fontSize: 12)),
-            pw.Text('Subprograms: ${student!.subprograms.join(', ')}', style: pw.TextStyle(fontSize: 12)),
-            pw.SizedBox(height: 20),
-          ],
-          pw.Text('Fees', style: pw.TextStyle(fontSize: 18)),
-          ...fees.map((fee) => pw.Text('Amount: \$${fee.amount}, Due: ${fee.dueDate}', style: pw.TextStyle(fontSize: 12))),
-          pw.SizedBox(height: 20),
-          pw.Text('Holds', style: pw.TextStyle(fontSize: 18)),
-          ...holds.map((hold) => pw.Text('Reason: ${hold.reason}, Status: ${hold.status}', style: pw.TextStyle(fontSize: 12))),
-        ],
+  // Load a built-in font
+  final font = await PdfGoogleFonts.openSansRegular();
+  final boldFont = await PdfGoogleFonts.openSansBold();
+  final italicFont = await PdfGoogleFonts.openSansItalic();
+
+  // Generate a unique invoice ID
+  final invoiceId = 'INV-${Random().nextInt(999999).toString().padLeft(6, '0')}';
+
+  pdf.addPage(
+    pw.MultiPage(
+      header: (context) => pw.Container(
+        alignment: pw.Alignment.center,
+        padding: const pw.EdgeInsets.only(bottom: 10),
+        child: pw.Text(
+          'University of The South Pacific - Finance Department',
+          style: pw.TextStyle(font: boldFont, fontSize: 18),
+        ),
       ),
-    );
+      footer: (context) => pw.Container(
+        alignment: pw.Alignment.center,
+        padding: const pw.EdgeInsets.only(top: 10),
+        child: pw.Text(
+          'Thank you for using USPS Finance Services!',
+          style: pw.TextStyle(font: italicFont, fontSize: 12),
+        ),
+      ),
+      build: (context) => [
+        pw.Container(
+          alignment: pw.Alignment.center,
+          padding: const pw.EdgeInsets.only(bottom: 20),
+          child: pw.Text(
+            'Student Invoice',
+            style: pw.TextStyle(font: boldFont, fontSize: 24),
+          ),
+        ),
+        pw.Text('Invoice ID: $invoiceId', style: pw.TextStyle(font: font, fontSize: 12)),
+        pw.SizedBox(height: 10),
+        if (student != null) ...[
+          pw.Text('Student ID: ${student!.id}', style: pw.TextStyle(font: font, fontSize: 12)),
+          pw.Text('Name: ${student!.name}', style: pw.TextStyle(font: font, fontSize: 12)),
+          pw.Text('Program: ${student!.program}', style: pw.TextStyle(font: font, fontSize: 12)),
+          pw.Text('Subprograms: ${student!.subprograms.join(', ')}', style: pw.TextStyle(font: font, fontSize: 12)),
+          pw.SizedBox(height: 20),
+        ],
+        pw.Text('Fees', style: pw.TextStyle(font: boldFont, fontSize: 18)),
+        pw.Divider(),
+        ...fees.map((fee) => pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text('Amount: \$${fee.amount}', style: pw.TextStyle(font: font, fontSize: 12)),
+                pw.Text('Due: ${fee.dueDate}', style: pw.TextStyle(font: font, fontSize: 12)),
+              ],
+            )),
+        pw.SizedBox(height: 20),
+        pw.Text('Holds', style: pw.TextStyle(font: boldFont, fontSize: 18)),
+        pw.Divider(),
+        ...holds.map((hold) => pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text('Reason: ${hold.reason}', style: pw.TextStyle(font: font, fontSize: 12)),
+                pw.Text('Status: ${hold.status}', style: pw.TextStyle(font: font, fontSize: 12)),
+              ],
+            )),
+      ],
+    ),
+  );
 
-    await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
-  }
+  await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
+}
 
   @override
   Widget build(BuildContext context) {
