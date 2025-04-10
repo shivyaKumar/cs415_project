@@ -2,7 +2,11 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:xml/xml.dart';
 import 'dart:math';
-
+  // SRP: XmlUploader class is responsible only for parsing and uploading XML data, maintaining a single responsibility.
+  // OCP: The class can be extended to handle additional XML parsing or upload tasks without modifying existing methods.
+  // LSP: The class design doesn’t involve inheritance, but if extended, derived classes would behave in a predictable manner (substituting base methods).
+  // ISP: No interfaces are used, but the class handles different XML types in separate methods, keeping the responsibilities clear and modular.
+  // DIP: The class directly depends on FirebaseDatabase and file loading logic, but using interfaces for Firebase and file handling could improve testability and flexibility.
 class XmlUploader {
   static Future<String> uploadAllXmlData() async {
     try {

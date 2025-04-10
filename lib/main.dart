@@ -1,3 +1,4 @@
+import 'package:cs415_project/fees_and_holds_page.dart';
 import 'package:firebase_core/firebase_core.dart'; // Firebase core
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -135,9 +136,11 @@ class MyApp extends StatelessWidget {
       theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
 
       // Initial screen shown when app starts
-      initialRoute: '/',
+      initialRoute: '/fees-and-holds', // Start at the register screen
+      //initialRoute: '/',
 
       // Named routes used for navigation throughout the app
+      ///fees-and-holds
       routes: {
         '/': (context) => const Login(), // Default route to login
         '/login': (context) => const Login(),

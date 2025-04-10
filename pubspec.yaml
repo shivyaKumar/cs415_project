@@ -22,6 +22,18 @@ dependencies:
   flutter_svg: ^2.0.9
   provider: ^6.0.0
   shared_preferences: ^2.0.15
+  url_launcher: ^6.1.7
+  file_picker: ^10.0.0
+  flutter_svg: ^2.0.9
+  xml: ^6.3.0
+  uuid: ^4.1.0 # For generating unique student IDs
+
+  # Firebase Core & Firestore (for student registration)
+  firebase_core: ^3.13.0
+  cloud_firestore: 5.6.6
+
+  # Optional: If you're also using real-time DB (can remove if not needed)
+  firebase_database: ^11.3.5
 
 dev_dependencies:
   flutter_test:
