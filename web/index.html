@@ -1,60 +1,14 @@
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAqNcdEutj09zcVnCc6QrbrQXXJ2MqX9-0",
-    authDomain: "usp-enrollment-system-database.firebaseapp.com",
-    databaseURL: "https://usp-enrollment-system-database-default-rtdb.firebaseio.com",
-    projectId: "usp-enrollment-system-database",
-    storageBucket: "usp-enrollment-system-database.firebasestorage.app",
-    messagingSenderId: "862102884770",
-    appId: "1:862102884770:web:4c7a4328441831f16fe2fb",
-    measurementId: "G-RR0N7ZMH2D"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const database = getDatabase(app);
-
-  async function uploadProgramsFromXml() {
-    try {
-      // Fetch the XML file
-      const response = await fetch("assets/images/sbm_all_programmes.xml");
-      const xmlText = await response.text();
-
-      // Parse the XML
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-
-      // Get all ProgramLevel nodes
-      const programLevels = xmlDoc.getElementsByTagName("ProgramLevel");
-      const programData = {};
-
-      // Loop through each ProgramLevel and extract data
-      for (let i = 0; i < programLevels.length; i++) {
-        const levelName = programLevels[i].getAttribute("name");
-        const programs = programLevels[i].getElementsByTagName("Program");
-
-        programData[levelName] = {};
-
-        for (let j = 0; j < programs.length; j++) {
-          const programName = programs[j].getAttribute("name");
-          programData[levelName][programName] = true;
-        }
-      }
-
-      // Upload to Firebase
-      const programsRef = ref(database, 'programmes');
-      await set(programsRef, programData);
-
-      console.log("XML data uploaded successfully!");
-    } catch (error) {
-      console.error("Error processing XML:", error);
-    }
-  }
-
-  // Call it on page load
-  uploadProgramsFromXml();
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>USP Enrollment System</title>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="description" content="USP Enrollment System" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <!-- Loads Flutter Web app -->
+    <script src="main.dart.js" type="application/javascript"></script>
+  </body>
+</html>
