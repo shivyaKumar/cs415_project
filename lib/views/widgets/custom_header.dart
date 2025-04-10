@@ -4,179 +4,128 @@ import 'package:provider/provider.dart';
 
 import '../../viewmodels/homepage_viewmodel.dart';
 
-/// A reusable header widget (AppBar) for pages that share
-/// the same user menu, except login.
+/// CustomHeader is a reusable widget that implements a responsive AppBar with a logo and user menu.
+///
+/// SOLID Principles:
+/// - SRP (Single Responsibility Principle): Handles only header layout and behavior.
+/// - DIP (Dependency Inversion Principle): Depends on ViewModel abstraction for logic.
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
-  final double height;
-
-  // We can reuse the same highlight color that we used in other pages
   static const Color navbarBlue = Color.fromARGB(255, 8, 45, 87);
 
-  const CustomHeader({
-    super.key,
-    this.height = 80,
-  });
+  const CustomHeader({super.key});
+
+  // This height is updated during build and reused in preferredSize (LSP)
+  static double _lastCalculatedHeight = 64;
 
   @override
   Widget build(BuildContext context) {
-    // Access the HomepageViewModel to handle logout, username, etc.
     final homepageViewModel = Provider.of<HomepageViewModel>(context);
-
-    // Grab the current route name to highlight the active page
     final String? currentRoute = ModalRoute.of(context)?.settings.name;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
-    return AppBar(
-      backgroundColor: const Color(0xFF009999),
-      elevation: 0,
-      automaticallyImplyLeading: false,
-      toolbarHeight: height,
-      title: Padding(
-        padding: const EdgeInsets.only(left: 10.0),
-        child: SvgPicture.asset(
-          'assets/images/usp_logo.svg',
-          height: 70,
-          width: 90,
-          fit: BoxFit.contain,
-        ),
-      ),
-      actions: [
-        PopupMenuButton<String>(
-          offset: const Offset(0, kToolbarHeight),
-          onSelected: (value) {
-            switch (value) {
-              case 'profile':
-                Navigator.pushNamed(context, '/profile');
-                break;
-              case 'myEnrollment':
-                Navigator.pushNamed(context, '/myEnrollment');
-                break;
-              case 'courses':
-                Navigator.pushNamed(context, '/courses');
-                break;
-              case 'finance':
-                Navigator.pushNamed(context, '/finance');
-                break;
-              case 'logout':
-                // Delegate logout to the ViewModel
-                homepageViewModel.logout(context);
-                break;
-            }
-          },
-          child: const Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.person, size: 32, color: Colors.white),
+    // Dynamically calculate header height
+    final double dynamicHeight = screenWidth < 500 ? 56 : (screenWidth > 1000 ? 72 : 64);
+    final double logoHeight = dynamicHeight - 16;
+    final double iconSize = dynamicHeight - 30;
+
+    // Save height to use in preferredSize getter
+    _lastCalculatedHeight = dynamicHeight;
+
+    return PreferredSize(
+      preferredSize: Size.fromHeight(dynamicHeight), // LSP: matches what Scaffold expects
+      child: AppBar(
+        backgroundColor: const Color(0xFF009999),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        toolbarHeight: dynamicHeight,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: SvgPicture.asset(
+            'assets/images/usp_logo.svg',
+            height: logoHeight,
+            fit: BoxFit.contain,
           ),
-          // We highlight the current route by comparing currentRoute
-          itemBuilder: (context) => [
-            // Display the username from the ViewModel
-            PopupMenuItem<String>(
-              enabled: false,
-              child: Text('Hi, ${homepageViewModel.username}'),
-            ),
-            const PopupMenuDivider(),
-
-            // Profile
-            PopupMenuItem<String>(
-              value: 'profile',
-              child: Container(
-                // If we are currently on '/profile', highlight in navbarBlue
-                color: (currentRoute == '/profile') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.person,
-                    color: (currentRoute == '/profile') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'Profile',
-                    style: TextStyle(
-                      color: (currentRoute == '/profile') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/profile') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // My Enrollment
-            PopupMenuItem<String>(
-              value: 'myEnrollment',
-              child: Container(
-                color: (currentRoute == '/myEnrollment') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.how_to_reg,
-                    color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'My Enrollment',
-                    style: TextStyle(
-                      color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/myEnrollment') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Courses
-            PopupMenuItem<String>(
-              value: 'courses',
-              child: Container(
-                color: (currentRoute == '/courses') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.menu_book,
-                    color: (currentRoute == '/courses') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'Courses',
-                    style: TextStyle(
-                      color: (currentRoute == '/courses') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/courses') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Finance
-            PopupMenuItem<String>(
-              value: 'finance',
-              child: Container(
-                color: (currentRoute == '/finance') ? navbarBlue : null,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.attach_money,
-                    color: (currentRoute == '/finance') ? Colors.white : Colors.black,
-                  ),
-                  title: Text(
-                    'Finance',
-                    style: TextStyle(
-                      color: (currentRoute == '/finance') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/finance') ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const PopupMenuDivider(),
-
-            // Logout
-            const PopupMenuItem<String>(
-              value: 'logout',
-              child: ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Logout'),
-              ),
-            ),
-          ],
         ),
-      ],
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: PopupMenuButton<String>(
+              offset: Offset(0, dynamicHeight),
+              icon: Icon(Icons.person, size: iconSize, color: Colors.white),
+              onSelected: (value) {
+                switch (value) {
+                  case 'profile':
+                    Navigator.pushNamed(context, '/profile');
+                    break;
+                  case 'myEnrollment':
+                    Navigator.pushNamed(context, '/myEnrollment');
+                    break;
+                  case 'courses':
+                    Navigator.pushNamed(context, '/courses');
+                    break;
+                  case 'finance':
+                    Navigator.pushNamed(context, '/finance');
+                    break;
+                  case 'logout':
+                    homepageViewModel.logout(context);
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<String>(
+                  enabled: false,
+                  child: Text('Hi, ${homepageViewModel.username}'),
+                ),
+                const PopupMenuDivider(),
+                _menuItem('profile', Icons.person, 'Profile', currentRoute),
+                _menuItem('myEnrollment', Icons.how_to_reg, 'My Enrollment', currentRoute),
+                _menuItem('courses', Icons.menu_book, 'Courses', currentRoute),
+                _menuItem('finance', Icons.attach_money, 'Finance', currentRoute),
+                const PopupMenuDivider(),
+                const PopupMenuItem<String>(
+                  value: 'logout',
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Logout'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  // So we can directly set appBar: CustomHeader() in a Scaffold
+  /// Builds individual popup items with conditional highlight.
+  /// SRP: Does only one thing – builds menu entry.
+  PopupMenuItem<String> _menuItem(
+    String value,
+    IconData icon,
+    String title,
+    String? currentRoute,
+  ) {
+    final bool isActive = currentRoute == '/$value';
+    return PopupMenuItem<String>(
+      value: value,
+      child: Container(
+        color: isActive ? navbarBlue : null,
+        child: ListTile(
+          leading: Icon(icon, color: isActive ? Colors.white : Colors.black),
+          title: Text(
+            title,
+            style: TextStyle(
+              color: isActive ? Colors.white : Colors.black,
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Returns preferred size. Uses previously calculated height from build context.
+  /// Fulfills LSP by maintaining contract with PreferredSizeWidget.
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(_lastCalculatedHeight);
 }
