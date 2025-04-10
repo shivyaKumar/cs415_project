@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Login(),
         '/homepage': (context) => const Homepage(),
         '/profile': (context) => const Profile(),
-        '/fees-and-holds': (context) => FeesAndHoldsPage(studentId: 'S001'), // Default student ID
+        '/fees-and-holds': (context) => FeesAndHoldsPage(studentId: 'S002'), // Default student ID
         //'/course-selection': (context) => const CourseSelectionPage(),
         '/register': (context) => const StudentRegistrationPage(),
         '/enrollment': (context) => const EnrollmentPage(),
