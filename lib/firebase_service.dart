@@ -2,7 +2,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'models/student_course_fee_model.dart';
 import 'models/hold_model.dart';
 import 'models/student_model.dart';
+// SRP: FirebaseService handles only Firebase data operations, keeping responsibilities clear and focused.
 
+// OCP: The class is open for extension as you can add more Firebase operations without modifying existing code.
 class FirebaseService {
   static final DatabaseReference _database = FirebaseDatabase.instance.ref();
 

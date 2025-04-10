@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'firebase_service.dart';
 import 'models/student_course_fee_model.dart';
 import 'models/hold_model.dart';
+// SRP: Each class has a single responsibility, keeping logic focused on either data handling or state management.
+  
+// OCP: The classes are open for extension (e.g., adding more logic) without modifying existing code.
 
 class FeesAndHoldsViewModel extends ChangeNotifier {
   List<StudentCourseFee> courseFees = [];
