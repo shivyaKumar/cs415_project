@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme_provider.dart';
+import 'firebase_service.dart';
+import 'models/student_course_fee_model.dart';
+import 'models/hold_model.dart';
+import 'fees_and_holds_page.dart'; // Import the new Fees and Holds page
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -49,6 +53,8 @@ class Homepage extends StatelessWidget {
             _buildDrawerItem(context, Icons.event, 'Exams', null),
             _buildDrawerItem(context, Icons.bar_chart, 'Results', null),
             _buildDrawerItem(context, Icons.settings, 'Settings', null),
+            // Add the new drawer item for Fees and Holds
+            _buildDrawerItem(context, Icons.attach_money, 'Fees and Holds', '/fees-and-holds'),
           ],
         ),
       ),
@@ -72,6 +78,8 @@ class Homepage extends StatelessWidget {
                   _buildDashboardCard(context, Icons.event, 'Exams', null),
                   _buildDashboardCard(context, Icons.bar_chart, 'Results', null),
                   _buildDashboardCard(context, Icons.settings, 'Settings', null),
+                  // Add a dashboard card for Fees and Holds
+                  _buildDashboardCard(context, Icons.attach_money, 'Fees and Holds', '/fees-and-holds'),
                 ],
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:cs415_project/fees_and_holds_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart'; // Firebase core
 import 'package:firebase_database/firebase_database.dart'; // Firebase Realtime Database
@@ -62,12 +63,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'USP Student Management',
       theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
-      initialRoute: '/register', // Start at the register screen
+      initialRoute: '/fees-and-holds', // Start at the register screen
+      //initialRoute: '/register', // Start at the register screen
       //initialRoute: '/upload-xml', use this to upload data 
+      ///fees-and-holds
       routes: {
         '/': (context) => const Login(),
         '/homepage': (context) => const Homepage(),
         '/profile': (context) => const Profile(),
+        '/fees-and-holds': (context) => FeesAndHoldsPage(studentId: 'S001'), // Default student ID
         //'/course-selection': (context) => const CourseSelectionPage(),
         '/register': (context) => const StudentRegistrationPage(),
         '/enrollment': (context) => const EnrollmentPage(),
