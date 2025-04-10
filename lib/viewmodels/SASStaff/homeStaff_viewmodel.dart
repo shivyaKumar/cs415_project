@@ -6,6 +6,26 @@ class HomeStaffViewModel extends ChangeNotifier {
 
   bool get isStudentOnHold => _isStudentOnHold;
 
+  // List of hardcoded staff members
+  final List<Map<String, String>> staffList = [
+    {'id': 'SS1064925', 'firstName': 'Alice', 'lastName': 'Johnson'},
+    {'id': 'SS10565294', 'firstName': 'Bob', 'lastName': 'Williams'},
+  ];
+
+  String _staffName = 'Unknown Staff'; // Default staff name
+
+  String get staffName => _staffName;
+
+  // Dynamically assign staff name based on login ID
+  void setStaffName(String id) {
+    final staff = staffList.firstWhere(
+      (staff) => staff['id'] == id,
+      orElse: () => {'firstName': 'Unknown', 'lastName': 'Staff'},
+    );
+    _staffName = '${staff['firstName']} ${staff['lastName']}';
+    notifyListeners();
+  }
+
   // Handles logout functionality
   void handleLogout(BuildContext context) {
     Navigator.pushReplacementNamed(context, '/');

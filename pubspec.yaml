@@ -12,6 +12,7 @@ dependencies:
   file_picker: ^9.2.1
   flutter:
     sdk: flutter
+  firebase_database: ^10.0.7
   printing: ^5.10.0
   xml: ^6.3.0
   file_saver: 0.2.14
@@ -33,24 +34,16 @@ flutter:
   assets:
     - assets/SAGEONS_2.xml
     - assets/STEMP.xml
-    - assets/STEMP/courses.xml
-    - assets/STEMP/prerequisites.xml
-    - assets/STEMP/courseAvailability.xml
-    - assets/STEMP/courseTypes.xml
-    - assets/STEMP/programs.xml
-    - assets/STEMP/programTypes.xml
-    - assets/STEMP/subPrograms.xml
-    - assets/SOLASS/courses.xml
-    - assets/SOLASS/prerequisites.xml
-    - assets/SOLASS/courseAvailability.xml
-    - assets/SOLASS/courseTypes.xml
-    - assets/SOLASS/programs.xml
-    - assets/SOLASS/programTypes.xml
-    - assets/SOLASS/subPrograms.xml
-    - assets/programLevels.xml
+    - assets/XMLs/programs.xml
+    - assets/XMLs/courses.xml
+    - assets/XMLs/courseAvailability.xml
+    - assets/XMLs/prerequisities.xml
+    - assets/XMLs/semType.xml
+    - assets/XMLs/subprogrammes.xml
     - assets/semesters.xml
     - assets/campuses.xml
     - assets/images/header.png
     - assets/images/homepage.png
     - assets/images/student.png
     - assets/images/usp_logo.svg
+  

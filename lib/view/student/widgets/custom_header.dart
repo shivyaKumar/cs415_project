@@ -52,10 +52,10 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.pushNamed(context, '/profile');
                 break;
               case 'myEnrollment':
-                Navigator.pushNamed(context, '/myEnrollment');
+                Navigator.pushNamed(context, '/enrollment');
                 break;
               case 'courses':
-                Navigator.pushNamed(context, '/courses');
+                Navigator.pushNamed(context, '/course_selection');
                 break;
               case 'finance':
                 Navigator.pushNamed(context, '/finance');
@@ -125,17 +125,17 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
             PopupMenuItem<String>(
               value: 'myEnrollment',
               child: Container(
-                color: (currentRoute == '/myEnrollment') ? navbarBlue : null,
+                color: (currentRoute == '/enrollment') ? navbarBlue : null,
                 child: ListTile(
                   leading: Icon(
                     Icons.how_to_reg,
-                    color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
+                    color: (currentRoute == '/enrollment') ? Colors.white : Colors.black,
                   ),
                   title: Text(
                     'My Enrollment',
                     style: TextStyle(
-                      color: (currentRoute == '/myEnrollment') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/myEnrollment') ? FontWeight.bold : FontWeight.normal,
+                      color: (currentRoute == '/enrollment') ? Colors.white : Colors.black,
+                      fontWeight: (currentRoute == '/enrollment') ? FontWeight.bold : FontWeight.normal,
                     ),
                   ),
                 ),
@@ -146,17 +146,17 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
             PopupMenuItem<String>(
               value: 'courses',
               child: Container(
-                color: (currentRoute == '/courses') ? navbarBlue : null,
+                color: (currentRoute == '/course_selection') ? navbarBlue : null,
                 child: ListTile(
                   leading: Icon(
                     Icons.menu_book,
-                    color: (currentRoute == '/courses') ? Colors.white : Colors.black,
+                    color: (currentRoute == '/course_selection') ? Colors.white : Colors.black,
                   ),
                   title: Text(
                     'Courses',
                     style: TextStyle(
-                      color: (currentRoute == '/courses') ? Colors.white : Colors.black,
-                      fontWeight: (currentRoute == '/courses') ? FontWeight.bold : FontWeight.normal,
+                      color: (currentRoute == '/course_selection') ? Colors.white : Colors.black,
+                      fontWeight: (currentRoute == '/course_selection') ? FontWeight.bold : FontWeight.normal,
                     ),
                   ),
                 ),

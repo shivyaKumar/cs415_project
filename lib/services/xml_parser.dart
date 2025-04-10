@@ -8,17 +8,17 @@ import '../models/student/year_model.dart';
 // Import the CourseAvailability model
 
 /// Load courses from the courseTypes.xml file
-Future<List<Course>> loadCourses(String folder, String fileName) async {
+Future<List<Course>> loadCourses(String fileName) async {
   try {
-    final String filePath = 'assets/$folder/$fileName';
+    final String filePath = 'assets/XMLs/$fileName'; // Updated path
     final String xmlString = await rootBundle.loadString(filePath);
     final xml.XmlDocument document = xml.XmlDocument.parse(xmlString);
 
     return document.findAllElements('course').map((courseNode) {
       final courseCode = courseNode.getAttribute('code') ?? '';
       final courseName = courseNode.getAttribute('courseName') ?? '';
-      final semType = courseNode.getAttribute('sem_type')?.toLowerCase() == 'true'; // Check sem_type
-      final prerequisitesString = courseNode.getAttribute('prerequisites') ?? '';
+      final semType = courseNode.getAttribute('sem_type')?.toLowerCase() == 'true';
+      final prerequisitesString = courseNode.getAttribute('prerequisities') ?? '';
       final prerequisites = prerequisitesString.isNotEmpty
           ? prerequisitesString.split(',')
           : <String>[];
@@ -27,7 +27,7 @@ Future<List<Course>> loadCourses(String folder, String fileName) async {
         code: courseCode,
         name: courseName,
         prerequisites: prerequisites,
-        type: semType ? "full" : "half", // Use semType to determine course type
+        type: semType ? "full" : "half",
       );
     }).toList();
   } catch (e) {

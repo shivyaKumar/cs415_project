@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '/services/xml_parser.dart';
 import '../../models/student/course_model.dart';
 import '../../models/student/program_level_model.dart';
 import '../../services/local_storage.dart';
+import '../../xml_loader.dart'; // Updated to use xml_loader
 import 'widgets/custom_header.dart';
 import 'widgets/custom_footer.dart';
 
@@ -16,8 +16,8 @@ class StempPage extends StatefulWidget {
 
 class StempPageState extends State<StempPage> {
   List<String> selectedCourses = [];
-  List<Course> courses = [];
-  Map<String, List<String>> courseAvailability = {};
+  List<Map<String, dynamic>> courses = [];
+  Map<String, dynamic> courseAvailability = {};
 
   @override
   void initState() {
@@ -36,61 +36,72 @@ class StempPageState extends State<StempPage> {
 
   Future<void> _loadCourses() async {
     try {
-      final coursesList = await loadCourses('STEMP', 'courseTypes.xml');
-      final prerequisites = await loadPrerequisites('STEMP', 'prerequisites.xml');
-      final availability = await loadCourseAvailability('STEMP', 'courseAvailability.xml');
+      // Load data using XmlUploader
+      final semTypeData = await XmlUploader.parseSemTypes();
+      final availability = await XmlUploader.parseCourseAvailability(semTypeData);
+      final prerequisites = await XmlUploader.parsePrerequisites();
+      final coursesList = await XmlUploader.parseCourses(availability, prerequisites);
+
+      final stemPrefixes = ['CS', 'IS', 'MA', 'PH', 'ST', 'UU'];
 
       setState(() {
         courseAvailability = availability;
-        courses = coursesList.where((course) {
-          final courseYear = getCourseYear(course.code);
-          final availableSemesters = availability[course.code] ?? [];
-          // Only include first-year courses and courses available in Semester 1 or Both
-          return courseYear == 1 &&
-              (availableSemesters.contains('Semester 1') || availableSemesters.contains('Both'));
-        }).toList();
+        courses = coursesList.values
+            .where((course) {
+              final courseCode = course['code'] ?? '';
+              final prefix = courseCode.length >= 2 ? courseCode.substring(0, 2) : '';
+              final courseYear = getCourseYear(courseCode);
+              final availableSemesters = availability[course['course_availability_id']]?['semester'] ?? [];
+
+              return stemPrefixes.contains(prefix) &&
+                  courseYear == 1 &&
+                  (availableSemesters.contains('Semester 1') || availableSemesters.contains('Both'));
+            })
+            .cast<Map<String, dynamic>>()
+            .toList();
       });
     } catch (e) {
       print('Error loading XML files: $e');
     }
   }
 
-  bool canSelectCourse(Course course) {
-    if (course.type == "half") return true;
+
+  bool canSelectCourse(Map<String, dynamic> course) {
+    if (course['type'] == "half") return true;
     if (selectedCourses.length >= 4) return false;
-    if (course.prerequisites.isEmpty) return true;
-    return course.prerequisites.every((prereq) => selectedCourses.contains(prereq));
+    if (course['prerequisites'] == null || course['prerequisites'].isEmpty) return true;
+    return course['prerequisites'].every((prereq) => selectedCourses.contains(prereq));
   }
 
-  void toggleCourseSelection(Course course) {
+  void toggleCourseSelection(Map<String, dynamic> course) {
     setState(() {
-      if (selectedCourses.contains(course.code)) {
-        selectedCourses.remove(course.code);
+      if (selectedCourses.contains(course['code'])) {
+        selectedCourses.remove(course['code']);
       } else {
-        selectedCourses.add(course.code);
+        selectedCourses.add(course['code']);
       }
     });
   }
 
   void proceedToEnrollment() async {
-  try {
-    await LocalStorage.saveSelectedCourses(selectedCourses);
-    Navigator.pushNamed(
-      context,
-      '/enrollment',
-      arguments: selectedCourses.map((code) {
-        final course = courses.firstWhere((c) => c.code == code);
-        return {
-          'code': course.code,
-          'title': course.name,
-          'campus': 'Laucala', // Default campus
-        };
-      }).toList(),
-    );
-  } catch (e) {
-    print('Error saving file: $e');
+    try {
+      await LocalStorage.saveSelectedCourses(selectedCourses);
+      Navigator.pushNamed(
+        context,
+        '/enrollment',
+        arguments: selectedCourses.map((code) {
+          final course = courses.firstWhere((c) => c['code'] == code);
+          return {
+            'code': course['code'],
+            'title': course['name'],
+            'campus': 'Laucala', // Default campus
+          };
+        }).toList(),
+      );
+    } catch (e) {
+      print('Error saving file: $e');
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -111,35 +122,36 @@ class StempPageState extends State<StempPage> {
             Expanded(
               child: ListView(
                 children: courses.map((course) {
-                  final availableSemesters = courseAvailability[course.code] ?? [];
+                  final availableSemesters = courseAvailability[course['course_availability_id']]?['semester'] ?? [];
                   return Card(
                     margin: const EdgeInsets.symmetric(vertical: 5),
                     child: CheckboxListTile(
                       title: Text(
-                        "${course.code} - ${course.name}",
+                        "${course['code']} - ${course['name']}",
                         style: const TextStyle(fontSize: 16),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (course.prerequisites.isNotEmpty)
+                          if (course['prerequisites'] != null && course['prerequisites'].isNotEmpty)
                             Text(
-                              "Prerequisites: ${course.prerequisites.join(', ')}",
+                              "Prerequisites: ${(course['prerequisites'] ?? []).join(', ')}", // Ensure non-null
                               style: const TextStyle(color: Colors.grey),
                             ),
                           if (availableSemesters.isNotEmpty)
                             Text(
-                              "Available in: ${availableSemesters.join(', ')}",
+                              "Available in: ${((availableSemesters is List ? availableSemesters : [availableSemesters]) ?? []).join(', ')}", // Ensure non-null
                               style: const TextStyle(color: Colors.grey),
                             ),
-                          if (course.prerequisites.isEmpty && availableSemesters.isEmpty)
+                          if ((course['prerequisites'] == null || course['prerequisites'].isEmpty) &&
+                              availableSemesters.isEmpty)
                             const Text(
                               "No prerequisites or availability info",
                               style: TextStyle(color: Colors.grey),
                             ),
                         ],
                       ),
-                      value: selectedCourses.contains(course.code),
+                      value: selectedCourses.contains(course['code']),
                       onChanged: canSelectCourse(course)
                           ? (bool? value) => toggleCourseSelection(course)
                           : null,

@@ -6,9 +6,9 @@ import 'widgets/custom_footer.dart';
 import 'widgets/custom_header.dart';
 
 class Homepage extends StatelessWidget {
-  final String username;
+  final String studentId;
 
-  const Homepage({super.key, required this.username});
+  const Homepage({super.key, required this.studentId});
 
   Widget _buildFeatureTile({
     required String label,
@@ -53,7 +53,11 @@ class Homepage extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     final homepageViewModel = Provider.of<HomepageViewModel>(context);
-    homepageViewModel.username = username;
+
+    // Fetch the username when the homepage is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      homepageViewModel.fetchUsername(studentId);
+    });
 
     return Scaffold(
       appBar: const CustomHeader(),
@@ -117,7 +121,11 @@ class Homepage extends StatelessWidget {
                   _buildFeatureTile(
                     label: 'My Profile',
                     icon: Icons.person,
-                    onTap: () => Navigator.pushNamed(context, '/profile'),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/profile',
+                      arguments: studentId, // Pass the studentId to the profile page
+                    ),
                   ),
                   _buildFeatureTile(
                     label: 'My Enrollment',

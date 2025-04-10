@@ -141,7 +141,7 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
           minWidth: MediaQuery.of(context).size.width, // Make the table responsive
         ),
         child: DataTable(
-          headingRowColor: MaterialStateProperty.all(navbarBlue),
+          headingRowColor: WidgetStateProperty.all(navbarBlue),
           headingTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           columns: const [
             DataColumn(label: Text("Course")),

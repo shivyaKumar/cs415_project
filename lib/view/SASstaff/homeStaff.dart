@@ -22,8 +22,8 @@ class HomeStaff extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const Text(
-              'Welcome, SAS Staff Member!',
+            Text(
+              'Welcome, ${viewModel.staffName}!',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
               textAlign: TextAlign.center,
             ),

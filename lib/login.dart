@@ -1,6 +1,9 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'global.dart';
+import 'package:provider/provider.dart';
+import '../../view/student/homepage.dart';
+import 'theme_provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -14,75 +17,227 @@ class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
-  void _handleLogin() {
+  void _handleLogin() async {
+    debugPrint("Login button pressed");
+
     final id = _idController.text.trim();
     final password = _passwordController.text.trim();
 
-    if (id.isEmpty) {
+    if (id.isEmpty || password.isEmpty) {
+      debugPrint("ID or password is empty");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Email textbox cannot be empty.'),
+          content: Text('Email/ID and password cannot be empty.'),
         ),
       );
       return;
     }
 
-    final studentRegex = RegExp(r'^[Ss][0-9]{8}@student\.usp\.ac\.fj$');
-
-    // Super Admin Login
-    if (id.toLowerCase() == "superadmin" && password == "superadmin123") {
-      Navigator.of(context).pushReplacementNamed('/homeSA');
+    // Updated regex for student email validation
+    final emailRegex = RegExp(r'^[Ss]\d{6,8}@student\.usp\.ac\.fj$');
+    if (!emailRegex.hasMatch(id)) {
+      debugPrint("Invalid email format: $id");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Invalid email format. Please use a valid student email.'),
+        ),
+      );
       return;
     }
 
-    // SAS Manager Login
-    if (id == "SA1110122" && password == "sasmanage1") {
-      Navigator.of(context).pushReplacementNamed('/homeSAS');
-      return;
-    } else if (id == "SA1120121" && password == "sasmanage2") {
-      Navigator.of(context).pushReplacementNamed('/homeSAS');
-      return;
-    }
+    // Extract student ID from email
+    final studentId = id.split('@')[0];
+    debugPrint("Extracted student ID: $studentId");
 
-    // SAS Staff Login
-    if (id.toLowerCase() == "SS1064925" && password == "sasstaff1") {
-      Navigator.of(context).pushReplacementNamed('/homeStaff');
-      return;
-    }
-    else if (id.toLowerCase() == "SS10565294" && password == "sasstaff2") {
-      Navigator.of(context).pushReplacementNamed('/homeStaff');
-      return;
-    }
+    try {
+      // Fetch student data from Firebase
+      debugPrint("Attempting to fetch student data from Firebase");
+      final database = FirebaseDatabase.instance.ref("students");
+      final snapshot = await database.child(studentId).get();
 
-    // Student Login (must match regex & have password 12345)
-    if (studentRegex.hasMatch(id) && password == "12345") {
-      debugPrint('Login successful for student: $id');
-      loggedInEmails.add(id);
-      Navigator.pushReplacementNamed(context, '/homepage');
-      return;
-    }
+      if (snapshot.exists) {
+        final student = snapshot.value as Map<dynamic, dynamic>;
+        final storedPassword = student['password'] as String;
 
-    // Invalid credentials
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Invalid credentials. Please try again.'),
+        debugPrint("Stored password: $storedPassword");
+        debugPrint("Entered password: $password");
+
+        if (password == storedPassword) {
+          debugPrint("Login successful for student: $studentId");
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Homepage(studentId: studentId),
+            ),
+          );
+        } else {
+          debugPrint("Invalid password for student: $studentId");
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Invalid password. Please try again.'),
+            ),
+          );
+        }
+      } else {
+        debugPrint("Student ID not found in the database: $studentId");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Student ID not found. Please check your credentials.'),
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint("Error fetching student data from Firebase: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error validating login: $e'),
+        ),
+      );
+    }
+  }
+
+  Future<void> openLink(String urlString) async {
+    debugPrint('Attempt to open: $urlString');
+    // Implement link opening logic if required.
+  }
+
+  Widget buildFooter(double screenWidth) {
+    final double scaleFactor = screenWidth < 600 ? screenWidth / 600 : 1.0;
+    final double footerFontSize = 14 * scaleFactor;
+    final double verticalPadding = 8 * scaleFactor;
+    final double horizontalPadding = 16 * scaleFactor;
+    final double logoWidth = 133 * scaleFactor;
+    final double logoHeight = 60 * scaleFactor;
+
+    return Container(
+      width: double.infinity,
+      color: const Color(0xFF009999),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () => openLink('https://www.example.com/copyright'),
+                      child: Text(
+                        'Copyright',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                          fontSize: footerFontSize,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8 * scaleFactor),
+                    Text(
+                      '|',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: footerFontSize,
+                      ),
+                    ),
+                    SizedBox(width: 8 * scaleFactor),
+                    InkWell(
+                      onTap: () => openLink('https://www.example.com/contact'),
+                      child: Text(
+                        'Contact Us',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                          fontSize: footerFontSize,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 4 * scaleFactor),
+                Text(
+                  '© Copyright 1968 - 2025. All Rights Reserved.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/images/usp_logo.svg',
+                width: logoWidth,
+                height: logoHeight,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'The University of the South Pacific',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                Text(
+                  'Laucala Campus, Suva, Fiji',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                Text(
+                  'Tel: +679 323 1000',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: footerFontSize,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     double screenWidth = MediaQuery.of(context).size.width;
-    const Color headerTeal = Color(0xFF009999);
 
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 110,
         automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         flexibleSpace: Image.asset(
           'assets/images/header.png',
           fit: BoxFit.fill,
         ),
+        actions: [
+          IconButton(
+            icon: Icon(themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+            onPressed: () => themeProvider.toggleTheme(),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -136,10 +291,7 @@ class _LoginState extends State<Login> {
                               children: [
                                 const SizedBox(
                                   width: 110,
-                                  child: Text(
-                                    'Password:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
+                                  child: Text('Password:', style: TextStyle(fontSize: 16)),
                                 ),
                                 const SizedBox(width: 8),
                                 Expanded(
@@ -173,17 +325,25 @@ class _LoginState extends State<Login> {
                               child: ElevatedButton(
                                 onPressed: _handleLogin,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: headerTeal,
+                                  backgroundColor: const Color(0xFF009999),
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                 ),
-                                child: const Text(
-                                  'LOGIN',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                child: const Text('LOGIN', style: TextStyle(color: Colors.white)),
                               ),
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Container(
+                      width: 320,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: TextButton(
+                        onPressed: () {
+                          debugPrint('Forgot Password? pressed');
+                        },
+                        child: const Text('Forgot Password?'),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -192,88 +352,9 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          _buildFooter(screenWidth: screenWidth),
+          buildFooter(screenWidth),
         ],
       ),
     );
-  }
-
-  Widget _buildFooter({double screenWidth = 0}) {
-    return SizedBox(
-      height: 80,
-      child: Container(
-        width: double.infinity,
-        color: Colors.teal,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/copyright'),
-                        child: const Text(
-                          'Copyright',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text('|', style: TextStyle(color: Colors.white)),
-                      const SizedBox(width: 8),
-                      InkWell(
-                        onTap: () => _openLink('https://www.example.com/contact'),
-                        child: const Text(
-                          'Contact Us',
-                          style: TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    '© Copyright 1968 - 2025. All Rights Reserved.',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/images/usp_logo.svg',
-                  width: 133,
-                  height: 60,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Text('The University of the South Pacific', style: TextStyle(color: Colors.white)),
-                  Text('Laucala Campus, Suva, Fiji', style: TextStyle(color: Colors.white)),
-                  Text('Tel: +679 323 1000', style: TextStyle(color: Colors.white)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _openLink(String url) {
-    print('Opening link: $url');
   }
 }

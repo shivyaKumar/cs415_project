@@ -8,7 +8,11 @@ plugins {
 android {
     namespace = "com.example.cs415_project"
     compileSdk = flutter.compileSdkVersion
+<<<<<<< HEAD
     ndkVersion = "29.0.13113456"
+=======
+    ndkVersion = "28.0.13004108"
+>>>>>>> origin/firebase-integration
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

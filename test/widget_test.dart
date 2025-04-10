@@ -1,24 +1,39 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
-
-// import 'package:cs415_project/main.dart';
-// import 'package:cs415_project/models/program_level_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:cs415_project/main.dart'; // Import your main file
+import 'package:cs415_project/models/program_level_model.dart'; // Import ProgramLevel model
+import 'package:cs415_project/models/program_model.dart'; // Import Program model
+import 'package:cs415_project/models/course_model.dart'; // Import Course model
+import 'package:cs415_project/models/year_model.dart'; // Import Year model
 
 void main() {
-  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-  //   // Mock data for programLevels
-  //   final List<ProgramLevel> mockProgramLevels = [
-  //     ProgramLevel(name: "Certificate", programs: [],),
-  //     ProgramLevel(name: "Diploma", programs: [],),
-  //     ProgramLevel(name: "Degree", programs: [], ),
-  //   ];
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Create a list of Course objects
+    List<Course> courses = [
+      Course(code: 'CS101', name: 'Intro to Computer Science'),
+      Course(code: 'CS102', name: 'Data Structures', prerequisites: ['CS101']),
+    ];
+
+    // Create a list of Year objects
+    List<Year> years = [
+      Year(yearNumber: 1, courses: courses),
+      Year(yearNumber: 2, courses: courses),
+    ];
+
+    // Create a list of Program objects with the 'years' parameter
+    List<Program> programs = [
+      Program(name: 'Computer Science', years: years),
+      Program(name: 'Information Technology', years: years),
+    ];
+
+    // Create a list of ProgramLevel objects with the 'programs' parameter
+    List<ProgramLevel> programLevels = [
+      ProgramLevel(name: 'Undergraduate', programs: programs),
+      ProgramLevel(name: 'Postgraduate', programs: programs),
+    ];
+
+    // Build our app and trigger a frame.
+   // await tester.pumpWidget(MyApp(programLevels: programLevels));
 
   //   // Build our app with mock data
   //   await tester.pumpWidget(MyApp(programLevels: mockProgramLevels));
@@ -34,5 +49,5 @@ void main() {
   //   // Verify that our counter has incremented.
   //   expect(find.text('0'), findsNothing);
   //   expect(find.text('1'), findsOneWidget);
-  // });
+  });
 }

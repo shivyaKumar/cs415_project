@@ -18,6 +18,15 @@ class CourseSelectionPage extends StatelessWidget {
       case 'SOLASS':
         Navigator.pushNamed(context, '/solass');
         break;
+      case 'SAFE':
+        Navigator.pushNamed(context, '/safe');
+        break;
+      case 'SBM':
+        Navigator.pushNamed(context, '/sbm');
+        break;
+      case 'SPACE':
+        Navigator.pushNamed(context, '/space');
+        break;
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('$programName page is under development!')),
