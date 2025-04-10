@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uuid/uuid.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class StudentRegistrationPage extends StatefulWidget {
   const StudentRegistrationPage({super.key});
@@ -113,40 +112,65 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
 
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      final uuid = const Uuid();
-      final studentId = uuid.v4();
-
-      final studentData = {
-        'studentId': studentId,
-        'firstName': firstName.text.trim(),
-        'middleName': middleName.text.trim(),
-        'lastName': lastName.text.trim(),
-        'dob': dob.text.trim(),
-        'gender': selectedGender,
-        'programLevel': selectedProgramLevel,
-        'programName': programName.text.trim(),
-        'subprogram': subprogram.text.trim(),
-        'campus': selectedCampus,
-        'address': address.text.trim(),
-        'citizenship': citizenship.text.trim(),
-        'contact': contact.text.trim(),
-        'createdAt': Timestamp.now(),
-      };
-
       try {
-        await FirebaseFirestore.instance.collection('students').doc(studentId).set(studentData);
+        final dbRef = FirebaseDatabase.instance.ref().child('students');
 
-        showDialog(
+        // Get existing student keys to determine the next ID
+        final snapshot = await dbRef.get();
+        int nextId = 1;
+
+        if (snapshot.exists) {
+          final ids = snapshot.children
+              .map((e) => e.key ?? '')
+              .where((key) => key.startsWith('S'))
+              .map((key) => int.tryParse(key.substring(1)) ?? 0)
+              .toList();
+
+          if (ids.isNotEmpty) {
+            ids.sort();
+            nextId = ids.last + 1;
+          }
+        }
+
+        final formattedId = 'S${nextId.toString().padLeft(3, '0')}';
+
+        final studentData = {
+          'studentId': formattedId,
+          'firstName': firstName.text.trim(),
+          'middleName': middleName.text.trim(),
+          'lastName': lastName.text.trim(),
+          'dob': dob.text.trim(),
+          'gender': selectedGender,
+          'programLevel': selectedProgramLevel,
+          'programName': programName.text.trim(),
+          'subprogram': subprogram.text.trim(),
+          'campus': selectedCampus,
+          'address': address.text.trim(),
+          'citizenship': citizenship.text.trim(),
+          'contact': contact.text.trim(),
+          'createdAt': DateTime.now().toIso8601String(),
+        };
+
+        await dbRef.child(formattedId).set(studentData);
+
+        // Show success dialog BEFORE clearing fields
+        await showDialog(
           context: context,
           builder: (_) => AlertDialog(
             title: const Text('Registration Successful'),
-            content: Text('Student ID: $studentId\nName: ${firstName.text} ${lastName.text}'),
+            content: Text('Student ID: $formattedId\nName: ${firstName.text} ${lastName.text}'),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK')),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
             ],
           ),
         );
 
+        // Clear fields AFTER dialog
         _formKey.currentState!.reset();
         firstName.clear();
         middleName.clear();
