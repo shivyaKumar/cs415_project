@@ -109,7 +109,6 @@ class Homepage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // 🔥 Wrapped Grid in a Card
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6.0),
               child: Card(
